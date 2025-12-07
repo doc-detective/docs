@@ -1,0 +1,8 @@
+{
+  "label": "Schemas",
+  "position": 99,
+  "link": {
+    "type": "generated-index",
+    "description": "JSON schemas for configs, test specs, and actions. These schemas validate the structure of your test specs and configurations and apply to both JSON and YAML files."
+  }
+}

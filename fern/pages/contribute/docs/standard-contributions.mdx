@@ -1,0 +1,294 @@
+---
+title: Standard changes
+description: Add new content, examples, and improvements to Doc Detective documentation.
+sidebar_label: Standard changes
+sidebar_position: 3
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+# Standard changes (10-30 minutes)
+
+Add new content, examples, and improvements to the documentation. You can work in your browser or set up a local development environment.
+
+## What counts as a standard contribution
+
+- Adding missing steps to tutorials
+- Providing code examples
+- Adding troubleshooting tips
+- Adding "See also" links
+- Expanding brief explanations
+- Adding diagrams or screenshots
+
+## Two ways to work
+
+### Option 1: Browser-based (easier)
+
+Use GitHub's web editor for smaller additions:
+
+1. Use the **Edit this page** button on any doc page
+2. Make your changes using the web editor
+3. Commit and create a pull request
+
+👉 See [Quick changes](quick-start) for detailed instructions.
+
+Good for adding a few paragraphs, code examples, or list items.
+
+### Option 2: Local development (more powerful)
+
+Set up a local environment to preview changes as you write:
+
+👉 See [Local Development Setup](local-development) for detailed instructions.
+
+Good for adding multiple sections, working across multiple files, or seeing live previews.
+
+## Using content templates
+
+Templates help you structure your contribution and ensure you include all the important information.
+
+Choose the template that matches what you're creating:
+
+| Template | Purpose |
+| --- | --- |
+| [How-to guide](templates/how-to) | Task-focused step-by-step instructions |
+| [Tutorial](templates/tutorial) | Learning-oriented guide through a complete workflow |
+| [Troubleshooting entry](templates/troubleshooting) | Problem-solution format |
+| [Reference](templates/reference) | Technical specifications or API documentation |
+| [Feature documentation](templates/feature) | Document a new or changed feature |
+
+## Content guidelines
+
+### Structure your content
+
+Use clear headings to organize information:
+
+```markdown
+## Before you begin
+
+Prerequisites and setup information
+
+## Step 1: First major action
+
+Detailed instructions
+
+## Step 2: Next major action
+
+More instructions
+
+## What's next
+
+Related topics and next steps
+```
+
+### Write clear instructions
+
+✅ **Do**
+
+- Use second person ("you") and active voice
+- Start steps with action verbs: "Click", "Type", "Navigate"
+- Put conditions before instructions: "If you want to save, click **Save**"
+- Use numbered lists for sequential steps
+- Use bulleted lists for non-sequential items
+
+⛔ **Don't**
+
+- Use first person ("we") or passive voice
+- Start steps with "Now" or "Then"
+- Bury conditions in the middle of instructions
+- Mix ordered and unordered lists
+
+### Code examples
+
+Always test code examples before submitting:
+
+````markdown
+```json title="example-test.spec.json"
+{
+  "tests": [
+    {
+      "steps": [
+        {
+          "action": "goTo",
+          "url": "https://doc-detective.com"
+        }
+      ]
+    }
+  ]
+}
+```
+````
+
+Include
+
+- **Language identifier**: json, bash, typescript, etc.
+- **File name** (optional): Use `title="filename.ext"`
+- **Context**: Explain what the code does before showing it
+
+### Links and references
+
+Link to related documentation:
+
+```markdown
+See [Actions](/docs/category/actions) for available test actions.
+```
+
+Use
+
+- **Absolute paths** for internal links: `/docs/path/to/page`
+- **HTTPS** for external links: `https://example.com`
+- **Descriptive link text**: Not "click here" or "this link"
+
+### Admonitions (callouts)
+
+Highlight important information with admonitions. Make sure you use the appropriate type based on the severity and purpose of the message.
+
+<Tabs>
+  <TabItem label="Note" value="note">
+    ```markdown title="Note syntax"
+    :::note
+    `note` is for information that the user should be aware of but isn't critical.
+    :::
+    ```
+
+    :::note
+    `note` is for information that the user should be aware of but isn't critical.
+    :::
+  </TabItem>
+  <TabItem label="Tip" value="tip">
+    ```markdown title="Tip syntax"
+    :::tip
+    `tip` is for useful advice or shortcuts that can help the user.
+    :::
+    ```
+
+    :::tip
+    `tip` is for useful advice or shortcuts that can help the user.
+    :::
+  </TabItem>
+  <TabItem label="Info" value="info">
+    ```markdown title="Info syntax"
+    :::info
+    `info` is for useful information that isn't critical but may help the user.
+    :::
+    ```
+    :::info
+    `info` is for useful information that isn't critical but may help the user.
+    :::
+  </TabItem>
+  <TabItem label="Warning" value="warning">
+    ```markdown title="Warning syntax"
+    :::warning
+    `warning` should be used when an action may be difficult to undo or may cost the user unexpected time or resources.
+    :::
+    ```
+    :::warning
+    `warning` should be used when an action may be difficult to undo or may cost the user unexpected time or resources.
+    :::
+  </TabItem>
+  <TabItem label="Danger" value="danger">
+    ```markdown title="Danger syntax"
+    :::danger
+    `danger` should be used when there's a risk of data loss, unexpected cost, or harm.
+    :::
+    ```
+    :::danger
+    `danger` should be used when there's a risk of data loss, unexpected cost, or harm.
+    :::
+  </TabItem>
+</Tabs>
+
+## Before submitting
+
+### Run automated checks locally (optional)
+
+If you're working locally, run these commands before submitting:
+
+```bash
+# Build the documentation
+npm run build
+
+# Run style checks (if Vale is installed)
+vale docs/
+```
+
+Don't worry if you skip these—the CI/CD pipeline runs them automatically.
+
+### Review your changes
+
+Before creating a pull request:
+
+1. Read your changes out loud—does it make sense?
+2. Test any code examples or commands.
+3. Check that links work.
+4. Verify screenshots are clear and relevant.
+5. Make sure formatting looks correct.
+
+### Create a pull request
+
+1. **Title**: Briefly describe what you added. Examples:
+
+   - ✅ `Add troubleshooting guide for browser detection`
+   - ✅ `Document file upload action with examples`
+
+2. **Description**: Use the PR template to provide context:
+
+   - What did you add or change?
+   - Why is this helpful?
+   - Related issue number (if applicable)
+
+3. **Submit**: Create your pull request.
+
+## What happens during review
+
+1. **Automated checks** run (typically 2-5 minutes)
+2. **Maintainer reviews** your contribution (within 5 business days)
+3. **Feedback or approval**:
+   - If changes are needed, update your pull request.
+   - If approved, your contribution is merged.
+
+### Understanding automated checks
+
+#### Vale (style checking)
+
+Vale enforces the documentation style guide. Common suggestions include
+
+- Use "you" instead of "the user"
+- Avoid "please" in instructions
+- Use active voice instead of passive
+- Avoid gendered pronouns (use "they")
+
+Most Vale suggestions are just that—suggestions. Reviewers use judgment.
+
+#### Link validation
+
+Checks that all links work. If this fails,
+
+- Verify external URLs are correct
+- Check internal link paths (case-sensitive)
+- Make sure linked pages exist
+
+#### Build check
+
+Make sure that the documentation site builds successfully. Failures usually indicate
+
+- Markdown syntax errors
+- Missing closing tags
+- Invalid front matter
+
+## Need help?
+
+### During writing
+
+- **Not sure about structure?** Check similar pages in the docs.
+- **Questions about content or technical details?** Ask in [Discord](https://discord.gg/2M7wXEThfF).
+
+### After submitting
+
+- **Automated checks failed?** Check the details in the PR—reviewers can help.
+- **No response yet?** Wait 5 business days, then ping in the PR.
+- **Need to make changes?** Just commit to the same branch—the PR updates automatically.
+
+## Ready for bigger projects?
+
+For major documentation efforts, see [Substantial Contributions](substantial-contributions).

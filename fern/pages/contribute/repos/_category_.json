@@ -1,0 +1,8 @@
+{
+  "label": "Repos",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Doc Detective is a collection of interrelated projects. This section covers the various repositories that make up the Doc Detective ecosystem."
+  }
+}

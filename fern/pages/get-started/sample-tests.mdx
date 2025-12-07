@@ -1,0 +1,148 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Explore sample tests
+
+Use the sample test files provided to experiment with Doc Detective's capabilities and see how it handles different scenarios.
+
+## Get sample files
+
+To get a few samples, [view the samples on GitHub](https://github.com/doc-detective/doc-detective/tree/main/samples) or clone the repo and navigate to the `samples` directory:
+
+```bash
+git clone https://github.com/doc-detective/doc-detective.git
+cd doc-detective/samples
+npm i
+```
+
+## Run tests
+
+<Tabs>
+  <TabItem value="npx" label="NPX" default>
+
+```bash
+npx doc-detective
+```
+
+  </TabItem>
+  <TabItem value="docker" label="Docker">
+
+```bash
+docker run -v .:/app docdetective/docdetective
+```
+
+:::note
+The `-v` argument mounts your current directory (`.`) to `/app` in the container, giving Doc Detective access to your test specifications.
+:::
+
+  </TabItem>
+</Tabs>
+
+By default, Doc Detective scans the current directory for valid tests, but you can specify your test file with the `--input` argument. For example, to run tests in a file named `doc-content-inline-tests.md`, run the following command:
+
+<Tabs>
+  <TabItem value="npx" label="NPX" default>
+
+```bash
+npx doc-detective --input doc-content-inline-tests.md
+```
+
+  </TabItem>
+  <TabItem value="docker" label="Docker">
+
+```bash
+docker run -v .:/app docdetective/docdetective --input /app/doc-content-inline-tests.md
+```
+
+  </TabItem>
+</Tabs>
+
+If you have test files in multiple directories or want to specify multiple files, enter them separated with commas:
+
+<Tabs>
+  <TabItem value="npx" label="NPX" default>
+
+```bash
+npx doc-detective --input doc-content-inline-tests.md,/apis/api-tests.md
+```
+
+  </TabItem>
+  <TabItem value="docker" label="Docker">
+
+```bash
+docker run -v .:/app docdetective/docdetective --input /app/doc-content-inline-tests.md,/app/apis/api-tests.md
+```
+
+  </TabItem>
+</Tabs>
+
+To customize your test, file type, and directory options, create a `.doc-detective.json` [config](/docs/references/schemas/config) file. If a `.doc-detective.json` file exists in the directory when you run the command, Doc Detective loads the config. Otherwise, you can specify a config path with the `--config` argument.
+
+<Tabs>
+  <TabItem value="npx" label="NPX" default>
+
+```bash
+npx doc-detective --config .doc-detective.json
+```
+
+  </TabItem>
+  <TabItem value="docker" label="Docker">
+
+```bash
+docker run -v .:/app docdetective/docdetective --config /app/.doc-detective.json
+```
+
+  </TabItem>
+</Tabs>
+
+**Note**: All paths are relative to the current working directory, regardless of the config file's location.
+
+You can override config options with command-line arguments. For example, to run tests in a file named `tests.spec.json`, even if that isn't included in your config, run the following command:
+
+<Tabs>
+  <TabItem value="npx" label="NPX" default>
+
+```bash
+npx doc-detective --config .doc-detective.json --input tests.spec.json
+```
+
+  </TabItem>
+  <TabItem value="docker" label="Docker">
+
+```bash
+docker run -v .:/app docdetective/docdetective --config /app/.doc-detective.json --input /app/tests.spec.json
+```
+
+  </TabItem>
+</Tabs>
+
+### Remotely hosted tests
+
+You can run tests hosted remotely by specifying the URL of the test file with the `--input` argument. For example, to run tests from a file hosted at `https://doc-detective.com/sample.spec.json`, run the following command:
+
+<Tabs>
+  <TabItem value="npx" label="NPX" default>
+
+```bash
+npx doc-detective --input https://doc-detective.com/sample.spec.json
+```
+
+  </TabItem>
+  <TabItem value="docker" label="Docker">
+
+```bash
+docker run docdetective/docdetective --input https://doc-detective.com/sample.spec.json
+```
+
+:::note
+The `-v` argument is not necessary for remotely hosted tests since Docker doesn't need access to local files.
+:::
+
+  </TabItem>
+</Tabs>
+
+These tests run the same way as local tests, but Doc Detective fetches the test file from the specified URL and stores it in a temporary directory. The URL must be accessible to the machine running the tests.
+
+## Next steps
+
+- [Resources](/docs/get-started/resources.md)

@@ -1,0 +1,8 @@
+{
+  "label": "Actions",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "description": "Actions are the commands performed in each step of a test. Each action has a specific purpose, such as checking a link, finding an element, or navigating to a URL."
+  }
+}

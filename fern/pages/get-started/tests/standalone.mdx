@@ -1,0 +1,70 @@
+---
+sidebar_position: 2
+title: Standalone tests
+description: Define tests in standalone JSON or YAML files for machine-readable test specifications.
+---
+
+import JsonYamlTabs from "@site/src/components/JsonYamlTabs";
+
+# Standalone tests
+
+Standalone JSON or YAML files help you see the entirety of the spec and keep it in a separate, machine-readable format. They're useful for:
+
+- Complex test suites that need version control
+- Automated test generation and processing
+- Integration with CI/CD pipelines
+- Sharing tests across projects
+
+However, they make it harder to maintain strict parallelism with documentation, so consider your use case carefully.
+
+Test specs in standalone JSON or YAML files use the following basic structure:
+
+<JsonYamlTabs object={{
+  specId: "spec-id",
+  description: "Spec Description",
+  tests: [
+    {
+      testId: "test-id",
+      description: "Test Description",
+      steps: [
+        {
+          stepId: "step-id",
+          description: "Step description. This object also needs additional step properties like `find`, `goTo`, or `httpRequest`."
+        }
+      ]
+    }
+  ]
+}}></JsonYamlTabs>
+
+> For comprehensive options, see [`specification`](/docs/references/schemas/specification).
+
+## Example
+
+Here's an example test for performing a Google search and saving a screenshot of the results:
+
+<JsonYamlTabs object={{
+  tests: [
+    {
+      steps: [
+        {
+          goTo: "https://www.google.com"
+        },
+        {
+          find: {
+            selector: "[title=Search]",
+            click: true
+          }
+        },
+        {
+          type: ["American Shorthair kittens", "$ENTER$"]
+        },
+        {
+          wait: 5000
+        },
+        {
+          screenshot: "search-results.png"
+        }
+      ]
+    }
+  ]
+}}></JsonYamlTabs>
