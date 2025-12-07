@@ -1,0 +1,11 @@
+# yaml-language-server: $schema=https://schema.buildwithfern.dev/docs-yml.json
+
+############
+# Basic info
+############
+
+instances:
+  - url: doc-detective.docs.buildwithfern.com # {yourorg}.docs.buildwithfern.com
+    # custom-domain: doc-detective.com # custom domain for live site
+
+title: Doc Detective
