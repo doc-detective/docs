@@ -1,5 +1,5 @@
 ---
-sidebar_label: Resources
+sidebar-title: Resources
 ---
 
 # Resources

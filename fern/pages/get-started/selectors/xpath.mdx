@@ -1,5 +1,5 @@
 ---
-sidebar_label: XPath selectors
+sidebar-title: XPath selectors
 description: Learn how to use XPath selectors to target elements in Doc Detective tests.
 ---
 
@@ -30,7 +30,7 @@ XPath selectors in Doc Detective must start with `//` or `/` to be recognized as
   ```
   /html/body/div/form/input
   ```
-  
+
   :::warning[Avoid absolute paths]
   They're fragile and break when the page structure changes.
   :::
@@ -39,7 +39,7 @@ XPath selectors in Doc Detective must start with `//` or `/` to be recognized as
   ```
   //input[@type='password']
   ```
-  
+
   :::tip[Prefer relative paths]
   They're more flexible and maintainable.
   :::

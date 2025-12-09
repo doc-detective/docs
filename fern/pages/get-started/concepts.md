@@ -1,5 +1,5 @@
 ---
-sidebar_label: Concepts
+sidebar-title: Concepts
 ---
 
 # Concepts

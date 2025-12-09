@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+
 ---
 
 # `docker-image` (alpha)

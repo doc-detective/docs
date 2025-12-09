@@ -1,5 +1,4 @@
 ---
-sidebar_position: 5
 title: HTML
 description: Use Doc Detective with HTML files.
 ---
@@ -59,23 +58,23 @@ Here's a complete example of an HTML file with inline tests:
 </head>
 <body>
   <!-- test { "testId": "navigation-test" } -->
-  
+
   <h1>Getting Started</h1>
-  
+
   <p>Navigate to our homepage:</p>
   <!-- step { "goTo": "https://example.com" } -->
-  
+
   <p>Click the menu button:</p>
   <!-- step { "click": "Menu" } -->
-  
+
   <p>Enter your search query:</p>
   <!-- step { "type": { "keys": "test query", "selector": "[name=search]" } } -->
-  
+
   <p>Submit the search:</p>
   <!-- step { "click": "Search" } -->
-  
+
   <!-- test end -->
-  
+
   <p>For more information, see our <a href="https://docs.example.com">documentation</a>.</p>
 </body>
 </html>

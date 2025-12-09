@@ -219,16 +219,16 @@ navigation:
             contents:
               - page: doc-detective
                 path: pages/contribute/repos/doc-detective.md
-              - page: doc-detective-common
-                path: pages/contribute/repos/doc-detective-common.md
               - page: doc-detective-core
                 path: pages/contribute/repos/doc-detective-core.md
-              - page: doc-detective.github.io
+              - page: doc-detective-common
+                path: pages/contribute/repos/doc-detective-common.md
+              - page: doc-detective.github.io.md
                 path: pages/contribute/repos/doc-detective.github.io.md
-              - page: Docker image
-                path: pages/contribute/repos/docker-image.md
               - page: GitHub Action
                 path: pages/contribute/repos/github-action.md
+              - page: Docker image
+                path: pages/contribute/repos/docker-image.md
 
       - section: Legal
         contents:
