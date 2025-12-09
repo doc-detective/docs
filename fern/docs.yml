@@ -22,6 +22,18 @@ logo:
   href: https://doc-detective.docs.buildwithfern.com
   dark: assets/logo/logo.svg
   light: assets/logo/logo.svg
+  height: 40
+
+colors:
+  accentPrimary:
+    dark: "#3EB16E"
+    light: "#22623D"
+  background:
+    light: "#ffffff"
+    dark: "#0d0e11"
+
+favicon: assets/logo/favicon.ico
+
 
 #########
 # Socials
