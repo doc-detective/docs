@@ -9,3 +9,236 @@ instances:
     # custom-domain: doc-detective.com # custom domain for live site
 
 title: Doc Detective
+
+ai-search:
+  location:
+    - docs
+
+##########
+# Branding
+##########
+
+logo:
+  href: https://doc-detective.docs.buildwithfern.com
+  dark: assets/logo/logo.svg
+  light: assets/logo/logo.svg
+
+#########
+# Socials
+#########
+
+#metadata:
+#  # Core platform identity
+#  og:site_name: "Square Developer Documentation"
+#  og:title: "Square Developer Platform | Payments, Commerce & Banking APIs"
+#  og:description: "Build with Square's suite of APIs and SDKs. Accept payments, manage inventory, create loyalty programs, and access financial services. Complete documentation for developers building the future of commerce."
+#  og:url: "https://developer.squareup.com/docs"
+#
+#  # Social sharing assets
+#
+#  og:image: "https://developer.squareup.com/images/docs-social-card.png"
+#  og:image:width: 1200
+#  og:image:height: 630
+#  og:locale: "en_US"
+#  og:logo: "https://developer.squareup.com/images/square-logo.png"
+
+########
+# Layout
+########
+
+layout:
+  searchbar-placement: header
+  tabs-placement: header
+
+tabs:
+  home:
+    display-name: Home
+    icon: fa-solid fa-home
+  docs:
+    display-name: Documentation
+    icon: fa-solid fa-file
+  reference:
+    display-name: Reference
+    icon: fa-solid fa-line-columns
+
+navbar-links:
+  - type: minimal
+    text: Discord
+    href: https://discord.gg/2M7wXEThfF
+    target: _blank
+    icon: fa-brands fa-discord
+  - type: github
+    value: https://github.com/doc-detective/doc-detective
+
+footer-links:
+  github: https://github.com/your-org/your-repo
+  linkedin: https://www.linkedin.com/company/doc-detective
+  discord: https://discord.gg/2M7wXEThfF
+
+######################
+# Navigation structure
+######################
+
+navigation:
+  - tab: home
+    layout:
+      - section: Home
+        contents:
+          - page: Welcome
+            path: pages/index.mdx
+  - tab: docs
+    layout:
+      - section: Get started
+        contents:
+          - page: Introduction
+            path: pages/get-started/intro.mdx
+          - page: Installation
+            path: pages/get-started/installation/index.mdx
+          - page: Concepts
+            path: pages/get-started/concepts.md
+          - page: Create your first test
+            path: pages/get-started/create-your-first-test.mdx
+          - page: Sample tests
+            path: pages/get-started/sample-tests.mdx
+          - page: Resources
+            path: pages/get-started/resources.md
+
+      - section: Configuration
+        contents:
+          - page: Contexts
+            path: pages/get-started/config/contexts/index.md
+
+      - section: Tests
+        contents:
+          - page: Overview
+            path: pages/get-started/tests/overview.mdx
+          - page: Standalone tests
+            path: pages/get-started/tests/standalone.mdx
+          - page: Inline tests
+            path: pages/get-started/tests/inline.mdx
+          - page: Detected tests
+            path: pages/get-started/tests/detected.mdx
+
+      - section: Input formats
+        contents:
+          - page: Overview
+            path: pages/get-started/inputs/overview.mdx
+          - page: Markdown
+            path: pages/get-started/inputs/markdown.mdx
+          - page: DITA
+            path: pages/get-started/inputs/dita.mdx
+          - page: AsciiDoc
+            path: pages/get-started/inputs/asciidoc.mdx
+          - page: HTML
+            path: pages/get-started/inputs/html.mdx
+          - page: Custom
+            path: pages/get-started/inputs/custom.mdx
+
+      - section: Actions
+        contents:
+          - page: checkLink
+            path: pages/get-started/actions/checkLink.mdx
+          - page: click
+            path: pages/get-started/actions/click.mdx
+          - page: dragAndDrop
+            path: pages/get-started/actions/dragAndDrop.mdx
+          - page: find
+            path: pages/get-started/actions/find.mdx
+          - page: goTo
+            path: pages/get-started/actions/goTo.mdx
+          - page: httpRequest
+            path: pages/get-started/actions/httpRequest.mdx
+          - page: loadCookie
+            path: pages/get-started/actions/loadCookie.mdx
+          - page: loadVariables
+            path: pages/get-started/actions/loadVariables.mdx
+          - page: record
+            path: pages/get-started/actions/record.mdx
+          - page: runCode
+            path: pages/get-started/actions/runCode.mdx
+          - page: runShell
+            path: pages/get-started/actions/runShell.mdx
+          - page: saveCookie
+            path: pages/get-started/actions/saveCookie.mdx
+          - page: screenshot
+            path: pages/get-started/actions/screenshot.mdx
+          - page: stopRecord
+            path: pages/get-started/actions/stopRecord.mdx
+          - page: type
+            path: pages/get-started/actions/type.mdx
+          - page: wait
+            path: pages/get-started/actions/wait.mdx
+
+      - section: Selectors
+        contents:
+          - page: CSS selectors
+            path: pages/get-started/selectors/css.mdx
+          - page: XPath selectors
+            path: pages/get-started/selectors/xpath.mdx
+
+      - section: Tutorials
+        contents:
+          - page: Set up your test environment
+            path: pages/get-started/tutorials/set-up-your-test-environment.mdx
+          - page: Fill fields
+            path: pages/get-started/tutorials/fill-fields.mdx
+          - page: Capture screenshot
+            path: pages/get-started/tutorials/capture-screenshot.mdx
+          - page: Record video
+            path: pages/get-started/tutorials/record-video.mdx
+
+      - section: Contribute
+        contents:
+          - page: Contribute to the docs
+            path: pages/contribute/docs/index.mdx
+          - page: Quick start
+            path: pages/contribute/docs/quick-start.mdx
+          - page: Standard contributions
+            path: pages/contribute/docs/standard-contributions.mdx
+          - page: Substantial contributions
+            path: pages/contribute/docs/substantial-contributions.mdx
+          - page: Local development
+            path: pages/contribute/docs/local-development.mdx
+          - page: Review process
+            path: pages/contribute/docs/review-process.mdx
+          - page: Testing the docs
+            path: pages/contribute/docs/testing.mdx
+          - section: Content templates
+            contents:
+              - page: How-to template
+                path: pages/contribute/docs/templates/how-to.mdx
+              - page: Tutorial template
+                path: pages/contribute/docs/templates/tutorial.mdx
+              - page: Reference template
+                path: pages/contribute/docs/templates/reference.mdx
+              - page: Feature template
+                path: pages/contribute/docs/templates/feature.mdx
+              - page: Troubleshooting template
+                path: pages/contribute/docs/templates/troubleshooting.mdx
+          - section: Repository guides
+            contents:
+              - page: doc-detective
+                path: pages/contribute/repos/doc-detective.md
+              - page: doc-detective-common
+                path: pages/contribute/repos/doc-detective-common.md
+              - page: doc-detective-core
+                path: pages/contribute/repos/doc-detective-core.md
+              - page: doc-detective.github.io
+                path: pages/contribute/repos/doc-detective.github.io.md
+              - page: Docker image
+                path: pages/contribute/repos/docker-image.md
+              - page: GitHub Action
+                path: pages/contribute/repos/github-action.md
+
+      - section: Legal
+        contents:
+          - page: Privacy policy (Companion app)
+            path: pages/legal/privacy-policy-companion.md
+  - tab: reference
+    layout:
+      - section: Reference
+        contents:
+          - page: Glossary
+            path: pages/reference/glossary.mdx
+          - folder: pages/reference/schemas
+            title: Schemas
