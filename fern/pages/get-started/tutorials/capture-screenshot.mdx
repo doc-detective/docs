@@ -2,8 +2,6 @@
 description: Run a test that fills all fields in a form, then captures a screenshot of the result.
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 # Capture screenshot
 
@@ -22,14 +20,14 @@ To run the test:
 4. Enter the command:
 
    <Tabs>
-     <TabItem value="npx" label="NPX" default>
+     <Tab title="NPX" language="npx">
 
    ```shell
    npx doc-detective@dev -i form-filler2.json
    ```
 
-     </TabItem>
-     <TabItem value="docker" label="Docker">
+     </Tab>
+     <Tab title="Docker" language="docker">
 
    ```shell
    docker run -v .:/app docdetective/docdetective:dev -i /app/form-filler2.json
@@ -39,7 +37,7 @@ To run the test:
    The `-v` argument mounts your current directory (`.`) to `/app` in the container.
    :::
 
-     </TabItem>
+     </Tab>
    </Tabs>
 
 While the form is too large to fit on the computer screen, increasing the window and viewport settings allows you to capture the entire form in a single image.
@@ -67,7 +65,7 @@ To capture the full form, this example runs in _headless_ mode. The screenshot c
                     }
 ```
 
-Filling in most of the fields is the same as filling in the First and Last Name values in the previous example. You find an element by its label, click the element, then type a value. 
+Filling in most of the fields is the same as filling in the First and Last Name values in the previous example. You find an element by its label, click the element, then type a value.
 
 ```json
                 {
@@ -102,7 +100,7 @@ You can click a radio button directly by name.
                 },
 ```
 
-Use the screenshot action with an output path to capture the state of the form once the fields are complete. 
+Use the screenshot action with an output path to capture the state of the form once the fields are complete.
 
 ```json
 

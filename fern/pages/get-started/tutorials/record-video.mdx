@@ -2,8 +2,6 @@
 description: Run a test that fills all fields in a form, capturing a video of the changes.
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 # Record video
 
@@ -21,14 +19,14 @@ To run the test:
 3. Run the _form-filler3.json_ test spec with Doc Detective:
 
    <Tabs>
-     <TabItem value="npx" label="NPX" default>
+     <Tab title="NPX" language="npx">
 
    ```shell
    npx doc-detective@dev -i form-filler3.json
    ```
 
-     </TabItem>
-     <TabItem value="docker" label="Docker">
+     </Tab>
+     <Tab title="Docker" language="docker">
 
    ```shell
    docker run -v .:/app docdetective/docdetective:dev -i /app/form-filler3.json
@@ -38,7 +36,7 @@ To run the test:
    The `-v` argument mounts your current directory (`.`) to `/app` in the container.
    :::
 
-     </TabItem>
+     </Tab>
    </Tabs>
 
 To record, you must run the test with _headless_ mode turned off. The display window of the browser constrains the view area of the screenshot and video functions.

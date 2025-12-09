@@ -4,8 +4,6 @@ sidebar-title: Installation
 
 import spec from "./sample.spec.json";
 import CodeBlock from '@theme/CodeBlock';
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 # Installation
 
@@ -14,7 +12,7 @@ Downloading and running Doc Detective is straightforward. You can install Doc De
 Choose *NPX* if you have Node.js installed and want to install Doc Detective on your machine locally. Choose *Docker* if you can't install applications locally, prefer containerized environments, need to avoid Node.js installation, or want to isolate Doc Detective from your system.
 
 <Tabs>
-  <TabItem value="npx" label="NPX" default>
+  <Tab title="NPX" language="npx">
 
 1. Install prerequisites:
 
@@ -48,8 +46,8 @@ Choose *NPX* if you have Node.js installed and want to install Doc Detective on 
     command: "npx doc-detective --input sample.spec.json"
     workingDirectory: "." */}
 
-  </TabItem>
-  <TabItem value="docker" label="Docker">
+  </Tab>
+  <Tab title="Docker" language="docker">
 
 1. Install prerequisites:
 
@@ -78,7 +76,7 @@ Choose *NPX* if you have Node.js installed and want to install Doc Detective on 
 
     :::
 
-  </TabItem>
+  </Tab>
 </Tabs>
 
 Congratulations! You've run your first test with Doc Detective. :tada:

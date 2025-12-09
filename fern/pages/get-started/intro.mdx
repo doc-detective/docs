@@ -2,22 +2,20 @@
 title: Introduction
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 # Doc Detective
 
 Validate your content with Doc Detective:
 
 <Tabs>
-  <TabItem value="npx" label="NPX" default>
+  <Tab title="NPX" language="npx">
 
 ```bash
 npx doc-detective
 ```
 
-  </TabItem>
-  <TabItem value="docker" label="Docker">
+  </Tab>
+  <Tab title="Docker" language="docker">
 
 ```bash
 docker run -v .:/app docdetective/docdetective
@@ -27,7 +25,7 @@ docker run -v .:/app docdetective/docdetective
 The `-v` argument mounts your current directory (`.`) to `/app` in the container, giving Doc Detective access to your test specifications.
 :::
 
-  </TabItem>
+  </Tab>
 </Tabs>
 
 See the [Installation](/docs/get-started/installation) guide to get started. Come chat on [Discord](https://discord.gg/uAfSjVH7yr).

@@ -2,8 +2,6 @@
 sidebar-title: Create your first test
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 # Create your first test
 
@@ -81,14 +79,14 @@ To create your first test, follow these steps:
 5. In your terminal, enter the following command to run the test:
 
    <Tabs>
-     <TabItem value="npx" label="NPX" default>
+     <Tab title="NPX" language="npx">
 
    ```bash
    npx doc-detective --input homepage-check.spec.json
    ```
 
-     </TabItem>
-     <TabItem value="docker" label="Docker">
+     </Tab>
+     <Tab title="Docker" language="docker">
 
    ```bash
    docker run -v .:/app docdetective/docdetective --input /app/homepage-check.spec.json
@@ -98,7 +96,7 @@ To create your first test, follow these steps:
    The `-v` argument mounts your current directory (`.`) to `/app` in the container, giving Doc Detective access to your test specification and enabling it to output results and screenshots.
    :::
 
-     </TabItem>
+     </Tab>
    </Tabs>
 
    By default, Doc Detective scans the current directory for valid tests, but you can specify your test file using the `--input` argument. For more information, see [Run tests](/docs/get-started/sample-tests#run-tests).

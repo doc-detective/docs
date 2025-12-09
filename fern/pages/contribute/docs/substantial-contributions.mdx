@@ -4,8 +4,6 @@ description: Take on major documentation projects with guidance and technical wr
 sidebar-title: Substantial changes
 ---
 
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
 
 # Substantial changes (30+ minutes)
 
@@ -181,7 +179,7 @@ Consider adding
 Example Mermaid diagram:
 
 <Tabs>
-<TabItem value="markdown" label="Markdown" default>
+<Tab language="markdown" title="Markdown">
 ````markdown
 ```mermaid
 graph TD;
@@ -192,8 +190,8 @@ graph TD;
     D -->|No| A;
 ```
 ````
-</TabItem>
-<TabItem value="rendered" label="Rendered">
+</Tab>
+<Tab language="rendered" title="Rendered">
 ```mermaid
 graph TD;
     A[Write docs] --> B[Add tests];
@@ -202,7 +200,7 @@ graph TD;
     D -->|Yes| E[Deploy];
     D -->|No| A;
 ```
-</TabItem>
+</Tab>
 </Tabs>
 
 ## Testing your documentation

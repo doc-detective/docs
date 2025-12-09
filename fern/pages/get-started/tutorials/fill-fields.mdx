@@ -3,8 +3,6 @@ sidebar-title: Fill in fields
 description: Run a short test that fills in the first and last name fields in a form.
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 # Fill in fields
 
@@ -28,14 +26,14 @@ To run the test:
 3. Run the _form-filler1.json_ test spec with Doc Detective:
 
     <Tabs>
-      <TabItem value="npx" label="NPX" default>
+      <Tab title="NPX" language="npx">
 
     ```shell
     npx doc-detective@dev -i form-filler1.json
     ```
 
-      </TabItem>
-      <TabItem value="docker" label="Docker">
+      </Tab>
+      <Tab title="Docker" language="docker">
 
     ```shell
     docker run -v .:/app docdetective/docdetective:dev -i /app/form-filler1.json
@@ -45,7 +43,7 @@ To run the test:
     The `-v` argument mounts your current directory (`.`) to `/app` in the container.
     :::
 
-      </TabItem>
+      </Tab>
     </Tabs>
 
 ![First and Last Names fields completed.](./img/form-filled-1-first-and-last-name.png)

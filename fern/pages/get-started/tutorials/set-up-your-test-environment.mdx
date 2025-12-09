@@ -2,8 +2,6 @@
 description: Set up an environment for Doc Detective tests.
 ---
 
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
 
 # Set up your test environment
 
@@ -22,21 +20,21 @@ You can use Doc Detective directly against your production site. For testing, it
    Any web server works, but here are a few options (unassociated with Doc Detective):
 
    <Tabs>
-      <TabItem value='python' label='Python'>
+      <Tab language='python' title='Python'>
          To run a local server with Python, you can use the built-in `http.server` module:
 
          ```bash
          python -m http.server 8080
          ```
-      </TabItem>
-      <TabItem value='node' label='Node.js'>
+      </Tab>
+      <Tab language='node' title='Node.js'>
          To run a local server with Node.js, you can use the `http-server` package:
 
          ```bash
          npx http-server <path-to-expanded-test-examples>
          ```
-      </TabItem>
-      <TabItem value='vscode' label='VSCode'>
+      </Tab>
+      <Tab language='vscode' title='VSCode'>
          {/* vale off */}
 
          In VSCode, search for and install the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) extension. It gives you a local development server with live reload capability.
@@ -46,7 +44,7 @@ You can use Doc Detective directly against your production site. For testing, it
          :::info
          To match the Doc Detective tutorials, set the port number to `8080` in your VSCode settings.
          :::
-      </TabItem>
+      </Tab>
    </Tabs>
 
    Once the server is started, you can open a browser window to `http://localhost:8080`. If you see a rendered page, you're ready to start testing.

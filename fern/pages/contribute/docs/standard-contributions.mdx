@@ -4,8 +4,6 @@ description: Add new content, examples, and improvements to Doc Detective docume
 sidebar-title: Standard changes
 ---
 
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
 
 # Standard changes (10-30 minutes)
 
@@ -143,7 +141,7 @@ Use
 Highlight important information with admonitions. Make sure you use the appropriate type based on the severity and purpose of the message.
 
 <Tabs>
-  <TabItem label="Note" value="note">
+  <Tab title="Note" language="note">
     ```markdown title="Note syntax"
     :::note
     `note` is for information that the user should be aware of but isn't critical.
@@ -153,8 +151,8 @@ Highlight important information with admonitions. Make sure you use the appropri
     :::note
     `note` is for information that the user should be aware of but isn't critical.
     :::
-  </TabItem>
-  <TabItem label="Tip" value="tip">
+  </Tab>
+  <Tab title="Tip" language="tip">
     ```markdown title="Tip syntax"
     :::tip
     `tip` is for useful advice or shortcuts that can help the user.
@@ -164,8 +162,8 @@ Highlight important information with admonitions. Make sure you use the appropri
     :::tip
     `tip` is for useful advice or shortcuts that can help the user.
     :::
-  </TabItem>
-  <TabItem label="Info" value="info">
+  </Tab>
+  <Tab title="Info" language="info">
     ```markdown title="Info syntax"
     :::info
     `info` is for useful information that isn't critical but may help the user.
@@ -174,8 +172,8 @@ Highlight important information with admonitions. Make sure you use the appropri
     :::info
     `info` is for useful information that isn't critical but may help the user.
     :::
-  </TabItem>
-  <TabItem label="Warning" value="warning">
+  </Tab>
+  <Tab title="Warning" language="warning">
     ```markdown title="Warning syntax"
     :::warning
     `warning` should be used when an action may be difficult to undo or may cost the user unexpected time or resources.
@@ -184,8 +182,8 @@ Highlight important information with admonitions. Make sure you use the appropri
     :::warning
     `warning` should be used when an action may be difficult to undo or may cost the user unexpected time or resources.
     :::
-  </TabItem>
-  <TabItem label="Danger" value="danger">
+  </Tab>
+  <Tab title="Danger" language="danger">
     ```markdown title="Danger syntax"
     :::danger
     `danger` should be used when there's a risk of data loss, unexpected cost, or harm.
@@ -194,7 +192,7 @@ Highlight important information with admonitions. Make sure you use the appropri
     :::danger
     `danger` should be used when there's a risk of data loss, unexpected cost, or harm.
     :::
-  </TabItem>
+  </Tab>
 </Tabs>
 
 ## Before submitting

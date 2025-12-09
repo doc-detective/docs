@@ -3,8 +3,6 @@ title: Custom inputs
 description: Define custom input formats and markup patterns for your documentation.
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 # Custom input formats
 
@@ -264,14 +262,14 @@ To test your custom patterns:
 4. Check the generated test results to verify patterns were detected correctly
 
 <Tabs>
-  <TabItem value="npx" label="NPX" default>
+  <Tab title="NPX" language="npx">
 
 ```bash
 npx doc-detective --input sample.cdoc --config custom-config.json
 ```
 
-  </TabItem>
-  <TabItem value="docker" label="Docker">
+  </Tab>
+  <Tab title="Docker" language="docker">
 
 ```bash
 docker run -v .:/app docdetective/docdetective --input /app/sample.cdoc --config /app/custom-config.json
@@ -281,7 +279,7 @@ docker run -v .:/app docdetective/docdetective --input /app/sample.cdoc --config
 The `-v` argument mounts your current directory (`.`) to `/app` in the container.
 :::
 
-  </TabItem>
+  </Tab>
 </Tabs>
 
 ## Best practices

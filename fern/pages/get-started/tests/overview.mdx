@@ -4,8 +4,6 @@ description: Tests tell Doc Detective what actions to perform, how, and where.
 ---
 
 import JsonYamlTabs from "@site/src/components/JsonYamlTabs";
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 # Tests overview
 
@@ -168,14 +166,14 @@ Doc Detective's `doc-detective` command runs your tests. Input files are read fr
 This example runs all test specs in your config's `input` and `runTest.input` parameters:
 
 <Tabs>
-  <TabItem value="npx" label="NPX" default>
+  <Tab title="NPX" language="npx">
 
 ```bash
 npx doc-detective
 ```
 
-  </TabItem>
-  <TabItem value="docker" label="Docker">
+  </Tab>
+  <Tab title="Docker" language="docker">
 
 ```bash
 docker run -v .:/app docdetective/docdetective
@@ -185,26 +183,26 @@ docker run -v .:/app docdetective/docdetective
 The `-v` argument mounts your current directory (`.`) to `/app` in the container, giving Doc Detective access to your test specifications.
 :::
 
-  </TabItem>
+  </Tab>
 </Tabs>
 
 This example runs all test specs in a file named `doc-content.md` in the `samples` directory:
 
 <Tabs>
-  <TabItem value="npx" label="NPX" default>
+  <Tab title="NPX" language="npx">
 
 ```bash
 npx doc-detective --input ./samples/doc-content.md
 ```
 
-  </TabItem>
-  <TabItem value="docker" label="Docker">
+  </Tab>
+  <Tab title="Docker" language="docker">
 
 ```bash
 docker run -v .:/app docdetective/docdetective --input /app/samples/doc-content.md
 ```
 
-  </TabItem>
+  </Tab>
 </Tabs>
 
 ### Remotely hosted tests
@@ -212,14 +210,14 @@ docker run -v .:/app docdetective/docdetective --input /app/samples/doc-content.
 You can run tests hosted remotely by specifying the URL of the test file with the `--input` argument. For example, to run tests from a file hosted at `https://doc-detective.com/sample.spec.json`, run the following command:
 
 <Tabs>
-  <TabItem value="npx" label="NPX" default>
+  <Tab title="NPX" language="npx">
 
 ```bash
 npx doc-detective --input https://doc-detective.com/sample.spec.json
 ```
 
-  </TabItem>
-  <TabItem value="docker" label="Docker">
+  </Tab>
+  <Tab title="Docker" language="docker">
 
 ```bash
 docker run docdetective/docdetective --input https://doc-detective.com/sample.spec.json
@@ -229,7 +227,7 @@ docker run docdetective/docdetective --input https://doc-detective.com/sample.sp
 The `-v` argument is not necessary for remotely hosted tests since Docker doesn't need access to local files.
 :::
 
-  </TabItem>
+  </Tab>
 </Tabs>
 
 These tests run the same way as local tests, but Doc Detective fetches the test file from the specified URL and stores it in a temporary directory. The URL must be accessible to the machine running the tests.
@@ -239,20 +237,20 @@ These tests run the same way as local tests, but Doc Detective fetches the test 
 You can run tests using multiple files in multiple directories. Add as many comma-separated input values as necessary.
 
 <Tabs>
-  <TabItem value="npx" label="NPX" default>
+  <Tab title="NPX" language="npx">
 
 ```bash
 npx doc-detective --input inline-tests.md,https://doc-detective.com/sample.spec.json,./samples/doc-content.md
 ```
 
-  </TabItem>
-  <TabItem value="docker" label="Docker">
+  </Tab>
+  <Tab title="Docker" language="docker">
 
 ```bash
 docker run -v .:/app docdetective/docdetective --input /app/inline-tests.md,https://doc-detective.com/sample.spec.json,/app/samples/doc-content.md
 ```
 
-  </TabItem>
+  </Tab>
 </Tabs>
 
 ## Read the results
@@ -260,18 +258,18 @@ docker run -v .:/app docdetective/docdetective --input /app/inline-tests.md,http
 Doc Detective outputs test results to a `testResults-<timestamp>.json` file in your `output` directory. You can also specify your output directory with the `--output` flag:
 
 <Tabs>
-  <TabItem value="npx" label="NPX" default>
+  <Tab title="NPX" language="npx">
 
 ```bash
 npx doc-detective --input ./samples/doc-content.md --output ./samples/
 ```
 
-  </TabItem>
-  <TabItem value="docker" label="Docker">
+  </Tab>
+  <Tab title="Docker" language="docker">
 
 ```bash
 docker run -v .:/app docdetective/docdetective --input /app/samples/doc-content.md --output /app/samples/
 ```
 
-  </TabItem>
+  </Tab>
 </Tabs>
