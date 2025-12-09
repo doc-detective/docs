@@ -3,8 +3,6 @@ title: Standalone tests
 description: Define tests in standalone JSON or YAML files for machine-readable test specifications.
 ---
 
-import JsonYamlTabs from "@site/src/components/JsonYamlTabs";
-
 # Standalone tests
 
 Standalone JSON or YAML files help you see the entirety of the spec and keep it in a separate, machine-readable format. They're useful for:
@@ -18,22 +16,41 @@ However, they make it harder to maintain strict parallelism with documentation, 
 
 Test specs in standalone JSON or YAML files use the following basic structure:
 
-<JsonYamlTabs object={{
-  specId: "spec-id",
-  description: "Spec Description",
-  tests: [
+<Tabs>
+<Tab language="json" title="JSON">
+```json
+{
+  "specId": "spec-id",
+  "description": "Spec Description",
+  "tests": [
     {
-      testId: "test-id",
-      description: "Test Description",
-      steps: [
+      "testId": "test-id",
+      "description": "Test Description",
+      "steps": [
         {
-          stepId: "step-id",
-          description: "Step description. This object also needs additional step properties like `find`, `goTo`, or `httpRequest`."
+          "stepId": "step-id",
+          "description": "Step description. This object also needs additional step properties like `find`, `goTo`, or `httpRequest`."
         }
       ]
     }
   ]
-}}></JsonYamlTabs>
+}
+```
+</Tab>
+<Tab language="yaml" title="YAML">
+```yaml
+specId: spec-id
+description: Spec Description
+tests:
+- testId: test-id
+  description: Test Description
+  steps:
+  - stepId: step-id
+    description: Step description. This object also needs additional step properties
+      like `find`, `goTo`, or `httpRequest`.
+```
+</Tab>
+</Tabs>
 
 > For comprehensive options, see [`specification`](/docs/references/schemas/specification).
 
@@ -41,29 +58,51 @@ Test specs in standalone JSON or YAML files use the following basic structure:
 
 Here's an example test for performing a Google search and saving a screenshot of the results:
 
-<JsonYamlTabs object={{
-  tests: [
+<Tabs>
+<Tab language="json" title="JSON">
+```json
+{
+  "tests": [
     {
-      steps: [
+      "steps": [
         {
-          goTo: "https://www.google.com"
+          "goTo": "https://www.google.com"
         },
         {
-          find: {
-            selector: "[title=Search]",
-            click: true
+          "find": {
+            "selector": "[title=Search]",
+            "click": true
           }
         },
         {
-          type: ["American Shorthair kittens", "$ENTER$"]
+          "type": ["American Shorthair kittens", "$ENTER$"]
         },
         {
-          wait: 5000
+          "wait": 5000
         },
         {
-          screenshot: "search-results.png"
+          "screenshot": "search-results.png"
         }
       ]
     }
   ]
-}}></JsonYamlTabs>
+}
+```
+</Tab>
+<Tab language="yaml" title="YAML">
+```yaml
+tests:
+- steps:
+  - goTo: https://www.google.com
+  - find:
+      selector: "[title=Search]"
+      click: true
+  - type:
+    - American Shorthair kittens
+    - "$ENTER$"
+  - wait: 5000
+  - screenshot: search-results.png
+
+```
+</Tab>
+</Tabs>
