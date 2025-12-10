@@ -69,6 +69,7 @@ tabs:
   docs:
     display-name: Documentation
     icon: fa-solid fa-file
+    skip-slug: true
   reference:
     display-name: Reference
     icon: fa-solid fa-line-columns
@@ -100,10 +101,10 @@ navigation:
             path: pages/index.mdx
   - tab: docs
     layout:
+      - page: Introduction 
+        path: pages/get-started/intro.mdx
       - section: Get started
         contents:
-          - page: Introduction
-            path: pages/get-started/intro.mdx
           - page: Installation
             path: pages/get-started/installation/index.mdx
           - page: Concepts
@@ -248,9 +249,7 @@ navigation:
             path: pages/legal/privacy-policy-companion.md
   - tab: reference
     layout:
-      - section: Reference
-        contents:
-          - page: Glossary
-            path: pages/reference/glossary.mdx
-          - folder: pages/reference/schemas
-            title: Schemas
+      - page: Glossary
+        path: pages/reference/glossary.mdx
+      - folder: pages/reference/schemas
+        title: Schemas
