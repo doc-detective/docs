@@ -34,7 +34,6 @@ colors:
 
 favicon: assets/logo/favicon.ico
 
-
 #########
 # Socials
 #########
@@ -99,10 +98,12 @@ navigation:
         contents:
           - page: Welcome
             path: pages/index.mdx
+
   - tab: docs
     layout:
-      - page: Introduction 
+      - page: Introduction
         path: pages/get-started/intro.mdx
+
       - section: Get started
         contents:
           - page: Installation
@@ -247,6 +248,7 @@ navigation:
         contents:
           - page: Privacy policy (Companion app)
             path: pages/legal/privacy-policy-companion.md
+
   - tab: reference
     layout:
       - page: Glossary
