@@ -5,7 +5,7 @@ Environment information for the system running Doc Detective.
 
 ## Referenced In
 
-- [config](/docs/references/schemas/config)
+- [config](/reference/schemas/config)
 
 ## Fields
 

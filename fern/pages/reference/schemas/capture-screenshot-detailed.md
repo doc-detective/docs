@@ -5,7 +5,7 @@
 
 ## Referenced In
 
-- [screenshot](/docs/references/schemas/screenshot)
+- [screenshot](/reference/schemas/screenshot)
 
 ## Fields
 
@@ -16,7 +16,7 @@ directory | string | Optional. Directory of the PNG file. If the directory doesn
 maxVariation | number | Optional. Allowed variation in percentage of pixels between the new screenshot and the existing screenshot at `path`. If the difference between the new screenshot and the existing screenshot is greater than `maxVariation`, the step fails. If a screenshot doesn't exist at `path`, this value is ignored.<br/><br/>Minimum: 0. Maximum: 1 | `0.05`
 overwrite | string | Optional. If `true`, overwrites the existing screenshot at `path` if it exists.
 If `aboveVariation`, overwrites the existing screenshot at `path` if the difference between the new screenshot and the existing screenshot is greater than `maxVariation`.<br/><br/>Accepted values: `true`, `false`, `aboveVariation` | `aboveVariation`
-crop | one of:<br/>- string<br/>- object([Crop by element (detailed)](/docs/references/schemas/crop-by-element-detailed)) | Optional. No description provided. | 
+crop | one of:<br/>- string<br/>- object([Crop by element (detailed)](/reference/schemas/crop-by-element-detailed)) | Optional. No description provided. | 
 
 ## Examples
 

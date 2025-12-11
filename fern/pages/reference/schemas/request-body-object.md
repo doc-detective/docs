@@ -5,7 +5,7 @@ JSON object to include as the body of the HTTP request.
 
 ## Referenced In
 
-- [Request](/docs/references/schemas/request)
+- [Request](/reference/schemas/request)
 
 ## Fields
 

@@ -5,7 +5,7 @@
 
 ## Referenced In
 
-- [saveCookie](/docs/references/schemas/savecookie)
+- [saveCookie](/reference/schemas/savecookie)
 
 ## Fields
 

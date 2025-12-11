@@ -5,7 +5,7 @@
 
 ## Referenced In
 
-- [runCode](/docs/references/schemas/runcode)
+- [runCode](/reference/schemas/runcode)
 
 ## Fields
 

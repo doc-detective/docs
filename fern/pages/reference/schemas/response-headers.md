@@ -5,7 +5,7 @@ Headers expected in the response, in key/value format. If one or more `responseH
 
 ## Referenced In
 
-- [Response](/docs/references/schemas/response)
+- [Response](/reference/schemas/response)
 
 ## Fields
 

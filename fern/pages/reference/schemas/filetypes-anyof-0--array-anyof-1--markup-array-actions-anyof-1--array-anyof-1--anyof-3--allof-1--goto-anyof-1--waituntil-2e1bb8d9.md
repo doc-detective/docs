@@ -5,7 +5,7 @@ Configuration for waiting conditions after navigation.
 
 ## Referenced In
 
-- [Go to URL (detailed)](/docs/references/schemas/go-to-url-detailed)
+- [Go to URL (detailed)](/reference/schemas/go-to-url-detailed)
 
 ## Fields
 

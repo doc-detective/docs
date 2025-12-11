@@ -5,7 +5,7 @@
 
 ## Referenced In
 
-- [find](/docs/references/schemas/find)
+- [find](/reference/schemas/find)
 
 ## Fields
 
@@ -15,7 +15,7 @@ elementText | string | Optional. Display text of the element to find. If combine
 selector | string | Optional. Selector of the element to find. If combined with `elementText`, the element must match both the text and the selector. | 
 timeout | integer | Optional. Max duration in milliseconds to wait for the element to exist. | `5000`
 moveTo | boolean | Optional. Move to the element. If the element isn't visible, it's scrolled into view. | `true`
-click | one of:<br/>- one of:<br/>- string<br/>- object([Click element (detailed)](/docs/references/schemas/click-element-detailed))<br/>- boolean<br/>- object([Find element and click](/docs/references/schemas/find-element-and-click)) | Optional. Click the element. | 
+click | one of:<br/>- one of:<br/>- string<br/>- object([Click element (detailed)](/reference/schemas/click-element-detailed))<br/>- boolean<br/>- object([Find element and click](/reference/schemas/find-element-and-click)) | Optional. Click the element. | 
 type | unknown | Optional. Type keys after finding the element. Either a string or an object with a `keys` field as defined in [`type`](type). To type in the element, make the element active with the `click` parameter. | 
 
 ## Examples

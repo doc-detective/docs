@@ -5,7 +5,7 @@ description: Automatically generate tests based on your documentation source fil
 
 # Detected tests
 
-Doc Detective can automatically generate tests based on your documentation source files and your `fileTypes` configuration. Detected tests are useful for large, complex test suites that you want to keep in sync with your documentation. Test detection works by setting `detectSteps` to `true` and defining markup patterns and associated actions in the `fileTypes.markup` array in your [config](/docs/references/schemas/config), which Doc Detective uses to extract steps from your doc source files. You can define multiple test patterns in your config to extract different types of tests from your documentation.
+Doc Detective can automatically generate tests based on your documentation source files and your `fileTypes` configuration. Detected tests are useful for large, complex test suites that you want to keep in sync with your documentation. Test detection works by setting `detectSteps` to `true` and defining markup patterns and associated actions in the `fileTypes.markup` array in your [config](/reference/schemas/config), which Doc Detective uses to extract steps from your doc source files. You can define multiple test patterns in your config to extract different types of tests from your documentation.
 
 Detected tests are useful for keeping your tests in sync with your documentation. When you update your documentation, Doc Detective automatically updates the tests based on the new content. Detected tests are generated automatically. You can't edit detected tests directly, but you can update your config or documentation source files to change the tests.
 

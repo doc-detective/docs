@@ -5,11 +5,11 @@ OpenAPI description and configuration.
 
 ## Referenced In
 
-- [HTTP request (detailed)](/docs/references/schemas/http-request-detailed)
-- [Integrations options](/docs/references/schemas/integrations-options)
-- [specification](/docs/references/schemas/specification)
-- [test](/docs/references/schemas/test)
-- [Resolved context](/docs/references/schemas/resolved-context)
+- [HTTP request (detailed)](/reference/schemas/http-request-detailed)
+- [Integrations options](/reference/schemas/integrations-options)
+- [specification](/reference/schemas/specification)
+- [test](/reference/schemas/test)
+- [Resolved context](/reference/schemas/resolved-context)
 
 ## Fields
 

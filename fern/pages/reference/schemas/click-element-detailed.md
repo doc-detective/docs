@@ -5,8 +5,8 @@
 
 ## Referenced In
 
-- [click](/docs/references/schemas/click)
-- [Find element (detailed)](/docs/references/schemas/find-element-detailed)
+- [click](/reference/schemas/click)
+- [Find element (detailed)](/reference/schemas/find-element-detailed)
 
 ## Fields
 

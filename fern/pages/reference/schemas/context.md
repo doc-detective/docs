@@ -5,9 +5,9 @@ A context in which to perform tests. If no contexts are specified but a context 
 
 ## Referenced In
 
-- [config](/docs/references/schemas/config)
-- [specification](/docs/references/schemas/specification)
-- [test](/docs/references/schemas/test)
+- [config](/reference/schemas/config)
+- [specification](/reference/schemas/specification)
+- [test](/reference/schemas/test)
 
 ## Fields
 
@@ -16,7 +16,7 @@ Field | Type | Description | Default
 $schema | string | Optional. JSON Schema for this object.<br/><br/>Accepted values: `https://raw.githubusercontent.com/doc-detective/common/refs/heads/main/dist/schemas/context_v3.schema.json` | 
 contextId | string | Optional. Unique identifier for the context. | 
 platforms | one of:<br/>- string<br/>- array of string | Optional. Platforms to run tests on. | 
-browsers | one of:<br/>- string<br/>- object([Browser](/docs/references/schemas/browser))<br/>- array of one of: string, object([Browser](/docs/references/schemas/browser)) | Optional. Browsers to run tests on. | 
+browsers | one of:<br/>- string<br/>- object([Browser](/reference/schemas/browser))<br/>- array of one of: string, object([Browser](/reference/schemas/browser)) | Optional. Browsers to run tests on. | 
 
 ## Examples
 

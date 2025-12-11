@@ -5,7 +5,7 @@
 
 ## Referenced In
 
-- [httpRequest](/docs/references/schemas/httprequest)
+- [httpRequest](/reference/schemas/httprequest)
 
 ## Fields
 
@@ -16,8 +16,8 @@ openApi | one of:<br/>- unknown<br/>- unknown | Optional. No description provide
 statusCodes | array of integer | Optional. Accepted status codes. If the specified URL returns a code other than what is specified here, the action fails. | ``[200,201]``
 method | string | Optional. Method of the HTTP request<br/><br/>Accepted values: `get`, `put`, `post`, `patch`, `delete` | `get`
 timeout | integer | Optional. Timeout for the HTTP request, in milliseconds. | `60000`
-request | object([Request](/docs/references/schemas/request)) | Optional. No description provided. | 
-response | object([Response](/docs/references/schemas/response)) | Optional. No description provided. | 
+request | object([Request](/reference/schemas/request)) | Optional. No description provided. | 
+response | object([Response](/reference/schemas/response)) | Optional. No description provided. | 
 allowAdditionalFields | boolean | Optional. If `false`, the step fails when the response data contains fields not specified in the response body. | `true`
 path | string | Optional. File path to save the command's output, relative to `directory`. Specify a file extension that matches the expected response type, such as `.json` for JSON content or `.txt` for strings. | 
 directory | string | Optional. Directory to save the command's output. If the directory doesn't exist, creates the directory. If not specified, the directory is your media directory. | 

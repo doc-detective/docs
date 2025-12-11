@@ -5,7 +5,7 @@ Options around sending telemetry for Doc Detective usage.
 
 ## Referenced In
 
-- [config](/docs/references/schemas/config)
+- [config](/reference/schemas/config)
 
 ## Fields
 

@@ -5,7 +5,7 @@ Navigate to an HTTP or HTTPS URL.
 
 ## Referenced In
 
-- [goTo](/docs/references/schemas/goto)
+- [goTo](/reference/schemas/goto)
 
 ## Fields
 

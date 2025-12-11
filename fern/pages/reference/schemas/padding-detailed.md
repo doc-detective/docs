@@ -5,7 +5,7 @@ Padding in pixels to add to the bounds of the element.
 
 ## Referenced In
 
-- [Crop by element (detailed)](/docs/references/schemas/crop-by-element-detailed)
+- [Crop by element (detailed)](/reference/schemas/crop-by-element-detailed)
 
 ## Fields
 

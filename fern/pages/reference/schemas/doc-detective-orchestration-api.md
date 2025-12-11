@@ -5,7 +5,7 @@ Configuration for Doc Detective Orchestration API integration.
 
 ## Referenced In
 
-- [Integrations options](/docs/references/schemas/integrations-options)
+- [Integrations options](/reference/schemas/integrations-options)
 
 ## Fields
 

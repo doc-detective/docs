@@ -5,7 +5,7 @@ Browser dimensions.
 
 ## Referenced In
 
-- [Browser](/docs/references/schemas/browser)
+- [Browser](/reference/schemas/browser)
 
 ## Fields
 

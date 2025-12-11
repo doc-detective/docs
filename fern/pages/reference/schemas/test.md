@@ -5,7 +5,7 @@ A Doc Detective test.
 
 ## Referenced In
 
-- [specification](/docs/references/schemas/specification)
+- [specification](/reference/schemas/specification)
 
 ## Fields
 
@@ -15,12 +15,12 @@ testId | string | Optional. Unique identifier for the test. |
 description | string | Optional. Description of the test. | 
 contentPath | string | Optional. Path to the content that the test is associated with. | 
 detectSteps | boolean | Optional. Whether or not to detect steps in input files based on markup regex. | `true`
-runOn | array of object([context](/docs/references/schemas/context)) | Optional. Contexts to run the test in. Overrides contexts defined at the config and spec levels. | 
+runOn | array of object([context](/reference/schemas/context)) | Optional. Contexts to run the test in. Overrides contexts defined at the config and spec levels. | 
 openApi | array of unknown | Optional. No description provided. | 
 before | string | Optional. Path to a test specification to perform before this test, while maintaining this test's context. Useful for setting up testing environments. Only the `steps` property is used from the first test in the setup spec. | 
 after | string | Optional. Path to a test specification to perform after this test, while maintaining this test's context. Useful for cleaning up testing environments. Only the `steps` property is used from the first test in the cleanup spec. | 
 steps | array of object(step) | Optional. Steps to perform as part of the test. Performed in the sequence defined. If one or more actions fail, the test fails. By default, if a step fails, the test stops and the remaining steps are not executed. | 
-contexts | array of object([Resolved context](/docs/references/schemas/resolved-context)) | ReadOnly. Resolved contexts to run the test in. This is a resolved version of the `runOn` property. It is not user-defined and should not be used in test specifications. | 
+contexts | array of object([Resolved context](/reference/schemas/resolved-context)) | ReadOnly. Resolved contexts to run the test in. This is a resolved version of the `runOn` property. It is not user-defined and should not be used in test specifications. | 
 
 ## Examples
 

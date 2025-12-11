@@ -12,9 +12,9 @@ specId | string | Optional. Unique identifier for the test specification. |
 description | string | Optional. Description of the test specification. | 
 specPath | string | Optional. Path to the test specification. | 
 contentPath | string | Optional. Path to the content that the specification is associated with. | 
-runOn | array of object([context](/docs/references/schemas/context)) | Optional. Contexts to run the test in. Overrides contexts defined at the config and spec levels. | 
+runOn | array of object([context](/reference/schemas/context)) | Optional. Contexts to run the test in. Overrides contexts defined at the config and spec levels. | 
 openApi | array of unknown | Optional. No description provided. | 
-tests | array of object([test](/docs/references/schemas/test)) | Required. [Tests](test) to perform. | 
+tests | array of object([test](/reference/schemas/test)) | Required. [Tests](test) to perform. | 
 
 ## Examples
 

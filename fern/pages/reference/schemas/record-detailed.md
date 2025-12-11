@@ -5,7 +5,7 @@
 
 ## Referenced In
 
-- [record](/docs/references/schemas/record)
+- [record](/reference/schemas/record)
 
 ## Fields
 

@@ -8,7 +8,7 @@ Learn the key concepts that form the foundation of Doc Detective.
 
 ## Test specification
 
-A [test specification](/docs/references/schemas/specification) is a group of tests to run in one or more contexts. Conceptually parallel to a document.
+A [test specification](/reference/schemas/specification) is a group of tests to run in one or more contexts. Conceptually parallel to a document.
 
 ## Test
 
@@ -41,7 +41,7 @@ An action performs a task in a step. Doc Detective supports a variety of actions
 
 ## Context
 
-A [context](/docs/references/schemas/context) consists of an application and platforms that support the tests.
+A [context](/reference/schemas/context) consists of an application and platforms that support the tests.
 
 ## Next steps
 

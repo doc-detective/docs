@@ -5,7 +5,7 @@ Check if an HTTP or HTTPS URL returns an acceptable status code from a GET reque
 
 ## Referenced In
 
-- [checkLink](/docs/references/schemas/checklink)
+- [checkLink](/reference/schemas/checklink)
 
 ## Fields
 

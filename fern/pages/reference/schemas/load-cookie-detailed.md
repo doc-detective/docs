@@ -5,7 +5,7 @@
 
 ## Referenced In
 
-- [loadCookie](/docs/references/schemas/loadcookie)
+- [loadCookie](/reference/schemas/loadcookie)
 
 ## Fields
 

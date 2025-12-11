@@ -16,15 +16,15 @@ You define contexts using an array of context objects. Each context object speci
 
 When Doc Detective runs tests, it evaluates the defined contexts against the current environment. If the current platform matches one specified in a context, and if a browser is specified and available, the test runs in that specific browser on that platform. You can specify multiple contexts, and Doc Detective will attempt to run the relevant tests in each matching context.
 
-For comprehensive options, see the [context](/docs/references/schemas/context) reference.
+For comprehensive options, see the [context](/reference/schemas/context) reference.
 
 ## Specifying contexts
 
 You can specify contexts at three different levels, in order of precedence:
 
-- **Config**: Contexts defined in the main [`config`](/docs/references/schemas/config) apply to all tests unless overridden.
-- **Spec**: Contexts defined in a [`specification`](/docs/references/schemas/specification) override config-level contexts and apply to all tests within that spec unless overridden.
-- **Test**: Contexts defined within a specific [`test`](/docs/references/schemas/test) override config- and spec-level contexts and apply only to that test.
+- **Config**: Contexts defined in the main [`config`](/reference/schemas/config) apply to all tests unless overridden.
+- **Spec**: Contexts defined in a [`specification`](/reference/schemas/specification) override config-level contexts and apply to all tests within that spec unless overridden.
+- **Test**: Contexts defined within a specific [`test`](/reference/schemas/test) override config- and spec-level contexts and apply only to that test.
 
 Contexts are defined using a `runOn` array containing context objects. For example:
 

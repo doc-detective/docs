@@ -5,7 +5,7 @@ Wait for a specific element to be present in the DOM. At least one of selector o
 
 ## Referenced In
 
-- [fileTypes-anyOf[0]-array-anyOf[1]-markup-array-actions-anyOf[1]-array-anyOf[1]-anyOf[3]-allOf[1]-goTo-anyOf[1]-waitUntil-2e1bb8d9](/docs/references/schemas/filetypes-anyof-0--array-anyof-1--markup-array-actions-anyof-1--array-anyof-1--anyof-3--allof-1--goto-anyof-1--waituntil-2e1bb8d9)
+- [fileTypes-anyOf[0]-array-anyOf[1]-markup-array-actions-anyOf[1]-array-anyOf[1]-anyOf[3]-allOf[1]-goTo-anyOf[1]-waitUntil-2e1bb8d9](/reference/schemas/filetypes-anyof-0--array-anyof-1--markup-array-actions-anyof-1--array-anyof-1--anyof-3--allof-1--goto-anyof-1--waituntil-2e1bb8d9)
 
 ## Fields
 

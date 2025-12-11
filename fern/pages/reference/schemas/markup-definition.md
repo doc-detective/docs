@@ -5,7 +5,7 @@
 
 ## Referenced In
 
-- [File type (custom)](/docs/references/schemas/file-type-custom)
+- [File type (custom)](/reference/schemas/file-type-custom)
 
 ## Fields
 

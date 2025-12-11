@@ -5,7 +5,7 @@ JSON key/value pairs expected in the response.
 
 ## Referenced In
 
-- [Response](/docs/references/schemas/response)
+- [Response](/reference/schemas/response)
 
 ## Fields
 
