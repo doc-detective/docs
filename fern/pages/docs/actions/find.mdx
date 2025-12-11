@@ -22,7 +22,7 @@ You can specify the target element directly using a string (for basic text or se
   - Example: `"find": "Login"` or `"find": "#username"`.
 - **Object Format:** Use an object with the following properties:
   - `elementText`: (Optional) The display text of the element to find. If combined with `selector`, the element must match both.
-  - `selector`: (Optional) The [CSS selector](/docs/get-started/selectors/css) or [XPath selector](/docs/get-started/selectors/xpath) of the element to find. If combined with `elementText`, the element must match both. *At least one of `elementText` or `selector` is required.*
+  - `selector`: (Optional) The [CSS selector](/docs/selectors/css) or [XPath selector](/docs/selectors/xpath) of the element to find. If combined with `elementText`, the element must match both. *At least one of `elementText` or `selector` is required.*
   - `timeout`: (Optional) Maximum duration in milliseconds to wait for the element to exist (default: 5000).
   - `moveTo`: (Optional) Move the cursor to the element. If the element isn't visible, it's scrolled into view (default: `true`).
   - `click`: (Optional) Click the element after finding it. Can be `true` (for a default left click), `"left"`, `"right"`, `"middle"`, or an object like `{ "button": "right" }`.
