@@ -199,31 +199,37 @@ navigation:
       - section: Contribute
         contents:
           - page: Contribute to the docs
-            path: pages/contribute/docs/index.mdx
+            path: pages/contribute/index.mdx
           - page: Quick start
-            path: pages/contribute/docs/quick-start.mdx
+            path: pages/contribute/quick-start.mdx
           - page: Standard contributions
-            path: pages/contribute/docs/standard-contributions.mdx
+            path: pages/contribute/standard-contributions.mdx
           - page: Substantial contributions
-            path: pages/contribute/docs/substantial-contributions.mdx
+            path: pages/contribute/substantial-contributions.mdx
           - page: Local development
-            path: pages/contribute/docs/local-development.mdx
+            path: pages/contribute/local-development.mdx
           - page: Review process
-            path: pages/contribute/docs/review-process.mdx
+            path: pages/contribute/review-process.mdx
           - page: Testing the docs
-            path: pages/contribute/docs/testing.mdx
+            path: pages/contribute/testing.mdx
+            slug: testing
           - section: Content templates
             contents:
               - page: How-to template
-                path: pages/contribute/docs/templates/how-to.mdx
+                path: pages/contribute/templates/how-to.mdx
+                slug: how-to
               - page: Tutorial template
-                path: pages/contribute/docs/templates/tutorial.mdx
+                path: pages/contribute/templates/tutorial.mdx
+                slug: tutorial
               - page: Reference template
-                path: pages/contribute/docs/templates/reference.mdx
+                path: pages/contribute/templates/reference.mdx
+                slug: reference
               - page: Feature template
-                path: pages/contribute/docs/templates/feature.mdx
+                path: pages/contribute/templates/feature.mdx
+                slug: feature
               - page: Troubleshooting template
-                path: pages/contribute/docs/templates/troubleshooting.mdx
+                path: pages/contribute/templates/troubleshooting.mdx
+                slug: troubleshooting
           - section: Repository guides
             contents:
               - page: doc-detective
