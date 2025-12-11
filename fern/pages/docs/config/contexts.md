@@ -62,7 +62,7 @@ Doc Detective can perform browser-based tests on several browser engines. The fo
 
 Available on Windows, macOS, and Linux.
 
-Chrome is the only browser that currently supports video recording via the [`record`](/docs/get-started/actions/record) action.
+Chrome is the only browser that currently supports video recording via the [`record`](/docs/actions/record) action.
 
 Here's a basic Chrome context for all platforms:
 
