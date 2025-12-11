@@ -146,6 +146,7 @@ navigation:
             path: pages/docs/input-formats/dita.mdx
           - page: AsciiDoc
             path: pages/docs/input-formats/asciidoc.mdx
+            slug: asciidoc
           - page: HTML
             path: pages/docs/input-formats/html.mdx
           - page: Custom
