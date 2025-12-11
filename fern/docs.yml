@@ -191,8 +191,10 @@ navigation:
         contents:
           - page: CSS selectors
             path: pages/docs/selectors/css.mdx
+            slug: css
           - page: XPath selectors
             path: pages/docs/selectors/xpath.mdx
+            slug: xpath
 
       - section: Contribute
         contents:
