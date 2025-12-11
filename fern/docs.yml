@@ -20,8 +20,8 @@ ai-search:
 
 logo:
   href: https://doc-detective.docs.buildwithfern.com
-  dark: assets/logo/logo.svg
-  light: assets/logo/logo.svg
+  dark: assets/logo/doc-detective.svg
+  light: assets/logo/doc-detective.svg
   height: 40
 
 colors:
@@ -38,12 +38,12 @@ favicon: assets/logo/favicon.ico
 # Socials
 #########
 
-#metadata:
-#  # Core platform identity
-#  og:site_name: "Square Developer Documentation"
-#  og:title: "Square Developer Platform | Payments, Commerce & Banking APIs"
-#  og:description: "Build with Square's suite of APIs and SDKs. Accept payments, manage inventory, create loyalty programs, and access financial services. Complete documentation for developers building the future of commerce."
-#  og:url: "https://developer.squareup.com/docs"
+metadata:
+  # Core platform identity
+  og:site_name: "Doc Detective | Documentation"
+  og:title: "Doc Detective | Documentation content testing framework"
+  og:description: "A documentation content testing framework that simplifies the process of keeping your docs accurate and up-to-date."
+  og:url: "https://doc-detective.com"
 #
 #  # Social sharing assets
 #
