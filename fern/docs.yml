@@ -75,6 +75,9 @@ tabs:
   reference:
     display-name: Reference
     icon: fa-solid fa-line-columns
+  support:
+    display-name: Support
+    icon: fa-solid fa-heart
 
 navbar-links:
   - type: minimal
@@ -267,3 +270,8 @@ navigation:
         path: pages/reference/glossary.mdx
       - folder: pages/reference/schemas
         title: Schemas
+
+  - tab: support
+    layout:
+      - page: Support
+        path: pages/support.mdx
