@@ -68,7 +68,10 @@ tabs:
   docs:
     display-name: Documentation
     icon: fa-solid fa-file
-    skip-slug: true
+    slug: docs
+  tutorials:
+    display-name: Tutorials
+    icon: fa-solid fa-graduation-cap
   reference:
     display-name: Reference
     icon: fa-solid fa-line-columns
@@ -102,104 +105,93 @@ navigation:
   - tab: docs
     layout:
       - page: Introduction
-        path: pages/get-started/intro.mdx
+        path: pages/docs/intro.mdx
 
       - section: Get started
         contents:
           - page: Installation
-            path: pages/get-started/installation/index.mdx
+            path: pages/docs/get-started/installation/index.mdx
           - page: Concepts
-            path: pages/get-started/concepts.md
+            path: pages/docs/get-started/concepts.md
           - page: Create your first test
-            path: pages/get-started/create-your-first-test.mdx
+            path: pages/docs/get-started/create-your-first-test.mdx
           - page: Sample tests
-            path: pages/get-started/sample-tests.mdx
+            path: pages/docs/get-started/sample-tests.mdx
           - page: Resources
-            path: pages/get-started/resources.md
+            path: pages/docs/get-started/resources.md
 
       - section: Configuration
         contents:
           - page: Contexts
-            path: pages/get-started/config/contexts/index.md
+            path: pages/docs/config/contexts.md
 
       - section: Tests
         contents:
           - page: Overview
-            path: pages/get-started/tests/overview.mdx
+            path: pages/docs/tests/overview.mdx
           - page: Standalone tests
-            path: pages/get-started/tests/standalone.mdx
+            path: pages/docs/tests/standalone.mdx
           - page: Inline tests
-            path: pages/get-started/tests/inline.mdx
+            path: pages/docs/tests/inline.mdx
           - page: Detected tests
-            path: pages/get-started/tests/detected.mdx
+            path: pages/docs/tests/detected.mdx
 
       - section: Input formats
         contents:
           - page: Overview
-            path: pages/get-started/inputs/overview.mdx
+            path: pages/docs/input-formats/overview.mdx
           - page: Markdown
-            path: pages/get-started/inputs/markdown.mdx
+            path: pages/docs/input-formats/markdown.mdx
           - page: DITA
-            path: pages/get-started/inputs/dita.mdx
+            path: pages/docs/input-formats/dita.mdx
           - page: AsciiDoc
-            path: pages/get-started/inputs/asciidoc.mdx
+            path: pages/docs/input-formats/asciidoc.mdx
           - page: HTML
-            path: pages/get-started/inputs/html.mdx
+            path: pages/docs/input-formats/html.mdx
           - page: Custom
-            path: pages/get-started/inputs/custom.mdx
+            path: pages/docs/input-formats/custom.mdx
 
       - section: Actions
         contents:
           - page: checkLink
-            path: pages/get-started/actions/checkLink.mdx
+            path: pages/docs/actions/checkLink.mdx
           - page: click
-            path: pages/get-started/actions/click.mdx
+            path: pages/docs/actions/click.mdx
           - page: dragAndDrop
-            path: pages/get-started/actions/dragAndDrop.mdx
+            path: pages/docs/actions/dragAndDrop.mdx
           - page: find
-            path: pages/get-started/actions/find.mdx
+            path: pages/docs/actions/find.mdx
           - page: goTo
-            path: pages/get-started/actions/goTo.mdx
+            path: pages/docs/actions/goTo.mdx
           - page: httpRequest
-            path: pages/get-started/actions/httpRequest.mdx
+            path: pages/docs/actions/httpRequest.mdx
           - page: loadCookie
-            path: pages/get-started/actions/loadCookie.mdx
+            path: pages/docs/actions/loadCookie.mdx
           - page: loadVariables
-            path: pages/get-started/actions/loadVariables.mdx
+            path: pages/docs/actions/loadVariables.mdx
           - page: record
-            path: pages/get-started/actions/record.mdx
+            path: pages/docs/actions/record.mdx
           - page: runCode
-            path: pages/get-started/actions/runCode.mdx
+            path: pages/docs/actions/runCode.mdx
           - page: runShell
-            path: pages/get-started/actions/runShell.mdx
+            path: pages/docs/actions/runShell.mdx
           - page: saveCookie
-            path: pages/get-started/actions/saveCookie.mdx
+            path: pages/docs/actions/saveCookie.mdx
           - page: screenshot
-            path: pages/get-started/actions/screenshot.mdx
+            path: pages/docs/actions/screenshot.mdx
           - page: stopRecord
-            path: pages/get-started/actions/stopRecord.mdx
+            path: pages/docs/actions/stopRecord.mdx
           - page: type
-            path: pages/get-started/actions/type.mdx
+            path: pages/docs/actions/type.mdx
           - page: wait
-            path: pages/get-started/actions/wait.mdx
+            path: pages/docs/actions/wait.mdx
 
       - section: Selectors
         contents:
           - page: CSS selectors
-            path: pages/get-started/selectors/css.mdx
+            path: pages/docs/selectors/css.mdx
           - page: XPath selectors
-            path: pages/get-started/selectors/xpath.mdx
-
-      - section: Tutorials
-        contents:
-          - page: Set up your test environment
-            path: pages/get-started/tutorials/set-up-your-test-environment.mdx
-          - page: Fill fields
-            path: pages/get-started/tutorials/fill-fields.mdx
-          - page: Capture screenshot
-            path: pages/get-started/tutorials/capture-screenshot.mdx
-          - page: Record video
-            path: pages/get-started/tutorials/record-video.mdx
+            path: pages/docs/selectors/xpath.mdx
 
       - section: Contribute
         contents:
@@ -248,6 +240,17 @@ navigation:
         contents:
           - page: Privacy policy (Companion app)
             path: pages/legal/privacy-policy-companion.md
+
+  - tab: tutorials
+    layout:
+      - page: Set up your test environment
+        path: pages/tutorials/set-up-your-test-environment.mdx
+      - page: Fill fields
+        path: pages/tutorials/fill-fields.mdx
+      - page: Capture screenshot
+        path: pages/tutorials/capture-screenshot.mdx
+      - page: Record video
+        path: pages/tutorials/record-video.mdx
 
   - tab: reference
     layout:
