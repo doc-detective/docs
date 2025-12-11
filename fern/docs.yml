@@ -118,7 +118,7 @@ navigation:
           - page: Sample tests
             path: pages/docs/get-started/sample-tests.mdx
           - page: Resources
-            path: pages/docs/get-started/resources.md
+            path: pages/docs/get-started/resources.mdx
 
       - section: Configuration
         contents:
