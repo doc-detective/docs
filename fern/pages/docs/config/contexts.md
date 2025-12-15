@@ -6,8 +6,6 @@ parent: Configuration
 description: Define the contexts (platform and browser combinations) where tests should run.
 ---
 
-# Contexts
-
 Doc Detective uses contexts to determine *where* tests should run. A context defines a combination of a target platform (operating system) and, optionally, a target browser with specific configurations.
 
 By default, if contexts are needed but not specified, Doc Detective attempts to find a supported browser (like Chrome or Firefox) on the current platform (Windows, macOS, or Linux) and run tests there.

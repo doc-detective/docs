@@ -1,8 +1,6 @@
 ---
-sidebar-title: Concepts
+title: Concepts
 ---
-
-# Concepts
 
 Learn the key concepts that form the foundation of Doc Detective.
 

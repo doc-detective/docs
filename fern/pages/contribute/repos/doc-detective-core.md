@@ -1,8 +1,6 @@
 ---
-
+title: doc-detective-core
 ---
-
-# `doc-detective-core`
 
 [`doc-detective-core`](https://github.com/doc-detective/doc-detective-core) is an NPM package that contains config and test logic and actually runs tests. It's installable via NPM (`npm i doc-detective-core`). This package contains the logic for performing each test action.
 

@@ -10,8 +10,6 @@ description: Locate and interact with an element on the page.
 import { schemas } from "doc-detective-common";
 import JSONSchemaViewer from "@theme/JSONSchemaViewer";
 
-# find
-
 The `find` action locates an element in the current interface based on its display text or a CSS/XPath selector. After finding the element, you can optionally interact with it, such as clicking it or typing into it.
 
 If multiple elements match the specified criteria (`elementText` and/or `selector`), the step operates on the first matched element. Ensure your criteria uniquely identify the target element.

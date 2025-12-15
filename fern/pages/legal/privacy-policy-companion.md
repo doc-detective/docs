@@ -5,9 +5,6 @@ nav_order: 1
 parent: Legal
 ---
 
-
-# Doc Detective Companion Privacy Policy
-
 Effective Date: December 10, 2023
 
 Thanks for using the Doc Detective Companion browser extension ("Extension"). Your privacy is important, and we're doing what we can to safeguard your personal information. This Privacy Policy outlines the collection, use, and handling of data when you use the Extension.

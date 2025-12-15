@@ -1,8 +1,6 @@
 ---
-
+title: doc-detective.github.io
 ---
-
-# `doc-detective.github.io`
 
 [`doc-detective.github.io`](https://github.com/doc-detective/doc-detective.github.io) are the docs you're reading right now. They're built with Docusaurus and hosted on GitHub Pages.
 

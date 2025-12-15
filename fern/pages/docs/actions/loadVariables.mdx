@@ -10,8 +10,6 @@ description: Load environment variables from a .env file.
 import { schemas } from "doc-detective-common";
 import JSONSchemaViewer from "@theme/JSONSchemaViewer";
 
-# loadVariables
-
 The `loadVariables` action loads environment variables from a specified `.env` file. This action is useful for accessing sensitive information, such as API keys or other credentials, without hardcoding them into your tests. Variables loaded this way are available for use in subsequent steps within the same test.
 
 > You can also load globally applicable variables using the `loadVariables` property in the configuration file. This makes them available across all tests.

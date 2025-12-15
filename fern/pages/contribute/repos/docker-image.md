@@ -1,8 +1,6 @@
 ---
-
+title: docker-image (alpha)
 ---
-
-# `docker-image` (alpha)
 
 > This repo is in alpha. It's not ready for production use.
 
