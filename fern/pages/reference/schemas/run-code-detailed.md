@@ -1,7 +1,6 @@
-
-# Run code (detailed)
-
-
+---
+title: "Run code (detailed)"
+---
 
 ## Referenced In
 

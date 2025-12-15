@@ -1,5 +1,6 @@
-
-# test
+---
+title: "test"
+---
 
 A Doc Detective test.
 

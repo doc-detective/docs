@@ -1,7 +1,6 @@
-
-# Save cookie (detailed)
-
-
+---
+title: "Save cookie (detailed)"
+---
 
 ## Referenced In
 

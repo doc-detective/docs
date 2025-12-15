@@ -1,7 +1,6 @@
-
-# Resolved context
-
-
+---
+title: "Resolved context"
+---
 
 ## Referenced In
 

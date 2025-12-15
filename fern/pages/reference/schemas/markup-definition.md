@@ -1,7 +1,6 @@
-
-# Markup definition
-
-
+---
+title: "Markup definition"
+---
 
 ## Referenced In
 

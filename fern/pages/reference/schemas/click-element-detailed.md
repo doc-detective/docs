@@ -1,7 +1,6 @@
-
-# Click element (detailed)
-
-
+---
+title: "Click element (detailed)"
+---
 
 ## Referenced In
 

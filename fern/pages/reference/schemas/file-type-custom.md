@@ -1,7 +1,6 @@
-
-# File type (custom)
-
-
+---
+title: "File type (custom)"
+---
 
 ## Referenced In
 

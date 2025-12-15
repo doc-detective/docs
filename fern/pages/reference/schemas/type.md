@@ -1,7 +1,6 @@
-
-# type
-
-
+---
+title: "type"
+---
 
 ## Referenced In
 

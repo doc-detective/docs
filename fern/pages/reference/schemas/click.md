@@ -1,7 +1,6 @@
-
-# click
-
-
+---
+title: "click"
+---
 
 ## Referenced In
 

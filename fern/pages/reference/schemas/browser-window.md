@@ -1,5 +1,6 @@
-
-# Browser Window
+---
+title: "Browser Window"
+---
 
 Browser dimensions.
 

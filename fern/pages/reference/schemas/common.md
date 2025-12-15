@@ -1,7 +1,6 @@
-
-# Common
-
-
+---
+title: "Common"
+---
 
 ## Referenced In
 

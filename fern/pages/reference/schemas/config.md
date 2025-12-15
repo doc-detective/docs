@@ -1,5 +1,6 @@
-
-# config
+---
+title: "config"
+---
 
 Configuration options for Doc Detective operations.
 

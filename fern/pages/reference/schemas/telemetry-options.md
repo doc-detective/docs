@@ -1,5 +1,6 @@
-
-# Telemetry options
+---
+title: "Telemetry options"
+---
 
 Options around sending telemetry for Doc Detective usage.
 

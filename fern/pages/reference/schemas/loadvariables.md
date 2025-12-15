@@ -1,7 +1,6 @@
-
-# loadVariables
-
-
+---
+title: "loadVariables"
+---
 
 ## Referenced In
 

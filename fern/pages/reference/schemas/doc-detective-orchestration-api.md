@@ -1,5 +1,6 @@
-
-# Doc Detective Orchestration API
+---
+title: "Doc Detective Orchestration API"
+---
 
 Configuration for Doc Detective Orchestration API integration.
 

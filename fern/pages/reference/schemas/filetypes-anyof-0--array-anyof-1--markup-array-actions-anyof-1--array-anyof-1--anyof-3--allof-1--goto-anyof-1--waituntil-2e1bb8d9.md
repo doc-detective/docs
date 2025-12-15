@@ -1,5 +1,6 @@
-
-# fileTypes-anyOf[0]-array-anyOf[1]-markup-array-actions-anyOf[1]-array-anyOf[1]-anyOf[3]-allOf[1]-goTo-anyOf[1]-waitUntil-2e1bb8d9
+---
+title: "fileTypes-anyOf[0]-array-anyOf[1]-markup-array-actions-anyOf[1]-array-anyOf[1]-anyOf[3]-allOf[1]-goTo-anyOf[1]-waitUntil-2e1bb8d9"
+---
 
 Configuration for waiting conditions after navigation.
 

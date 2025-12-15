@@ -1,5 +1,6 @@
-
-# Check link (detailed)
+---
+title: "Check link (detailed)"
+---
 
 Check if an HTTP or HTTPS URL returns an acceptable status code from a GET request.
 

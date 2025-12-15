@@ -1,7 +1,6 @@
-
-# File type (executable)
-
-
+---
+title: "File type (executable)"
+---
 
 ## Referenced In
 

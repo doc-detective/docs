@@ -1,5 +1,6 @@
-
-# Integrations options
+---
+title: "Integrations options"
+---
 
 Options for connecting to external services.
 

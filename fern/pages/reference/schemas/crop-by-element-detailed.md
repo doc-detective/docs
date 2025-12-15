@@ -1,5 +1,6 @@
-
-# Crop by element (detailed)
+---
+title: "Crop by element (detailed)"
+---
 
 Crop the screenshot to a specific element.
 

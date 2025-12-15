@@ -1,7 +1,6 @@
-
-# Capture screenshot (detailed)
-
-
+---
+title: "Capture screenshot (detailed)"
+---
 
 ## Referenced In
 

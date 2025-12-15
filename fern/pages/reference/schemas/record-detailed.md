@@ -1,7 +1,6 @@
-
-# Record (detailed)
-
-
+---
+title: "Record (detailed)"
+---
 
 ## Referenced In
 

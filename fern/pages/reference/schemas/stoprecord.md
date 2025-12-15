@@ -1,7 +1,6 @@
-
-# stopRecord
-
-
+---
+title: "stopRecord"
+---
 
 ## Referenced In
 

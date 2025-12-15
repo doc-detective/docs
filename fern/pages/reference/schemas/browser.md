@@ -1,5 +1,6 @@
-
-# Browser
+---
+title: "Browser"
+---
 
 Browser configuration.
 

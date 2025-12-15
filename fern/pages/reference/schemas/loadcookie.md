@@ -1,7 +1,6 @@
-
-# loadCookie
-
-
+---
+title: "loadCookie"
+---
 
 ## Referenced In
 

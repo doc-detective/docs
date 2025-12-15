@@ -1,7 +1,6 @@
-
-# Load cookie (detailed)
-
-
+---
+title: "Load cookie (detailed)"
+---
 
 ## Referenced In
 

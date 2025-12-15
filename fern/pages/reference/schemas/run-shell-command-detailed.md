@@ -1,7 +1,6 @@
-
-# Run shell command (detailed)
-
-
+---
+title: "Run shell command (detailed)"
+---
 
 ## Referenced In
 

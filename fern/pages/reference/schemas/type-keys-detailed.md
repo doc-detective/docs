@@ -1,7 +1,6 @@
-
-# Type keys (detailed)
-
-
+---
+title: "Type keys (detailed)"
+---
 
 ## Referenced In
 

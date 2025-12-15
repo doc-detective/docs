@@ -1,5 +1,6 @@
-
-# Padding (detailed)
+---
+title: "Padding (detailed)"
+---
 
 Padding in pixels to add to the bounds of the element.
 

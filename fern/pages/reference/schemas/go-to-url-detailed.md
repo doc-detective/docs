@@ -1,5 +1,6 @@
-
-# Go to URL (detailed)
+---
+title: "Go to URL (detailed)"
+---
 
 Navigate to an HTTP or HTTPS URL.
 

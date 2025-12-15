@@ -1,5 +1,6 @@
-
-# Environment details
+---
+title: "Environment details"
+---
 
 Environment information for the system running Doc Detective.
 

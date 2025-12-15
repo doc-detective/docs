@@ -1,5 +1,6 @@
-
-# openApi
+---
+title: "openApi"
+---
 
 OpenAPI description and configuration.
 

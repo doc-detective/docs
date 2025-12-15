@@ -1,7 +1,6 @@
-
-# find
-
-
+---
+title: "find"
+---
 
 ## Referenced In
 

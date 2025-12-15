@@ -1,5 +1,6 @@
-
-# Inline statement definition
+---
+title: "Inline statement definition"
+---
 
 Statements to include tests and steps inside the content of the file, such as within Markdown.
 

@@ -1,5 +1,6 @@
-
-# Response body object
+---
+title: "Response body object"
+---
 
 JSON key/value pairs expected in the response.
 

@@ -1,7 +1,6 @@
-
-# goTo
-
-
+---
+title: "goTo"
+---
 
 ## Referenced In
 

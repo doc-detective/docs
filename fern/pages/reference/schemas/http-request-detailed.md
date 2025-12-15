@@ -1,7 +1,6 @@
-
-# HTTP request (detailed)
-
-
+---
+title: "HTTP request (detailed)"
+---
 
 ## Referenced In
 

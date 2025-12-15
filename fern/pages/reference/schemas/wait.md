@@ -1,7 +1,6 @@
-
-# wait
-
-
+---
+title: "wait"
+---
 
 ## Referenced In
 

@@ -1,5 +1,6 @@
-
-# Request headers (object)
+---
+title: "Request headers (object)"
+---
 
 Headers to include in the HTTP request, in key/value format.
 
