@@ -1,7 +1,6 @@
 ---
 title: Doc Detective Companion Privacy Policy
 layout: default
-nav_order: 1
 parent: Legal
 ---
 
