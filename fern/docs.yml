@@ -155,40 +155,8 @@ navigation:
           - page: Custom
             path: pages/docs/input-formats/custom.mdx
 
-      - section: Actions
-        contents:
-          - page: checkLink
-            path: pages/docs/actions/checkLink.mdx
-          - page: click
-            path: pages/docs/actions/click.mdx
-          - page: dragAndDrop
-            path: pages/docs/actions/dragAndDrop.mdx
-          - page: find
-            path: pages/docs/actions/find.mdx
-          - page: goTo
-            path: pages/docs/actions/goTo.mdx
-          - page: httpRequest
-            path: pages/docs/actions/httpRequest.mdx
-          - page: loadCookie
-            path: pages/docs/actions/loadCookie.mdx
-          - page: loadVariables
-            path: pages/docs/actions/loadVariables.mdx
-          - page: record
-            path: pages/docs/actions/record.mdx
-          - page: runCode
-            path: pages/docs/actions/runCode.mdx
-          - page: runShell
-            path: pages/docs/actions/runShell.mdx
-          - page: saveCookie
-            path: pages/docs/actions/saveCookie.mdx
-          - page: screenshot
-            path: pages/docs/actions/screenshot.mdx
-          - page: stopRecord
-            path: pages/docs/actions/stopRecord.mdx
-          - page: type
-            path: pages/docs/actions/type.mdx
-          - page: wait
-            path: pages/docs/actions/wait.mdx
+      - folder: pages/docs/actions
+        title: Actions
 
       - section: Selectors
         contents:
@@ -233,20 +201,8 @@ navigation:
               - page: Troubleshooting template
                 path: pages/contribute/templates/troubleshooting.mdx
                 slug: troubleshooting
-          - section: Repository guides
-            contents:
-              - page: doc-detective
-                path: pages/contribute/repos/doc-detective.md
-              - page: doc-detective-core
-                path: pages/contribute/repos/doc-detective-core.md
-              - page: doc-detective-common
-                path: pages/contribute/repos/doc-detective-common.md
-              - page: doc-detective.github.io.md
-                path: pages/contribute/repos/doc-detective.github.io.md
-              - page: GitHub Action
-                path: pages/contribute/repos/github-action.md
-              - page: Docker image
-                path: pages/contribute/repos/docker-image.md
+          - folder: pages/contribute/repos
+            title: Repository guides
 
       - section: Legal
         contents:
