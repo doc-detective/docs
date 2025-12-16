@@ -39,9 +39,9 @@ Elements with unique `id` attributes are ideal selector targets. Use the `#` pre
 }
 ```
 
-:::info[Example]
+<Info title="Example">
 An element like `<input id="username">` can be targeted with `#username`.
-:::
+</Info>
 
 ### Target by class
 
@@ -55,9 +55,9 @@ You can target elements by their CSS class using the `.` prefix. However, classe
 }
 ```
 
-:::note
+<Note>
 If multiple elements share the same class, Doc Detective uses the first matching element. For unique targeting, combine classes with other selectors.
-:::
+</Note>
 
 ### Target by attribute
 
@@ -71,13 +71,13 @@ Custom attributes provide reliable, unique selectors. Use square brackets with t
 }
 ```
 
-:::tip[Common attributes to target]
+<Tip title="Common attributes to target">
 - `type` (for input fields)
 - `name`
 - `data-testid` or `data-test` (common in test frameworks)
 - `aria-label` (for accessibility-labeled elements)
 - `placeholder`
-:::
+</Tip>
 
 ## Combining selectors
 
@@ -217,13 +217,13 @@ This selects the second `li` element within its parent.
 
 The best selectors target elements with unique identifiers:
 
-:::tip[Good practice]
+<Tip title="Good practice">
 `#submit-button` or `[data-testid='submit-btn']`
-:::
+</Tip>
 
-:::warning[Avoid]
+<Warning title="Avoid">
 `.button` (likely not unique)
-:::
+</Warning>
 
 ### Key into test-specific attributes
 
@@ -241,13 +241,13 @@ Work with your engineering team to add `data-testid` or similar attributes to im
 
 Selectors that are too specific can break when the page structure changes:
 
-:::warning[Fragile]
+<Warning title="Fragile">
 `div > div > div > span.text`
-:::
+</Warning>
 
-:::tip[Better]
+<Tip title="Better">
 `[aria-label='User menu']` or `#user-menu`
-:::
+</Tip>
 
 ### Combine selectors for uniqueness
 

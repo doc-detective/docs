@@ -14,9 +14,9 @@ Use XPath selectors in Doc Detective actions like [`find`](/docs/actions/find), 
 - CSS selectors aren't powerful enough for your use case
 - You need to select elements by their position relative to other elements
 
-:::note
+<Note>
 For most use cases, [CSS selectors](/docs/selectors/css) are simpler and more readable. Use XPath only when CSS selectors can't accomplish what you need.
-:::
+</Note>
 
 ## XPath syntax basics
 
@@ -29,18 +29,18 @@ XPath selectors in Doc Detective must start with `//` or `/` to be recognized as
   /html/body/div/form/input
   ```
 
-  :::warning[Avoid absolute paths]
+  <Warning title="Avoid absolute paths">
   They're fragile and break when the page structure changes.
-  :::
+  </Warning>
 
 - **Relative path:** Starts with `//` and finds elements anywhere in the document
   ```
   //input[@type='password']
   ```
 
-  :::tip[Prefer relative paths]
+  <Tip title="Prefer relative paths">
   They're more flexible and maintainable.
-  :::
+  </Tip>
 
 ## Basic XPath patterns
 
@@ -80,9 +80,9 @@ Target elements by their `id` attribute using the `@id` selector:
 }
 ```
 
-:::note
+<Note>
 The `*` matches any element type. You can also be more specific: `//input[@id='username']`.
-:::
+</Note>
 
 ### Select by class
 
@@ -96,9 +96,9 @@ Use the `contains()` function to match elements by their class attribute:
 }
 ```
 
-:::note
+<Note>
 Use `contains()` because an element can have multiple classes. This matches any element whose `class` attribute contains "submit-button".
-:::
+</Note>
 
 ### Select by text content
 
@@ -258,9 +258,9 @@ Select a specific occurrence using square brackets with a number (XPath indexes 
 
 This selects the second `button` element in the document.
 
-:::note
+<Note>
 Use parentheses to select from all matching elements. Without them, `//button[2]` means "a button that is the second button child of its parent."
-:::
+</Note>
 
 ### First element
 
@@ -360,23 +360,23 @@ This finds enabled buttons (those without a `disabled` attribute).
 
 XPath is powerful but complex. Use CSS selectors for more straightforward cases:
 
-:::tip[CSS]
+<Tip title="CSS">
 `#username` or `[data-testid='login-button']`
-:::
+</Tip>
 
-:::note[XPath]
+<Note title="XPath">
 `//*[@id='username']` or `//*[@data-testid='login-button']`
-:::
+</Note>
 
 ### Use relative paths
 
-:::tip[Good]
+<Tip title="Good">
 `//input[@type='password']`
-:::
+</Tip>
 
-:::warning[Avoid]
+<Warning title="Avoid">
 `/html/body/div[1]/form/div[2]/input[3]`
-:::
+</Warning>
 
 ### Combine text and attributes for specificity
 
@@ -402,13 +402,13 @@ This returns an array of matching elements.
 
 ### Avoid brittle position-based selectors
 
-:::warning[Fragile]
+<Warning title="Fragile">
 `//div[3]/span[2]/a[1]`
-:::
+</Warning>
 
-:::tip[Better]
+<Tip title="Better">
 `//a[contains(@class, 'download-link')]`
-:::
+</Tip>
 
 ## Common patterns
 
@@ -577,22 +577,22 @@ $x("//button[contains(text(), 'Submit')]")[0].click()
 
 ### Common issues
 
-:::warning[No elements found]
+<Warning title="No elements found">
 - Verify the element exists in the DOM
 - Check for typos in attribute names or values
 - Ensure the element is loaded (you may need to add a `wait` action)
-:::
+</Warning>
 
-:::warning[Multiple elements found]
+<Warning title="Multiple elements found">
 - Add more specific conditions
 - Combine multiple attributes
 - Use text content to narrow the match
-:::
+</Warning>
 
-:::info[XPath treated as CSS]
+<Info title="XPath treated as CSS">
 - Ensure your XPath starts with `//` or `/`
 - Doc Detective determines selector type automatically
-:::
+</Info>
 
 ## Related resources
 

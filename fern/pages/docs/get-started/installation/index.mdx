@@ -21,11 +21,11 @@ Choose *NPX* if you have Node.js installed and want to install Doc Detective on 
     </CodeBlock>
     {/* step runShell: "npm i -g doc-detective" */}
 
-    :::note
+    <Note>
 
     If you're working in a local copy of the `doc-detective` repository, you need to run `npm i` to install local dependencies.
 
-    :::
+    </Note>
 
 3.  Save this file to your current directory as _sample.spec.json_:
 
@@ -62,11 +62,11 @@ Choose *NPX* if you have Node.js installed and want to install Doc Detective on 
     workingDirectory: "."
     timeout: 180000 */}
 
-    :::note
+    <Note>
 
     The `-v` argument mounts your current directory (`.`) to `/app` in the container, giving Doc Detective access to your test specification and enabling it to output results and screenshots. If your test specification is hosted at an HTTPS URL, the `-v` argument is not necessary.
 
-    :::
+    </Note>
 
   </Tab>
 </Tabs>

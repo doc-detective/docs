@@ -175,9 +175,9 @@ npx doc-detective
 docker run -v .:/app docdetective/docdetective
 ```
 
-:::note
+<Note>
 The `-v` argument mounts your current directory (`.`) to `/app` in the container, giving Doc Detective access to your test specifications.
-:::
+</Note>
 
   </Tab>
 </Tabs>
@@ -219,9 +219,9 @@ npx doc-detective --input https://doc-detective.com/sample.spec.json
 docker run docdetective/docdetective --input https://doc-detective.com/sample.spec.json
 ```
 
-:::note
+<Note>
 The `-v` argument is not necessary for remotely hosted tests since Docker doesn't need access to local files.
-:::
+</Note>
 
   </Tab>
 </Tabs>
