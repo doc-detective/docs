@@ -4,7 +4,9 @@
   "description": "Documentation for Doc Detective, built on Fern",
   "private": true,
   "scripts": {
-    "setup": "npm i -g fern-api mdx2vast"
+    "setup": "npm i -g mdx2vast fern-api doc-detective@latest",
+    "dev": "fern docs dev",
+    "test": "npx doc-detective@latest runTests"
   },
   "engines": {
     "node": "^22.12.0 || ^24.11.1",
