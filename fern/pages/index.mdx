@@ -1,11 +1,59 @@
 ---
+layout: overview
 title: Doc Detective
-subtitle: Keep your docs in sync with your product. Always.
-headline: "Doc Detective | Documentation"
+subtitle: Keep your docs accurate and up-to-date
+description: Doc Detective is a documentation testing framework that ensures your docs are always right.
 slug: /
 hide-nav-links: false
 hide-feedback: true
 hide-page-actions: true
 ---
 
-Home page content.
+<img src="assets/images/landing/hero.png" alt="Doc Detective Hero Image" />
+
+# Keep your docs accurate and up-to-date
+
+Doc Detective is a documentation testing framework that ensures your docs are always right.
+
+[Get Started](/docs/get-started/installation) • [View on GitHub](https://github.com/doc-detective/doc-detective)
+
+## Features
+
+<CardGroup cols={3}>
+  <Card title="Test Everything" icon="fa-solid fa-check">
+    Test CLI commands, API calls, and UI actions directly from your documentation.
+  </Card>
+  <Card title="Docs as Code" icon="fa-solid fa-code">
+    Write tests in Markdown or JSON alongside your docs to keep them in sync.
+  </Card>
+  <Card title="CI/CD Ready" icon="fa-solid fa-rocket">
+    Run tests automatically in your CI/CD pipeline to prevent regressions.
+  </Card>
+</CardGroup>
+
+## Simple, Readable Tests
+
+Write tests that look like documentation.
+
+```json
+{
+  "tests": [
+    {
+      "steps": [
+        {
+          "action": "runShell",
+          "command": "echo 'Hello, World!'"
+        },
+        {
+          "action": "checkLink",
+          "url": "https://google.com"
+        }
+      ]
+    }
+  ]
+}
+```
+
+## Trusted by open source projects
+
+Doc Detective is used by teams who care about documentation quality.
