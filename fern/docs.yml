@@ -89,7 +89,7 @@ navbar-links:
     value: https://github.com/doc-detective/doc-detective
 
 footer-links:
-  github: https://github.com/your-org/your-repo
+  github: https://github.com/doc-detective
   linkedin: https://www.linkedin.com/company/doc-detective
   discord: https://discord.gg/2M7wXEThfF
 

@@ -6,7 +6,7 @@
   "scripts": {
     "setup": "npm i -g mdx2vast fern-api doc-detective@latest",
     "dev": "fern docs dev",
-    "test": "npx doc-detective@latest runTests"
+    "test": "npx doc-detective"
   },
   "engines": {
     "node": "^22.12.0 || ^24.11.1",
