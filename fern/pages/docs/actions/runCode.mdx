@@ -7,8 +7,6 @@ grand_parent: Tests
 description: Assemble and run code snippets in various languages.
 ---
 
-import { schemas } from "doc-detective-common";
-import JSONSchemaViewer from "@theme/JSONSchemaViewer";
 
 The `runCode` action executes a code snippet in a specified language (like JavaScript, Python, Bash, etc.) on the local machine and evaluates the results. This allows embedding executable code directly within your tests.
 
@@ -146,6 +144,4 @@ The first step runs Python code to print "setup", validates the output using a r
 }
 ```
 
-## Schema reference
 
-<JSONSchemaViewer schema={ schemas.runCode_v3 } />

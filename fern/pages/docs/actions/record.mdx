@@ -7,8 +7,6 @@ grand_parent: Tests
 description: Start capturing a video of test execution.
 ---
 
-import { schemas } from "doc-detective-common";
-import JSONSchemaViewer from "@theme/JSONSchemaViewer";
 
 The `record` action starts recording the browser viewport as a video file (MP4, WebM, or GIF). This is useful for debugging failed tests or creating multimedia documentation. Recording continues until a `stopRecord` step is encountered.
 
@@ -116,6 +114,4 @@ Records to `test_video.gif` in the `output/gifs` directory, overwriting if it ex
 }
 ```
 
-## Schema reference
 
-<JSONSchemaViewer schema={ schemas.record_v3 } />
