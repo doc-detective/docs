@@ -3,6 +3,8 @@ sidebar-title: Introduction
 title: Introduction to Doc Detective
 ---
 
+{/* test { "detectSteps": false } */}
+
 Validate your content with Doc Detective:
 
 <Tabs>
@@ -12,6 +14,8 @@ Validate your content with Doc Detective:
 npx doc-detective
 ```
 
+{/* step {"stepId":"run-npx","description":"Run npx doc-detective --version command","runShell":{"command":"npx doc-detective --version"}} */}
+
   </Tab>
   <Tab title="Docker" language="docker">
 
@@ -19,14 +23,19 @@ npx doc-detective
 docker run -v .:/app docdetective/docdetective
 ```
 
+{/* step {"stepId":"run-docker","description":"Run docker command with version flag","runShell":{"command":"docker run docdetective/docdetective --version"}} */}
+
 <Note>
-The `-v` argument mounts your current directory (`.`) to `/app` in the container, giving Doc Detective access to your test specifications.
+  The `-v` argument mounts your current directory (`.`) to `/app` in the
+  container, giving Doc Detective access to your test specifications.
 </Note>
 
   </Tab>
 </Tabs>
 
-See the [Installation](/docs/get-started/installation) guide to get started. Come chat on [Discord](https://discord.gg/uAfSjVH7yr).
+See the [Installation](/docs/get-started/installation) guide to get started. {/* step {"stepId":"check-installation-link","description":"Check /docs/get-started/installation link","checkLink":"/docs/get-started/installation"} */}
+
+Come chat on [Discord](https://discord.gg/uAfSjVH7yr). {/* step {"stepId":"check-discord-link","description":"Check Discord invite link","checkLink":"https://discord.gg/uAfSjVH7yr"} */}
 
 ## What's Doc Detective?
 
