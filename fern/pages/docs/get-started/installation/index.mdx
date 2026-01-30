@@ -3,13 +3,12 @@ title: Installation
 sidebar-title: Installation
 ---
 
-{/* test {"detectSteps":false} */}
-
 Downloading and running Doc Detective is straightforward. You can install Doc Detective using NPX (Node.js) or Docker. Follow the instructions for your preferred method:
 
 Choose *NPX* if you have Node.js installed and want to install Doc Detective on your machine locally. Choose *Docker* if you can't install applications locally, prefer containerized environments, need to avoid Node.js installation, or want to isolate Doc Detective from your system.
 
 <Tabs>
+{/* test {"testId":"installation-npx-flow","detectSteps":false} */}
   <Tab title="NPX" language="npx">
 
 1. Install prerequisites:
@@ -42,6 +41,9 @@ Choose *NPX* if you have Node.js installed and want to install Doc Detective on 
     {/* step {"stepId":"run-npx-test","description":"Run Doc Detective test with NPX","runShell":{"command":"npx doc-detective --input sample.spec.json","workingDirectory":"."}} */}
 
   </Tab>
+{/* test end */}
+
+{/* test {"testId":"installation-docker-flow","detectSteps":false} */}
   <Tab title="Docker" language="docker">
 
 1. Install prerequisites:
@@ -67,6 +69,7 @@ Choose *NPX* if you have Node.js installed and want to install Doc Detective on 
     </Note>
 
   </Tab>
+{/* test end */}
 </Tabs>
 
 Congratulations! You've run your first test with Doc Detective. :tada:

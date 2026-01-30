@@ -3,11 +3,10 @@ sidebar-title: Introduction
 title: Introduction to Doc Detective
 ---
 
-{/* test { "detectSteps": false } */}
-
 Validate your content with Doc Detective:
 
 <Tabs>
+{/* test {"testId":"intro-npx-flow","detectSteps":false} */}
   <Tab title="NPX" language="npx">
 
 ```bash
@@ -17,6 +16,9 @@ npx doc-detective
 {/* step {"stepId":"run-npx","description":"Run npx doc-detective --version command","runShell":{"command":"npx doc-detective --version"}} */}
 
   </Tab>
+{/* test end */}
+
+{/* test {"testId":"intro-docker-flow","detectSteps":false} */}
   <Tab title="Docker" language="docker">
 
 ```bash
@@ -31,11 +33,13 @@ docker run -v .:/app docdetective/docdetective
 </Note>
 
   </Tab>
+{/* test end */}
 </Tabs>
 
-See the [Installation](/docs/get-started/installation) guide to get started. {/* step {"stepId":"check-installation-link","description":"Check /docs/get-started/installation link","checkLink":"/docs/get-started/installation"} */}
-
-Come chat on [Discord](https://discord.gg/uAfSjVH7yr). {/* step {"stepId":"check-discord-link","description":"Check Discord invite link","checkLink":"https://discord.gg/uAfSjVH7yr"} */}
+{/* test {"testId":"intro-links","detectSteps":false} */}
+See the [Installation](/docs/get-started/installation) guide to get started. Come chat on [Discord](https://discord.gg/uAfSjVH7yr).
+{/* step {"stepId":"check-discord-link","description":"Check Discord invite link","checkLink":"https://discord.gg/uAfSjVH7yr"} */}
+{/* test end */}
 
 ## What's Doc Detective?
 
