@@ -12,9 +12,7 @@ A [test](/docs/tests) in Doc Detective is a series of steps, where each step per
 
 ## What does this test do?
 
-This test navigates to `https://example.com`,
-{/* step {"stepId":"check-example-com","description":"Verify example.com is accessible","checkLink":"https://example.com"} */}
-checks for the presence of the `<h1>` heading with the text `Example Domain`, and verifies that the `Learn more` link is present. It then clicks the link and captures a screenshot of the resulting page.
+This test navigates to `https://example.com`, {/* step {"stepId":"check-example-com","description":"Verify example.com is accessible","checkLink":"https://example.com"} */} checks for the presence of the `<h1>` heading with the text `Example Domain`, and verifies that the `Learn more` link is present. It then clicks the link and captures a screenshot of the resulting page.
 
 ## Prerequisites
 
@@ -27,90 +25,94 @@ Before you begin, ensure you have the following:
 
 To create your first test, follow these steps:
 
-1. In a terminal, navigate to the folder where you plan to create your test:
+1.  In a terminal, navigate to the folder where you plan to create your test:
 
-   ```bash
-   cd /path/to/your/project
-   ```
-   {/* step {"stepId":"navigate-to-project","description":"Navigate to project directory","runShell":{"command":"cd /path/to/your/project"}} */}
+    ```bash
+    cd /path/to/your/project
+    ```
 
-2. Create a new test file named `homepage-check.spec.json`:
+    {/* step {"stepId":"navigate-to-project","description":"Navigate to project directory","runShell":{"command":"cd /path/to/your/project"}} */}
 
-   ```bash
-   touch homepage-check.spec.json
-   ```
-   {/* step {"stepId":"create-test-file","description":"Create homepage-check.spec.json file","runShell":{"command":"touch homepage-check.spec.json"}} */}
+2.  Create a new test file named `homepage-check.spec.json`:
 
-3. Open the file in your text editor and paste the following code:
+    ```bash
+    touch homepage-check.spec.json
+    ```
 
-   ```json title="homepage-check.spec.json"
-   {
-     "tests": [
-       {
-         "steps": [
-           {
-             "description": "Go to the specified URL",
-             "goTo": "https://example.com"
-           },
-           {
-             "description": "Verify the presence of the main heading",
-             "find": "Example Domain"
-           },
-           {
-             "description": "Verify that the 'Learn more' link is present and working",
-             "click": "Learn more"
-           },
-           {
-             "description": "Capture a screenshot of the resulting page",
-             "screenshot": "example.png"
-           }
-         ]
-       }
-     ]
-   }
-   ```
+    {/* step {"stepId":"create-test-file","description":"Create homepage-check.spec.json file","runShell":{"command":"touch homepage-check.spec.json"}} */}
 
-   This test uses the following actions:
+3.  Open the file in your text editor and paste the following code:
 
-   - [`goTo`](/docs/actions/go-to): Navigates to the specified URL, https://example.com, to start the test flow.
-   - [`find`](/docs/actions/find): Locates elements on the page using CSS selectors such as HTML tags like `h1` or `a`, and validates their presence and text content.
-   - [`click`](/docs/actions/click): Clicks on the specified element, in this case, the `Learn more` link.
-   - [`screenshot`](/docs/actions/screenshot): Captures a screenshot of the current page and saves it to the specified path.
+    ```json title="homepage-check.spec.json"
+    {
+      "tests": [
+        {
+          "steps": [
+            {
+              "description": "Go to the specified URL",
+              "goTo": "https://example.com"
+            },
+            {
+              "description": "Verify the presence of the main heading",
+              "find": "Example Domain"
+            },
+            {
+              "description": "Verify that the 'Learn more' link is present and working",
+              "click": "Learn more"
+            },
+            {
+              "description": "Capture a screenshot of the resulting page",
+              "screenshot": "example.png"
+            }
+          ]
+        }
+      ]
+    }
+    ```
 
-4. Save the file.
-{/* test end */}
+    This test uses the following actions:
+    - [`goTo`](/docs/actions/go-to): Navigates to the specified URL, https://example.com, to start the test flow.
+    - [`find`](/docs/actions/find): Locates elements on the page using CSS selectors such as HTML tags like `h1` or `a`, and validates their presence and text content.
+    - [`click`](/docs/actions/click): Clicks on the specified element, in this case, the `Learn more` link.
+    - [`screenshot`](/docs/actions/screenshot): Captures a screenshot of the current page and saves it to the specified path.
 
-5. In your terminal, enter the following command to run the test:
+4.  Save the file. {/* test end */}
 
-   <Tabs>
-{/* test {"testId":"create-first-test-npx-flow","detectSteps":false} */}
-     <Tab title="NPX" language="npx">
+5.  In your terminal, enter the following command to run the test:
 
-   ```bash
-   npx doc-detective --input homepage-check.spec.json
-   ```
-   {/* step {"stepId":"run-test-npx","description":"Run test with NPX","runShell":{"command":"npx doc-detective --input homepage-check.spec.json"}} */}
+    <Tabs>
+      {/* test {"testId":"create-first-test-npx-flow","detectSteps":false} */}
+      <Tab title="NPX" language="npx">
 
-     </Tab>
-{/* test end */}
+      ```bash
+      npx doc-detective --input homepage-check.spec.json
+      ```
 
-{/* test {"testId":"create-first-test-docker-flow","detectSteps":false} */}
-     <Tab title="Docker" language="docker">
+      {/* step {"stepId":"run-test-npx","description":"Run test with NPX","runShell":{"command":"npx doc-detective --input homepage-check.spec.json"}} */}
 
-   ```bash
-   docker run -v .:/app docdetective/docdetective --input /app/homepage-check.spec.json
-   ```
-   {/* step {"stepId":"run-test-docker","description":"Run test with Docker","runShell":{"command":"docker run -v .:/app docdetective/docdetective --input /app/homepage-check.spec.json"}} */}
+      </Tab>
+      {/* test end */}
 
-   <Note>
-   The `-v` argument mounts your current directory (`.`) to `/app` in the container, giving Doc Detective access to your test specification and enabling it to output results and screenshots.
-   </Note>
+      {/* test {"testId":"create-first-test-docker-flow","detectSteps":false} */}
+      <Tab title="Docker" language="docker">
 
-     </Tab>
-{/* test end */}
-   </Tabs>
+      ```bash
+      docker run -v .:/app docdetective/docdetective --input /app/homepage-check.spec.json
+      ```
 
-   By default, Doc Detective scans the current directory for valid tests, but you can specify your test file using the `--input` argument. For more information, see [Run tests](/docs/get-started/sample-tests#run-tests).
+      {/* step {"stepId":"run-test-docker","description":"Run test with Docker","runShell":{"command":"docker run -v .:/app docdetective/docdetective --input /app/homepage-check.spec.json"}} */}
+
+      <Note>
+        The `-v` argument mounts your current directory (`.`) to `/app` in the
+        container, giving Doc Detective access to your test specification and enabling
+        it to output results and screenshots.
+      </Note>
+
+      </Tab>
+      {/* test end */}
+    </Tabs>
+
+By default, Doc Detective scans the current directory for valid tests, but you can specify your test file using the `--input` argument. For more information, see [Run tests](/docs/get-started/sample-tests#run-tests).
 
 ## Outcome
 
