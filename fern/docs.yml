@@ -6,7 +6,7 @@
 
 instances:
   - url: doc-detective.docs.buildwithfern.com # {yourorg}.docs.buildwithfern.com
-    # custom-domain: doc-detective.com # custom domain for live site
+    custom-domain: docs.doc-detective.com # custom domain for live site
 
 title: Doc Detective
 
