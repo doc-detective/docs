@@ -113,7 +113,7 @@ navigation:
       - section: Get started
         contents:
           - page: Installation
-            path: pages/docs/get-started/installation/index.mdx
+            path: pages/docs/get-started/installation.mdx
           - page: Concepts
             path: pages/docs/get-started/concepts.md
           - page: Create your first test
