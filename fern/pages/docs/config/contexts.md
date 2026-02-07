@@ -1,7 +1,5 @@
 ---
 title: Contexts
-layout: default
-parent: Configuration
 description: Define the contexts (platform and browser combinations) where tests should run.
 ---
 

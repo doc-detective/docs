@@ -1,7 +1,5 @@
 ---
 title: Doc Detective Companion Privacy Policy
-layout: default
-parent: Legal
 ---
 
 Effective Date: December 10, 2023
