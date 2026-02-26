@@ -35,7 +35,7 @@ Notify AI-powered integrations when issues are created to help investigate and f
   
   Integrations (except `copilot`) appear in a collapsible "Integrations" section in the issue body. Invalid integration names are warned and ignored.
 
-- `prompt`: Text passed to integrations, inserted where `$PROMPT` appears in integration mentions. You can also use `$PROMPT` in your custom `issue_body` template. Default: `"Investigate the causes of the failures reported in this Doc Detective test output and suggest fixes"`.
+- `prompt`: Text passed to integrations, inserted where `$PROMPT` appears in integration mentions. You can also use `$PROMPT` in your custom `issue_body` template. Default: `"Investigate potential causes of the failures reported in this Doc Detective test output and suggest fixes."`.
 
 ### Example
 
