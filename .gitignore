@@ -46,3 +46,6 @@ pids
 # Temporary folders
 tmp/
 temp/
+
+# Local files
+*.local.json
