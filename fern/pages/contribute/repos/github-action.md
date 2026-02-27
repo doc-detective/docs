@@ -30,6 +30,7 @@ Notify AI-powered integrations when issues are created to help investigate and f
   - `promptless`: Mentions @Promptless with the prompt
   - `dosu`: Mentions @dosu with the prompt
   - `claude`: Mentions @claude with the prompt
+  - `cursor`: Mentions @cursor with the prompt
   - `opencode`: Uses the `/opencode` command with the prompt
   - `copilot`: Auto-assigns the issue to Copilot (instead of adding to the accordion)
   

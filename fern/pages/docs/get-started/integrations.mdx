@@ -18,6 +18,7 @@ When Doc Detective tests fail in CI, you can trigger AI-powered integrations to 
 |-------------|-------------|
 | `claude` | Anthropic's Claude AI assistant |
 | `copilot` | GitHub Copilot |
+| `cursor` | Cursor AI assistant |
 | `dosu` | Dosu AI assistant |
 | `promptless` | Promptless documentation automation |
 | `doc-sentinel` | Doc Sentinel documentation monitoring |
@@ -69,6 +70,7 @@ Each integration responds differently when triggered:
 |-------------|----------|
 | `claude` | Doc Detective adds an `@claude` mention to the issue. Claude analyzes test results and suggests fixes. |
 | `copilot` | The issue is automatically assigned to GitHub Copilot instead of being mentioned in a collapsible section. |
+| `cursor` | Doc Detective adds a `@cursor` mention to the issue. Cursor analyzes test results and suggests fixes. |
 | `dosu` | Doc Detective mentions Dosu in the issue to analyze context and provide suggestions. |
 | `promptless` | Promptless analyzes test failures and can automatically create documentation updates. |
 | `doc-sentinel` | Doc Detective mentions Doc Sentinel to help monitor and identify documentation issues. |
@@ -80,6 +82,7 @@ Each integration requires setup in your repository before use:
 
 - **Claude**: Install the Claude GitHub app.
 - **Copilot**: Enable GitHub Copilot and configure it for issue handling.
+- **Cursor**: Install the Cursor GitHub app.
 - **Dosu**: Install the Dosu app.
 - **Promptless**: Connect your repository to Promptless.
 - **Doc Sentinel**: Configure Doc Sentinel.
