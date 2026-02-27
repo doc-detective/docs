@@ -120,6 +120,10 @@ navigation:
             path: pages/docs/get-started/create-your-first-test.mdx
           - page: Sample tests
             path: pages/docs/get-started/sample-tests.mdx
+          - page: CI
+            path: pages/docs/get-started/ci.mdx
+          - page: Integrations
+            path: pages/docs/get-started/integrations.mdx
           - page: Resources
             path: pages/docs/get-started/resources.mdx
 
