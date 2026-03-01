@@ -142,6 +142,27 @@ The `-v` argument is not necessary for remotely hosted tests since Docker doesn'
 
 These tests run the same way as local tests, but Doc Detective fetches the test file from the specified URL and stores it in a temporary directory. The URL must be accessible to the machine running the tests.
 
+### Check version
+
+To check your installed version, use the `--version` argument:
+
+<Tabs>
+  <Tab title="NPX" language="npx">
+
+```bash
+npx doc-detective --version
+```
+
+  </Tab>
+  <Tab title="Docker" language="docker">
+
+```bash
+docker run docdetective/docdetective --version
+```
+
+  </Tab>
+</Tabs>
+
 ## Next steps
 
 - [Resources](./resources)
