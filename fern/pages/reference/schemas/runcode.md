@@ -43,7 +43,7 @@ runCode | object([Run code (detailed)](/reference/schemas/run-code-detailed)) | 
 {
   "runCode": {
     "language": "javascript",
-    "code": "return false",
+    "code": "process.exit(1)",
     "exitCodes": [
       1
     ]

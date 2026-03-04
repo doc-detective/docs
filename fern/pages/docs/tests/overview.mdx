@@ -313,18 +313,14 @@ Here are some patterns you can use as starting points for common testing scenari
               "headers": { "Content-Type": "application/json" },
               "body": { "name": "Test item" }
             },
-            "response": {
-              "statusCode": 201
-            }
+            "statusCodes": [201]
           }
         },
         {
           "httpRequest": {
             "url": "https://api.example.com/items",
             "method": "GET",
-            "response": {
-              "statusCode": 200
-            }
+            "statusCodes": [200]
           }
         }
       ]
@@ -354,9 +350,7 @@ Load environment variables and use them across steps:
                 "Authorization": "Bearer $API_TOKEN"
               }
             },
-            "response": {
-              "statusCode": 200
-            }
+            "statusCodes": [200]
           }
         }
       ]

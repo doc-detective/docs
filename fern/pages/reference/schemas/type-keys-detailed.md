@@ -5,7 +5,7 @@ title: "Type keys (detailed)"
 ## Referenced In
 
 - [Find element (detailed)](/reference/schemas/find-element-detailed)
-- [typeKeys](/reference/schemas/type)
+- [type](/reference/schemas/type)
 
 ## Fields
 

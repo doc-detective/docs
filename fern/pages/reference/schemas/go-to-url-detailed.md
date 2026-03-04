@@ -21,8 +21,8 @@ waitUntil | object | Optional. Configuration for waiting conditions after naviga
 
 ```json
 {
-  "url": "example",
-  "origin": "example",
+  "url": "/example",
+  "origin": "https://www.example.com",
   "timeout": 30000,
   "waitUntil": {}
 }

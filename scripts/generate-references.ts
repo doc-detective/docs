@@ -623,9 +623,11 @@ function renderType(schema: SchemaLike, depth = 0): string {
         flatVariants.push(v);
       }
     }
-    const rendered = flatVariants
-      .map((v) => renderType(v, depth + 1))
-      .filter((t) => t !== "unknown");
+    const rendered = [...new Set(
+      flatVariants
+        .map((v) => renderType(v, depth + 1))
+        .filter((t) => t !== "unknown")
+    )];
     if (rendered.length === 0) return "unknown";
     if (rendered.length === 1) return rendered[0];
     return "one of:<br/>" + rendered.map((t) => `- ${t}`).join("<br/>");
@@ -1285,7 +1287,7 @@ function main() {
 
   // Also register known titles that map to pages via schema components
   // (for object types referenced in field types)
-  registerExtraComponentTitles();
+  registerExtraComponentTitles(pageDefs);
 
   console.log(`Registered ${titleToFileMap.size} page titles`);
 
@@ -1329,7 +1331,7 @@ function main() {
 }
 
 /** Register extra title→file mappings for component schemas */
-function registerExtraComponentTitles() {
+function registerExtraComponentTitles(pageDefs: PageDef[]) {
   // Walk all v3 schemas and register component schema titles
   const v3keys = Object.keys(allSchemas).filter((k) => k.endsWith("_v3"));
   for (const key of v3keys) {
@@ -1352,7 +1354,7 @@ function registerExtraComponentTitles() {
   }
 
   // Walk nested properties for titles
-  for (const pd of buildPageDefs()) {
+  for (const pd of pageDefs) {
     if (pd.schema.properties) {
       for (const prop of Object.values(pd.schema.properties)) {
         registerNestedTitles(prop);

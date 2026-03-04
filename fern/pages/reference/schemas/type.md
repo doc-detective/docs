@@ -1,5 +1,5 @@
 ---
-title: "typeKeys"
+title: "type"
 ---
 
 ## Referenced In
