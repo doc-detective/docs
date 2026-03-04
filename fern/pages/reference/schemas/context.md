@@ -17,7 +17,7 @@ Field | Type | Description | Default
 $schema | string | Optional. JSON Schema for this object.<br/><br/>Accepted values: `https://raw.githubusercontent.com/doc-detective/common/refs/heads/main/dist/schemas/context_v3.schema.json` | 
 contextId | string | Optional. Unique identifier for the context. | 
 platforms | one of:<br/>- string<br/>- array of string | Optional. Platforms to run tests on. | 
-browsers | one of:<br/>- string<br/>- object([Browser](/reference/schemas/browser))<br/>- array of one of: string, object([Browser](/reference/schemas/browser)) | Optional. Browsers to run tests on. | 
+browsers | one of:<br/>- string<br/>- object([Browser](/reference/schemas/browser))<br/>- array of one of:<br/>- string<br/>- object([Browser](/reference/schemas/browser)) | Optional. Browsers to run tests on. | 
 
 ## Examples
 

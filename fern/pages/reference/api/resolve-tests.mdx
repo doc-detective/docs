@@ -1,0 +1,156 @@
+---
+title: resolveTests()
+description: Resolves detected tests into fully-resolved test specifications.
+---
+
+## Signature
+
+```javascript
+async resolveTests(config, detectedTests) → any
+```
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `config` | any | Yes | |
+| `detectedTests` | any[] | Yes | |
+
+## Return value
+
+Returns `any`.
+
+<!-- CUSTOM CONTENT START -->
+
+
+
+
+
+
+
+## Examples
+
+### Basic usage
+
+```javascript
+import { detectTests, resolveTests } from "doc-detective";
+
+const config = {
+  input: "./docs",
+};
+
+const detectedTests = await detectTests({ config });
+const resolvedTests = await resolveTests({ config, detectedTests });
+
+console.log(`Resolved ${resolvedTests.specs.length} specs`);
+```
+
+### Context resolution
+
+Resolve tests against specific contexts:
+
+```javascript
+import { detectTests, resolveTests } from "doc-detective";
+
+const config = {
+  input: "./docs",
+  runOn: [
+    {
+      platforms: ["linux"],
+      browsers: { name: "chrome", headless: true },
+    },
+    {
+      platforms: ["linux"],
+      browsers: { name: "firefox", headless: true },
+    },
+  ],
+};
+
+const detectedTests = await detectTests({ config });
+const resolvedTests = await resolveTests({ config, detectedTests });
+```
+
+### Inspect contexts before running
+
+```javascript
+import { detectTests, resolveTests } from "doc-detective";
+
+const config = {
+  input: "./docs",
+};
+
+const detectedTests = await detectTests({ config });
+const resolvedTests = await resolveTests({ config, detectedTests });
+
+for (const spec of resolvedTests.specs) {
+  for (const test of spec.tests) {
+    console.log(`Test: ${test.description}`);
+    for (const context of test.contexts) {
+      console.log(`  Context: ${context.platform} / ${context.browser?.name}`);
+    }
+  }
+}
+```
+
+### Pass to runTests
+
+```javascript
+import { detectTests, resolveTests, runTests } from "doc-detective";
+
+const config = {
+  input: "./docs",
+};
+
+const detectedTests = await detectTests({ config });
+const resolvedTests = await resolveTests({ config, detectedTests });
+
+// Run with pre-resolved tests
+const results = await runTests(config, { resolvedTests });
+```
+
+### Multi-platform resolution
+
+```javascript
+import { detectTests, resolveTests } from "doc-detective";
+
+const config = {
+  input: "./docs",
+  runOn: [
+    { platforms: ["windows", "mac", "linux"], browsers: "chrome" },
+    { platforms: ["windows", "mac", "linux"], browsers: "firefox" },
+    { platforms: "mac", browsers: "webkit" },
+  ],
+};
+
+const detectedTests = await detectTests({ config });
+const resolvedTests = await resolveTests({ config, detectedTests });
+
+// Only contexts matching the current platform and available browsers are included
+```
+
+## Behavior
+
+When called, `resolveTests()` performs the following steps:
+
+1. Validates the configuration and detected tests.
+2. Evaluates each context's platform against the current operating system.
+3. Checks browser availability for each context.
+4. Assigns matching contexts to each test based on precedence (test > spec > config).
+5. Detects browser requirements from test steps (for example, `goTo` or `find` actions need a browser).
+6. Marks contexts as skippable when the platform or browser doesn't match.
+7. Resolves relative paths in specs.
+8. Returns the fully resolved test structure.
+
+## Notes
+
+- Context resolution is environment-dependent. The same specs resolve differently on different platforms.
+- Tests that don't require a browser (for example, tests with only `checkLink` or `httpRequest` steps) may resolve without a browser context.
+- If a test defines its own `runOn` contexts, those override spec- and config-level contexts.
+- Use the resolved output to inspect which tests will actually run before calling `runTests()`.
+
+
+
+
+
+
+<!-- CUSTOM CONTENT END -->

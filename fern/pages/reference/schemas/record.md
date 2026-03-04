@@ -5,8 +5,8 @@ title: "record"
 ## Referenced In
 
 - [Markup definition](/reference/schemas/markup-definition)
-- [test](/reference/schemas/test)
 - [Resolved context](/reference/schemas/resolved-context)
+- [test](/reference/schemas/test)
 
 ## Fields
 
@@ -18,6 +18,22 @@ record | one of:<br/>- string<br/>- object([Record (detailed)](/reference/schema
 
 ```json
 {
-  "record": "example"
+  "record": true
+}
+```
+
+```json
+{
+  "record": "results.mp4"
+}
+```
+
+```json
+{
+  "record": {
+    "path": "results.mp4",
+    "directory": "static/media",
+    "overwrite": "true"
+  }
 }
 ```

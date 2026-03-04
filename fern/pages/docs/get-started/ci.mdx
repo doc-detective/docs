@@ -157,3 +157,270 @@ jobs:
       - uses: actions/checkout@v4
       - uses: doc-detective/github-action@v1
 ```
+
+## Other CI/CD platforms
+
+You can run Doc Detective in any CI/CD platform that supports Node.js. The following examples show how to set up Doc Detective in popular CI/CD platforms.
+
+### GitLab CI/CD
+
+Create a `.gitlab-ci.yml` file in your repository root:
+
+```yaml
+doc-detective:
+  image: node:18
+  stage: test
+  script:
+    - npm i -g doc-detective
+    - npx doc-detective --input ./docs
+  artifacts:
+    paths:
+      - test-results/
+    when: always
+```
+
+Multi-platform GitLab CI:
+
+```yaml
+.doc-detective-base:
+  stage: test
+  script:
+    - npm i -g doc-detective
+    - npx doc-detective --config .doc-detective.ci.json
+
+doc-detective-linux:
+  extends: .doc-detective-base
+  image: node:18
+  tags:
+    - linux
+
+doc-detective-windows:
+  extends: .doc-detective-base
+  tags:
+    - windows
+```
+
+### Jenkins
+
+Add a stage to your `Jenkinsfile`:
+
+```groovy
+pipeline {
+  agent { docker { image 'node:18' } }
+  stages {
+    stage('Doc Detective') {
+      steps {
+        sh 'npm i -g doc-detective'
+        sh 'npx doc-detective --input ./docs'
+      }
+      post {
+        always {
+          archiveArtifacts artifacts: 'test-results/**', allowEmptyArchive: true
+        }
+      }
+    }
+  }
+}
+```
+
+### CircleCI
+
+Create a `.circleci/config.yml` file:
+
+```yaml
+version: 2.1
+jobs:
+  doc-detective:
+    docker:
+      - image: cimg/node:18.0
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - dd-deps-{{ checksum "package-lock.json" }}
+      - run:
+          name: Install Doc Detective
+          command: npm i -g doc-detective
+      - save_cache:
+          paths:
+            - node_modules
+          key: dd-deps-{{ checksum "package-lock.json" }}
+      - run:
+          name: Run tests
+          command: npx doc-detective --input ./docs
+      - store_artifacts:
+          path: test-results
+
+workflows:
+  test:
+    jobs:
+      - doc-detective
+```
+
+### Azure Pipelines
+
+Create an `azure-pipelines.yml` file:
+
+```yaml
+trigger:
+  - main
+
+pool:
+  vmImage: "ubuntu-latest"
+
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: "18.x"
+  - script: npm i -g doc-detective
+    displayName: "Install Doc Detective"
+  - script: npx doc-detective --input ./docs
+    displayName: "Run Doc Detective"
+  - publish: test-results
+    artifact: doc-detective-results
+    condition: always()
+```
+
+Multi-platform Azure Pipelines:
+
+```yaml
+trigger:
+  - main
+
+strategy:
+  matrix:
+    linux:
+      vmImage: "ubuntu-latest"
+    mac:
+      vmImage: "macos-latest"
+    windows:
+      vmImage: "windows-latest"
+
+pool:
+  vmImage: $(vmImage)
+
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: "18.x"
+  - script: npm i -g doc-detective
+    displayName: "Install Doc Detective"
+  - script: npx doc-detective --config .doc-detective.ci.json
+    displayName: "Run Doc Detective"
+```
+
+### Travis CI
+
+Create a `.travis.yml` file:
+
+```yaml
+language: node_js
+node_js:
+  - "18"
+
+os:
+  - linux
+  - osx
+  - windows
+
+install:
+  - npm i -g doc-detective
+
+script:
+  - npx doc-detective --input ./docs
+```
+
+## Docker usage
+
+You can use the Doc Detective Docker image in any CI/CD platform:
+
+```bash
+docker run -v .:/app docdetective/docdetective --input /app/docs
+```
+
+In CI environments, mount your workspace directory to `/app` in the container so Doc Detective can access your test files and write results.
+
+## CI-specific configuration
+
+Create a dedicated configuration file for CI environments with headless browsers and error-level logging:
+
+**.doc-detective.ci.json**:
+
+```json
+{
+  "input": ".",
+  "output": "./test-results",
+  "logLevel": "error",
+  "runOn": [
+    {
+      "platforms": ["linux"],
+      "browsers": {
+        "name": "chrome",
+        "headless": true
+      }
+    }
+  ]
+}
+```
+
+Then reference it in your CI pipeline:
+
+```bash
+npx doc-detective --config .doc-detective.ci.json
+```
+
+## Secrets and environment variables
+
+Pass sensitive values through environment variables instead of hardcoding them in configuration files. Doc Detective supports environment variable references with the `$VARIABLE_NAME` syntax.
+
+For example, if your tests need an API key:
+
+```json
+{
+  "input": ".",
+  "origin": "$SITE_URL"
+}
+```
+
+Set the environment variable in your CI platform's settings or pipeline definition.
+
+## Handle test failures
+
+### Fail the pipeline
+
+Use the `--exit-on-fail` flag or check exit codes to fail the pipeline when tests fail:
+
+```bash
+npx doc-detective --input ./docs
+if [ $? -ne 0 ]; then
+  echo "Documentation tests failed!"
+  exit 1
+fi
+```
+
+### Upload artifacts
+
+Preserve test results as artifacts for debugging:
+
+```yaml
+# GitHub Actions
+- uses: actions/upload-artifact@v4
+  if: always()
+  with:
+    name: doc-detective-results
+    path: test-results/
+```
+
+### Notifications
+
+Send notifications on test failure using your CI platform's notification features. For example, with GitHub Actions and Slack:
+
+```yaml
+- uses: slackapi/slack-github-action@v1
+  if: failure()
+  with:
+    channel-id: "docs-team"
+    slack-message: "Doc Detective tests failed: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+  env:
+    SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+```

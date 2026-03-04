@@ -1,0 +1,134 @@
+---
+title: readFile()
+description: Reads and parses content from a remote URL or local file path, supporting JSON and YAML formats.
+---
+
+## Signature
+
+```javascript
+async readFile(fileURLOrPath) → any
+```
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `fileURLOrPath` | string | Yes | |
+
+## Return value
+
+Returns `any`.
+
+<!-- CUSTOM CONTENT START -->
+
+
+
+
+
+
+
+## Examples
+
+### Read a JSON file
+
+```javascript
+import { readFile } from "doc-detective";
+
+const config = await readFile({ fileURLOrPath: "./.doc-detective.json" });
+if (config) {
+  console.log("Config:", config);
+  // config is a parsed JavaScript object
+}
+```
+
+### Read a YAML file
+
+```javascript
+import { readFile } from "doc-detective";
+
+const config = await readFile({ fileURLOrPath: "./.doc-detective.yaml" });
+if (config) {
+  console.log("Config:", config);
+  // config is a parsed JavaScript object
+}
+```
+
+### Read a remote file
+
+```javascript
+import { readFile } from "doc-detective";
+
+const content = await readFile({
+  fileURLOrPath: "https://example.com/tests/sample.spec.json",
+});
+if (content) {
+  console.log("Remote spec:", content);
+}
+```
+
+### Read a text file
+
+```javascript
+import { readFile } from "doc-detective";
+
+const markdown = await readFile({ fileURLOrPath: "./docs/README.md" });
+if (markdown) {
+  console.log("File contents:", markdown);
+  // markdown is a raw string
+}
+```
+
+### Error handling
+
+```javascript
+import { readFile } from "doc-detective";
+
+const content = await readFile({ fileURLOrPath: "./nonexistent-file.json" });
+if (content === null) {
+  console.log("File not found or could not be read.");
+}
+```
+
+### Read multiple files
+
+```javascript
+import { readFile } from "doc-detective";
+
+const files = ["./config.json", "./tests/spec1.json", "./tests/spec2.yaml"];
+
+for (const file of files) {
+  const content = await readFile({ fileURLOrPath: file });
+  if (content) {
+    console.log(`${file}:`, typeof content === "object" ? "parsed" : "raw");
+  } else {
+    console.log(`${file}: could not be read`);
+  }
+}
+```
+
+## Behavior
+
+When called, `readFile()` performs the following steps:
+
+1. Determines if the input is a URL or local file path.
+2. For URLs, fetches the content using an HTTP GET request.
+3. For local paths, reads the file from the file system.
+4. Checks the file extension to determine the content type.
+5. If the file is JSON, parses it with `JSON.parse()`.
+6. If the file is YAML, parses it with a YAML parser.
+7. For all other file types, returns the raw string content.
+8. Returns `null` if any step fails (file not found, parse error, network error).
+
+## Notes
+
+- `readFile()` returns `null` on errors rather than throwing exceptions. Always check the return value.
+- Both absolute and relative file paths are supported. Relative paths resolve from the current working directory.
+- Remote URLs are fetched using HTTP GET requests.
+- If a JSON or YAML file contains invalid syntax, `readFile()` returns `null`.
+
+
+
+
+
+
+<!-- CUSTOM CONTENT END -->

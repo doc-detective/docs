@@ -1,0 +1,188 @@
+---
+title: getRunner()
+description: Creates and returns a Chrome WebDriver instance with an Appium server.
+---
+
+## Signature
+
+```javascript
+async getRunner(options?) → any
+```
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `options` | any | No | |
+
+## Return value
+
+Returns `any`.
+
+<!-- CUSTOM CONTENT START -->
+
+
+
+
+
+
+
+## Examples
+
+### Basic usage
+
+```javascript
+import { getRunner } from "doc-detective";
+
+const { runner, cleanup, runStep } = await getRunner();
+
+try {
+  await runStep({ goTo: "https://example.com" });
+  await runStep({ find: "h1" });
+  await runStep({ screenshot: "example.png" });
+} finally {
+  await cleanup();
+}
+```
+
+### Headless mode
+
+```javascript
+import { getRunner } from "doc-detective";
+
+const { runner, cleanup, runStep } = await getRunner({
+  headless: true,
+  width: 1920,
+  height: 1080,
+});
+
+try {
+  await runStep({ goTo: "https://example.com" });
+  await runStep({ screenshot: "homepage.png" });
+} finally {
+  await cleanup();
+}
+```
+
+### Run Doc Detective steps
+
+Use `runStep` to execute any Doc Detective action:
+
+```javascript
+import { getRunner } from "doc-detective";
+
+const { cleanup, runStep } = await getRunner({
+  headless: false,
+  width: 1280,
+  height: 720,
+});
+
+try {
+  // Navigate
+  await runStep({ goTo: "https://example.com" });
+
+  // Interact
+  await runStep({ find: "input[name='search']" });
+  await runStep({ type: ["doc detective", "$ENTER$"] });
+
+  // Wait and capture
+  await runStep({ wait: 2000 });
+  await runStep({ screenshot: "search-results.png" });
+} finally {
+  await cleanup();
+}
+```
+
+### Custom viewport size
+
+```javascript
+import { getRunner } from "doc-detective";
+
+// Mobile viewport
+const { cleanup, runStep } = await getRunner({
+  width: 375,
+  height: 812,
+});
+
+try {
+  await runStep({ goTo: "https://example.com" });
+  await runStep({ screenshot: "mobile-view.png" });
+} finally {
+  await cleanup();
+}
+```
+
+### Error handling
+
+```javascript
+import { getRunner } from "doc-detective";
+
+const { cleanup, runStep } = await getRunner();
+
+try {
+  await runStep({ goTo: "https://example.com" });
+  const result = await runStep({ find: ".nonexistent-element" });
+  console.log("Step result:", result);
+} catch (error) {
+  console.error("Step failed:", error.message);
+} finally {
+  await cleanup();
+}
+```
+
+### Test framework integration
+
+Use `getRunner()` within a test framework like Mocha:
+
+```javascript
+import { getRunner } from "doc-detective";
+
+describe("Documentation tests", function () {
+  let cleanup, runStep;
+
+  before(async function () {
+    const runner = await getRunner({ headless: true });
+    cleanup = runner.cleanup;
+    runStep = runner.runStep;
+  });
+
+  after(async function () {
+    await cleanup();
+  });
+
+  it("should load the homepage", async function () {
+    await runStep({ goTo: "https://example.com" });
+    await runStep({ find: "h1" });
+  });
+
+  it("should navigate to docs", async function () {
+    await runStep({ goTo: "https://example.com/docs" });
+    await runStep({ find: ".sidebar" });
+  });
+});
+```
+
+## Behavior
+
+When called, `getRunner()` performs the following steps:
+
+1. Starts an Appium server on an available port.
+2. Configures Chrome WebDriver capabilities.
+3. Sets viewport dimensions based on `width` and `height` options.
+4. Applies headless mode if configured.
+5. Creates a WebDriver session connected to Chrome via Appium.
+6. Returns the runner, Appium process, cleanup function, and `runStep` function.
+
+## Notes
+
+- **Chrome only**: `getRunner()` currently supports Chrome exclusively. Use `runTests()` with context configuration for Firefox or WebKit.
+- **Always call `cleanup()`**: Failing to call `cleanup()` leaves browser and Appium processes running. Use `try`/`finally` blocks.
+- Set `headless` to `false` if you need to use the `record` action for video capture.
+- The `runStep` function accepts the same step objects used in test specification files.
+
+
+
+
+
+
+<!-- CUSTOM CONTENT END -->

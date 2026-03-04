@@ -175,3 +175,112 @@ Click the *Start* button:
 
 // (test end)
 ```
+
+## Combine explicit and detected tests
+
+You can mix inline tests with [detected tests](./detected-tests) in the same file. Declare explicit tests for specific workflows, and let Doc Detective auto-detect steps for the rest of the content.
+
+For example, you might explicitly test a multi-step login flow while letting detected tests handle link checking for the rest of the page:
+
+```markdown
+{/* test {"testId": "login-flow", "detectSteps": false} */}
+
+1. Go to the [login page](https://app.example.com/login).
+
+   {/* step {"goTo": "https://app.example.com/login"} */}
+
+2. Enter your credentials and click **Sign in**.
+
+   {/* step {"find": "input[name='email']"} */}
+   {/* step {"type": ["user@example.com"]} */}
+   {/* step {"click": "button[type='submit']"} */}
+
+{/* test end */}
+
+The rest of this page has links that Doc Detective can auto-detect and check.
+```
+
+## Record media in inline tests
+
+You can capture screenshots and record videos using inline steps:
+
+```markdown
+{/* test {"testId": "capture-demo"} */}
+
+Navigate to the homepage:
+
+{/* step {"goTo": "https://example.com"} */}
+
+Here's what the homepage looks like:
+
+![Homepage](homepage.png)
+
+{/* step {"screenshot": "homepage.png"} */}
+
+{/* test end */}
+```
+
+For video recording, use `record` and `stopRecord`:
+
+```markdown
+{/* test {"testId": "video-demo", "detectSteps": false} */}
+
+{/* step {"record": "demo-video.webm"} */}
+
+1. Go to the site.
+
+   {/* step {"goTo": "https://example.com"} */}
+
+2. Click **Get Started**.
+
+   {/* step {"click": "Get Started"} */}
+   {/* step {"wait": 2000} */}
+
+{/* step {"stopRecord": ""} */}
+
+{/* test end */}
+```
+
+<Note>
+Video recording requires Chrome in non-headless mode. See [Contexts](/docs/configuration#contexts) for browser configuration.
+</Note>
+
+## Best practices
+
+- **Keep steps simple**: Each step comment should contain a single action. Avoid combining multiple actions in one step.
+- **Use detection wisely**: Set `detectSteps` to `false` on tests where you want full control over what's tested.
+- **Add wait steps**: Insert `wait` steps after actions that trigger page loads or animations.
+- **Use test boundaries**: Always close tests with a test end comment to prevent unintended steps from being included.
+- **Minimize inline tests**: For complex test scenarios, consider using [standalone tests](./standalone-tests) instead.
+
+## Troubleshooting
+
+### Tests not detected
+
+If your inline tests aren't being picked up:
+
+- Verify the comment syntax matches your file type's patterns.
+- Check that your [configuration](/docs/configuration) includes the file's extension in its file type definitions.
+- Make sure each comment is on a single line. Doc Detective doesn't support multi-line test or step comments.
+
+### Wrong execution order
+
+Steps execute in the order they appear in the file. If steps seem out of order:
+
+- Review the file for any unintentionally included comments.
+- Make sure test boundaries (`test end`) are placed correctly.
+
+### Screenshots not capturing
+
+If screenshots aren't saved:
+
+- Check the file path in the `screenshot` step. Relative paths resolve from the input file's directory.
+- Ensure a browser context is available (screenshots require a browser).
+- Verify the output directory exists or is writable.
+
+### Comments visible in rendered docs
+
+If test comments appear in your rendered documentation:
+
+- Use comment syntaxes that your renderer hides (such as JSX comments `{/* */}` for MDX).
+- Avoid `[comment]: #` syntax if your renderer doesn't strip it.

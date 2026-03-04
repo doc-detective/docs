@@ -24,13 +24,7 @@ viewport | object([Browser Viewport](/reference/schemas/browser-viewport)) | Opt
 {
   "name": "chrome",
   "headless": true,
-  "window": {
-    "width": 42,
-    "height": 42
-  },
-  "viewport": {
-    "width": 42,
-    "height": 42
-  }
+  "window": {},
+  "viewport": {}
 }
 ```
