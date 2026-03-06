@@ -21,6 +21,14 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, "..");
 const SOURCE_REPO = path.resolve(ROOT, "..", "doc-detective");
+if (!fs.existsSync(SOURCE_REPO)) {
+  console.error(
+    `Error: Source repository not found at ${SOURCE_REPO}\n` +
+      `Clone the doc-detective/doc-detective repository next to this repo:\n` +
+      `  git clone https://github.com/doc-detective/doc-detective.git ${SOURCE_REPO}`
+  );
+  process.exit(1);
+}
 const SCHEMAS_JSON = path.join(
   SOURCE_REPO,
   "src/common/src/schemas/schemas.json"
@@ -1121,8 +1129,14 @@ function extractFunctionSig(
           }
         }
       } else {
-        // Fallback: just use the parameter text
-        params.push({ name: paramName, type: paramType, required });
+        // Expand binding elements individually (type may be a reference or any)
+        for (const element of param.name.elements) {
+          if (ts.isBindingElement(element)) {
+            const eName = element.name.getText(sourceFile);
+            const eRequired = !element.dotDotDotToken && !element.initializer;
+            params.push({ name: eName, type: paramType, required: eRequired });
+          }
+        }
       }
     } else {
       params.push({ name: paramName, type: paramType, required });
@@ -1154,8 +1168,8 @@ function extractFunctionSig(
 // API page generation
 // ---------------------------------------------------------------------------
 
-const CUSTOM_START = "<!-- CUSTOM CONTENT START -->";
-const CUSTOM_END = "<!-- CUSTOM CONTENT END -->";
+const CUSTOM_START = "{/* CUSTOM CONTENT START */}";
+const CUSTOM_END = "{/* CUSTOM CONTENT END */}";
 
 interface ApiPageDef {
   file: string;

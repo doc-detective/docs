@@ -361,24 +361,19 @@ Load environment variables and use them across steps:
 
 ### Setup and cleanup
 
-Use `before` and `after` properties to run steps before and after a test:
+Use `before` and `after` properties to run steps before and after a test. Each property accepts a path to a test specification file whose first test's steps run in the current browser context:
 
 ```json
 {
   "tests": [
     {
       "description": "Test with setup and cleanup",
-      "before": [
-        { "loadVariables": ".env" },
-        { "goTo": "$SITE_URL" }
-      ],
+      "before": "./setup.spec.json",
       "steps": [
         { "find": "h1" },
         { "screenshot": "homepage.png" }
       ],
-      "after": [
-        { "screenshot": "final-state.png" }
-      ]
+      "after": "./cleanup.spec.json"
     }
   ]
 }

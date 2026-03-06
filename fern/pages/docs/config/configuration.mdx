@@ -346,18 +346,14 @@ Use these options to run actions before and after your test suite:
 
 | Option | Type | Description |
 |--------|------|-------------|
-| `beforeAny` | array | Steps to run before any tests start. |
-| `afterAll` | array | Steps to run after all tests complete. |
+| `beforeAny` | string or array of string | Test specification file(s) to run before any tests start. |
+| `afterAll` | string or array of string | Test specification file(s) to run after all tests complete. |
 
 ```json
 {
   "input": ".",
-  "beforeAny": [
-    { "loadVariables": ".env" }
-  ],
-  "afterAll": [
-    { "runShell": "echo Tests complete" }
-  ]
+  "beforeAny": ["./setup.spec.json"],
+  "afterAll": ["./cleanup.spec.json"]
 }
 ```
 
@@ -434,10 +430,12 @@ Automatically resolve relative URLs in `httpRequest` actions using OpenAPI defin
 ```json
 {
   "integrations": {
-    "openApi": {
-      "definition": "./openapi.yaml",
-      "server": "https://api.example.com"
-    }
+    "openApi": [
+      {
+        "descriptionPath": "./openapi.yaml",
+        "server": "https://api.example.com"
+      }
+    ]
   }
 }
 ```
