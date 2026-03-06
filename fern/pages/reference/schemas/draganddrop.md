@@ -5,8 +5,8 @@ title: "dragAndDrop"
 ## Referenced In
 
 - [Markup definition](/reference/schemas/markup-definition)
-- [test](/reference/schemas/test)
 - [Resolved context](/reference/schemas/resolved-context)
+- [test](/reference/schemas/test)
 
 ## Fields
 
@@ -18,6 +18,72 @@ dragAndDrop | object([dragAndDrop](/reference/schemas/draganddrop)) | Required. 
 
 ```json
 {
-  "dragAndDrop": {}
+  "dragAndDrop": {
+    "source": "Table",
+    "target": "#canvas"
+  }
+}
+```
+
+```json
+{
+  "dragAndDrop": {
+    "source": ".draggable-block",
+    "target": ".drop-zone",
+    "duration": 2000
+  }
+}
+```
+
+```json
+{
+  "dragAndDrop": {
+    "source": {
+      "selector": ".widget",
+      "elementText": "Data Table"
+    },
+    "target": {
+      "selector": "#design-canvas"
+    },
+    "duration": 500
+  }
+}
+```
+
+```json
+{
+  "dragAndDrop": {
+    "source": {
+      "selector": ".draggable",
+      "timeout": 10000
+    },
+    "target": {
+      "elementText": "Drop Zone",
+      "timeout": 5000
+    }
+  }
+}
+```
+
+```json
+{
+  "dragAndDrop": {
+    "source": "/Widget Item.*/",
+    "target": "#canvas"
+  }
+}
+```
+
+```json
+{
+  "dragAndDrop": {
+    "source": {
+      "selector": ".draggable",
+      "elementText": "/Button [0-9]+/"
+    },
+    "target": {
+      "elementText": "/Drop Zone.*/"
+    }
+  }
 }
 ```

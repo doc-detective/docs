@@ -16,6 +16,7 @@ maxVariation | number | Optional. Allowed variation in percentage of pixels betw
 overwrite | string | Optional. If `true`, overwrites the existing screenshot at `path` if it exists.
 If `aboveVariation`, overwrites the existing screenshot at `path` if the difference between the new screenshot and the existing screenshot is greater than `maxVariation`.<br/><br/>Accepted values: `true`, `false`, `aboveVariation` | `aboveVariation`
 crop | one of:<br/>- string<br/>- object([Crop by element (detailed)](/reference/schemas/crop-by-element-detailed)) | Optional. No description provided. | 
+sourceIntegration | object(sourceIntegration) | Optional. Information about the source integration for this screenshot, enabling upload of changed files back to the source CMS. Set automatically during test resolution for files from integrations. | 
 
 ## Examples
 
@@ -25,6 +26,12 @@ crop | one of:<br/>- string<br/>- object([Crop by element (detailed)](/reference
   "directory": "example",
   "maxVariation": 0.05,
   "overwrite": "aboveVariation",
-  "crop": "example"
+  "crop": "example",
+  "sourceIntegration": {
+    "type": "heretto",
+    "integrationName": "my-heretto",
+    "fileId": "8f3ed200-cbba-11e1-ac51-c82a1446d15c",
+    "filePath": "/db/organizations/example/repositories/docs/images/screenshot.png"
+  }
 }
 ```

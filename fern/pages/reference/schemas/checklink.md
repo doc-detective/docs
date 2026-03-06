@@ -5,8 +5,8 @@ title: "checkLink"
 ## Referenced In
 
 - [Markup definition](/reference/schemas/markup-definition)
-- [test](/reference/schemas/test)
 - [Resolved context](/reference/schemas/resolved-context)
+- [test](/reference/schemas/test)
 
 ## Fields
 
@@ -18,6 +18,33 @@ checkLink | one of:<br/>- string<br/>- object([Check link (detailed)](/reference
 
 ```json
 {
-  "checkLink": "example"
+  "checkLink": "https://www.google.com"
+}
+```
+
+```json
+{
+  "checkLink": "/search"
+}
+```
+
+```json
+{
+  "checkLink": {
+    "url": "https://www.google.com",
+    "statusCodes": 200
+  }
+}
+```
+
+```json
+{
+  "checkLink": {
+    "url": "/search",
+    "origin": "https://www.google.com",
+    "statusCodes": [
+      200
+    ]
+  }
 }
 ```

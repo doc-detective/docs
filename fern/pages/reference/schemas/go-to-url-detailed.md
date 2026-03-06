@@ -14,12 +14,16 @@ Field | Type | Description | Default
 :-- | :-- | :-- | :--
 url | string | Required. URL to navigate to. Can be a full URL or a path. If a path is provided and `origin` is specified, prepends `origin` to `url`. If a path is provided but `origin` isn't specified, attempts to navigate relative to the current URL, if any.<br/><br/>Pattern: `(^(http://|https://|/).*|\$[A-Za-z0-9_]+)` | 
 origin | string | Optional. Protocol and domain to navigate to. Prepended to `url`. | 
+timeout | integer | Optional. Maximum time in milliseconds to wait for the page to be ready. If exceeded, the goTo action fails.<br/><br/>Minimum: 0 | `30000`
+waitUntil | object | Optional. Configuration for waiting conditions after navigation. | 
 
 ## Examples
 
 ```json
 {
-  "url": "example",
-  "origin": "example"
+  "url": "/example",
+  "origin": "https://www.example.com",
+  "timeout": 30000,
+  "waitUntil": {}
 }
 ```

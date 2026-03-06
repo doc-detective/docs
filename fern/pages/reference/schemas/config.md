@@ -25,7 +25,7 @@ crawl | boolean | Optional. If `true`, crawls sitemap.xml files specified by URL
 processDitaMaps | boolean | Optional. If `true`, processes DITA maps and includes generated files as inputs. | `true`
 logLevel | string | Optional. Amount of detail to output when performing an operation.<br/><br/>Accepted values: `silent`, `error`, `warning`, `info`, `debug` | `info`
 runOn | array of object([context](/reference/schemas/context)) | Optional. Contexts to run the test in. Overrides contexts defined at the config and spec levels. | 
-fileTypes | array of one of: string, object([File type (custom)](/reference/schemas/file-type-custom)), object([File type (executable)](/reference/schemas/file-type-executable)) | Optional. Configuration for file types and their markup detection. | ``["markdown","asciidoc","html","dita"]``
+fileTypes | array of one of:<br/>- string<br/>- object([File type (custom)](/reference/schemas/file-type-custom))<br/>- object([File type (executable)](/reference/schemas/file-type-executable)) | Optional. Configuration for file types and their markup detection. | ``["markdown","asciidoc","html","dita"]``
 integrations | object([Integrations options](/reference/schemas/integrations-options)) | Optional. Options for connecting to external services. | 
 telemetry | object([Telemetry options](/reference/schemas/telemetry-options)) | Optional. Options around sending telemetry for Doc Detective usage. | ``{"send":true}``
 concurrentRunners | integer,boolean | Optional. Number of concurrent test runners. Set to true to use CPU core count (capped at 4).<br/><br/>Minimum: 1 | `1`
@@ -173,5 +173,26 @@ debug | one of:<br/>- boolean<br/>- string | Optional. Enable debugging mode. `t
 ```json
 {
   "crawl": true
+}
+```
+
+```json
+{
+  "processDitaMaps": true
+}
+```
+
+```json
+{
+  "integrations": {
+    "heretto": [
+      {
+        "name": "example",
+        "organizationId": "your-organization-id",
+        "username": "your-username",
+        "apiToken": "your-api-token"
+      }
+    ]
+  }
 }
 ```

@@ -1,0 +1,152 @@
+---
+title: detectTests()
+description: Detects tests from files based on config.
+---
+
+## Signature
+
+```javascript
+async detectTests({ config }) → any
+```
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|--------------|
+| `{ config }` | any | Yes | |
+
+## Return value
+
+Returns `any`.
+
+{/* CUSTOM CONTENT START */}
+
+
+
+
+
+
+
+## Examples
+
+### Basic usage
+
+```javascript
+import { detectTests } from "doc-detective";
+
+const config = {
+  input: "./docs",
+};
+
+const specs = await detectTests({ config });
+console.log(`Detected ${specs.length} specs`);
+```
+
+### Multiple sources
+
+```javascript
+import { detectTests } from "doc-detective";
+
+const config = {
+  input: ["./docs", "./guides", "./api-docs"],
+  recursive: true,
+};
+
+const specs = await detectTests({ config });
+for (const spec of specs) {
+  console.log(`Spec: ${spec.description || spec.file}`);
+  console.log(`  Tests: ${spec.tests.length}`);
+}
+```
+
+### JSON/YAML spec files
+
+Detect standalone spec files:
+
+```javascript
+import { detectTests } from "doc-detective";
+
+const config = {
+  input: "./tests",
+};
+
+const specs = await detectTests({ config });
+// specs include both standalone .spec.json files and inline tests
+```
+
+### Coverage analysis
+
+Use detection results to analyze test coverage across your documentation:
+
+```javascript
+import { detectTests } from "doc-detective";
+
+const config = {
+  input: "./docs",
+};
+
+const specs = await detectTests({ config });
+
+let totalTests = 0;
+let totalSteps = 0;
+
+for (const spec of specs) {
+  totalTests += spec.tests.length;
+  for (const test of spec.tests) {
+    totalSteps += test.steps.length;
+  }
+}
+
+console.log(`Coverage: ${specs.length} specs, ${totalTests} tests, ${totalSteps} steps`);
+```
+
+### Custom file types
+
+Detect tests in non-standard file formats by configuring custom file types:
+
+```javascript
+import { detectTests } from "doc-detective";
+
+const config = {
+  input: "./docs",
+  fileTypes: [
+    {
+      extensions: [".rst"],
+      testStartStatementOpen: ".. test:: ",
+      testStartStatementClose: "",
+      testEndStatement: ".. test-end::",
+      stepStatementOpen: ".. step:: ",
+      stepStatementClose: "",
+    },
+  ],
+};
+
+const specs = await detectTests({ config });
+```
+
+## Behavior
+
+When called, `detectTests()` performs the following steps:
+
+1. Validates and applies the configuration.
+2. Resolves input paths to a list of files.
+3. Identifies file types based on extensions and configuration.
+4. Reads each file and parses its content.
+5. Extracts standalone test specifications (`.spec.json`, `.spec.yaml` files).
+6. Detects inline test declarations from comments and markup patterns.
+7. Auto-detects steps if `detectSteps` is enabled.
+8. Returns the collected specs.
+
+## Notes
+
+- Files are matched against file type definitions by extension. Unknown extensions are skipped.
+- Inline test detection depends on the `testStartStatementOpen`, `testEndStatement`, and `stepStatementOpen` patterns defined for each file type.
+- The `detectSteps` configuration option controls whether Doc Detective auto-generates steps from detected markup patterns (links, images, code blocks).
+- The returned specs don't include context resolution. Use `resolveTests()` to match specs to available contexts.
+
+
+
+
+
+
+{/* CUSTOM CONTENT END */}
