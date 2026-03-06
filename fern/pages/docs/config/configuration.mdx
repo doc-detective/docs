@@ -15,7 +15,7 @@ Doc Detective looks for a configuration file in the current directory in the fol
 
 You can also specify a configuration file with the `--config` CLI flag or the `DOC_DETECTIVE_CONFIG` environment variable.
 
-The configuration file can be JSON or YAML. A JSON Schema is available at [`config`](/reference/schemas/config) for validation and autocompletion in your editor.
+The configuration file can be JSON or YAML. A JSON Schema is available at [the `config` schema](/reference/schemas/config) for validation and autocompletion in your editor.
 
 Here's a minimal configuration file:
 
@@ -35,14 +35,14 @@ These options control the basic input and output behavior:
 | `input` | string or array | `"."` | Files, directories, or URLs to test. |
 | `output` | string | `"."` | Directory for test results. |
 | `recursive` | boolean | `true` | Whether to search directories recursively for test files. |
-| `relativePathBase` | string | `"config"` | Base for resolving relative paths: `"config"` (relative to the config file) or `"cwd"` (relative to the current working directory). |
+| `relativePathBase` | string | `"file"` | Base for resolving relative paths: `"file"` (relative to the config file) or `"cwd"` (relative to the current working directory). |
 
 ```json
 {
   "input": ["./docs", "./guides"],
   "output": "./test-results",
   "recursive": true,
-  "relativePathBase": "config"
+  "relativePathBase": "file"
 }
 ```
 
@@ -466,9 +466,11 @@ You can reference environment variables in your configuration file using the `$V
   "input": ".",
   "origin": "$SITE_URL",
   "integrations": {
-    "openApi": {
-      "server": "$API_SERVER"
-    }
+    "openApi": [
+      {
+        "server": "$API_SERVER"
+      }
+    ]
   }
 }
 ```
@@ -479,7 +481,7 @@ Doc Detective resolves environment variables at runtime, so you can keep sensiti
 
 Create separate configuration files for different environments. For example, a CI-specific config with headless browsers:
 
-**.doc-detective.ci.json**:
+`.doc-detective.ci.json`:
 
 ```json
 {

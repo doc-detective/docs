@@ -169,6 +169,9 @@ Create a `.gitlab-ci.yml` file in your repository root:
 ```yaml
 doc-detective:
   image: node:22
+  script:
+    - npm i -g doc-detective
+    - npx doc-detective --config .doc-detective.ci.json
   artifacts:
     paths:
       - test-results/

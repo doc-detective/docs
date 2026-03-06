@@ -41,7 +41,7 @@ import { resolvePaths } from "doc-detective";
 const config = {
   input: "./docs",
   output: "./test-results",
-  relativePathBase: "config",
+  relativePathBase: "file",
 };
 
 const resolved = await resolvePaths({
@@ -84,7 +84,7 @@ const resolved = await resolvePaths({
 
 ### File-based vs. CWD-based resolution
 
-When `relativePathBase` is `"config"` (or `"file"`), paths resolve relative to the file containing them. When set to `"cwd"`, paths resolve relative to the current working directory.
+When `relativePathBase` is `"file"`, paths resolve relative to the file containing them. When set to `"cwd"`, paths resolve relative to the current working directory.
 
 ```javascript
 import { resolvePaths } from "doc-detective";
@@ -92,7 +92,7 @@ import { resolvePaths } from "doc-detective";
 // File-based resolution
 const fileBasedConfig = {
   input: "./docs",
-  relativePathBase: "config",
+  relativePathBase: "file",
 };
 
 await resolvePaths({
@@ -120,7 +120,7 @@ await resolvePaths({
 
 When called, `resolvePaths()`:
 
-1. Reads the `relativePathBase` setting from the config (`"config"` or `"cwd"`).
+1. Reads the `relativePathBase` setting from the config (`"file"` or `"cwd"`).
 2. Determines the base directory from the `filePath` parameter.
 3. Identifies path properties in the object based on the object type.
 4. For each relative path, resolves it to an absolute path using the appropriate base.
