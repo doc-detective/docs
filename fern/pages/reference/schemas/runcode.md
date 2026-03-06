@@ -20,7 +20,7 @@ runCode | object([Run code (detailed)](/reference/schemas/run-code-detailed)) | 
 {
   "runCode": {
     "language": "javascript",
-    "code": "console.log('Hello, ${process.env.USER}!');"
+    "code": "console.log(`Hello, ${process.env.USER}!`);"
   }
 }
 ```
@@ -55,7 +55,7 @@ runCode | object([Run code (detailed)](/reference/schemas/run-code-detailed)) | 
 {
   "runCode": {
     "language": "python",
-    "code": "print('Hello from Python')",
+    "code": "print('Hello from Python!')",
     "workingDirectory": ".",
     "exitCodes": [
       0

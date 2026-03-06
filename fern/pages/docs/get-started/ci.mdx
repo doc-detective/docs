@@ -168,11 +168,7 @@ Create a `.gitlab-ci.yml` file in your repository root:
 
 ```yaml
 doc-detective:
-  image: node:18
-  stage: test
-  script:
-    - npm i -g doc-detective
-    - npx doc-detective --input ./docs
+  image: node:22
   artifacts:
     paths:
       - test-results/
@@ -190,7 +186,7 @@ Multi-platform GitLab CI:
 
 doc-detective-linux:
   extends: .doc-detective-base
-  image: node:18
+  image: node:22
   tags:
     - linux
 
@@ -206,7 +202,7 @@ Add a stage to your `Jenkinsfile`:
 
 ```groovy
 pipeline {
-  agent { docker { image 'node:18' } }
+  agent { docker { image 'node:22' } }
   stages {
     stage('Doc Detective') {
       steps {
@@ -232,19 +228,12 @@ version: 2.1
 jobs:
   doc-detective:
     docker:
-      - image: cimg/node:18.0
+      - image: cimg/node:22.0
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - dd-deps-{{ checksum "package-lock.json" }}
       - run:
           name: Install Doc Detective
           command: npm i -g doc-detective
-      - save_cache:
-          paths:
-            - node_modules
-          key: dd-deps-{{ checksum "package-lock.json" }}
       - run:
           name: Run tests
           command: npx doc-detective --input ./docs
@@ -271,7 +260,7 @@ pool:
 steps:
   - task: NodeTool@0
     inputs:
-      versionSpec: "18.x"
+      versionSpec: "22.x"
   - script: npm i -g doc-detective
     displayName: "Install Doc Detective"
   - script: npx doc-detective --input ./docs
@@ -302,7 +291,7 @@ pool:
 steps:
   - task: NodeTool@0
     inputs:
-      versionSpec: "18.x"
+      versionSpec: "22.x"
   - script: npm i -g doc-detective
     displayName: "Install Doc Detective"
   - script: npx doc-detective --config .doc-detective.ci.json
@@ -316,7 +305,7 @@ Create a `.travis.yml` file:
 ```yaml
 language: node_js
 node_js:
-  - "18"
+  - "22"
 
 os:
   - linux
