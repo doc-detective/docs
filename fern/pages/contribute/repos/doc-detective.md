@@ -8,5 +8,7 @@ This monorepo contains:
 
 - The main CLI tool
 - [`doc-detective-common`](doc-detective-common): JSON schema definitions, schema validation logic, and path resolution logic (located in `src/common/`)
+- Container configurations: Dockerfiles and build scripts for the official Docker images (located in `src/container/`)
+- VS Code extension: The Doc Detective extension for Visual Studio Code (located in `src/vscode/`)
 
 This repo depends on [`doc-detective-core`](doc-detective-core) for the primary testing logic.
