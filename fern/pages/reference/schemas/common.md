@@ -19,6 +19,7 @@ unsafe | boolean | Optional. Whether or not the step may be unsafe. Unsafe steps
 outputs | object(Outputs (step)) | Optional. Outputs from step processes and user-defined expressions. Use the `outputs` object to reference outputs in subsequent steps. If a user-defined output matches the key for a step-defined output, the user-defined output takes precedence. | ``{}``
 variables | object(Variables (step)) | Optional. Environment variables to set from user-defined expressions. | ``{}``
 breakpoint | boolean | Optional. Whether or not this step should act as a breakpoint when debugging is enabled. When `true`, execution will pause at this step when debug mode is enabled. | `false`
+location | object([Source Location](/reference/schemas/source-location)) | ReadOnly. Source location where this step was detected in the original file. This is system-populated metadata for [detected tests](/docs/tests/detected) and should not be set manually. |
 
 ## Examples
 

@@ -3,7 +3,7 @@ title: Detected tests
 description: Automatically generate tests based on your documentation source files.
 ---
 
-Doc Detective can automatically generate tests based on your documentation source files and your `fileTypes` configuration. Detected tests are useful for large, complex test suites that you want to keep in sync with your documentation. Test detection works by setting `detectSteps` to `true` and defining markup patterns and associated actions in the `fileTypes.markup` array in your [config](/reference/schemas/config), which Doc Detective uses to extract steps from your doc source files. You can define multiple test patterns in your config to extract different types of tests from your documentation.
+Doc Detective can automatically generate tests based on your documentation source files and your `fileTypes` configuration. Detected tests are useful for large, complex test suites that you want to keep in sync with your documentation. Test detection is enabled by default (`detectSteps: true`) and uses markup patterns and associated actions defined in the `fileTypes.markup` array in your [config](/reference/schemas/config) to extract steps from your doc source files. You can define multiple test patterns in your config to extract different types of tests from your documentation.
 
 Detected tests are useful for keeping your tests in sync with your documentation. When you update your documentation, Doc Detective automatically updates the tests based on the new content. Detected tests are generated automatically. You can't edit detected tests directly, but you can update your config or documentation source files to change the tests.
 
@@ -19,6 +19,35 @@ Detected tests provide several advantages:
 - **Time savings**: Eliminates the need to write many test specifications manually
 
 Combine detected tests with [inline tests](./inline-tests) for comprehensive test coverage with minimal manual effort.
+
+## Source location tracking
+
+Detected steps include source location metadata that identifies where each step was found in your documentation. This information is useful for debugging failed tests and understanding which parts of your documentation triggered specific test steps.
+
+Each detected step includes a `location` object with:
+
+- **line**: The 1-indexed line number where the step was detected
+- **startIndex**: The 0-indexed character offset where the step begins
+- **endIndex**: The 0-indexed character offset where the step ends
+
+For example, a detected step might include:
+
+```json
+{
+  "click": "Search",
+  "location": {
+    "line": 5,
+    "startIndex": 42,
+    "endIndex": 58
+  }
+}
+```
+
+<Note>
+
+The `location` property is read-only system metadata. You can't set it manually in your test specifications.
+
+</Note>
 
 ## Default markup patterns
 
