@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> This repository is archived. All code and functionality has been merged into [doc-detective/doc-detective](https://github.com/doc-detective/doc-detective).
+
 # Doc Detective docs
 
 This is the repository for the [Doc Detective documentation](https://doc-detective.com). This repository contains all the content used to build the docs site.
