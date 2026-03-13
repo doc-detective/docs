@@ -1,0 +1,114 @@
+---
+title: CLI reference
+sidebar-title: CLI reference
+description: Command-line interface flags, environment variables, and usage examples for Doc Detective.
+---
+
+Doc Detective provides a command-line interface (CLI) for running documentation tests. You can run it with `npx` or through Docker.
+
+## Basic usage
+
+<Tabs>
+  <Tab title="NPX" language="npx">
+
+```bash
+npx doc-detective [options]
+```
+
+  </Tab>
+  <Tab title="Docker" language="docker">
+
+```bash
+docker run -v .:/app docdetective/docdetective [options]
+```
+
+  </Tab>
+</Tabs>
+
+## Options
+
+| Flag | Alias | Description | Default |
+|------|-------|-------------|---------|
+| `--config` | `-c` | Path to a configuration file. Doc Detective looks for `.doc-detective.json`, `.doc-detective.yaml`, or `.doc-detective.yml` in the current directory if not specified. | Auto-detected |
+| `--input` | `-i` | Files, directories, or URLs to test. Separate multiple values with commas. | Config's `input` value |
+| `--output` | `-o` | Directory for test results. | Config's `output` value |
+| `--logLevel` | `-l` | Log verbosity level: `silent`, `error`, `warning`, `info`, or `debug`. | `info` |
+| `--allow-unsafe` | | Allow potentially unsafe actions like `runShell` and `runCode`. Required to run these actions. | `false` |
+| `--help` | `-h` | Display help information. | |
+| `--version` | | Display the current Doc Detective version. | |
+
+## Exit codes
+
+Doc Detective returns the following exit codes:
+
+| Code | Meaning |
+|------|---------|
+| `0` | All tests passed (or completed with warnings). |
+| `1` | One or more tests failed or an error occurred. |
+
+You can use exit codes in scripts to take action based on test results:
+
+```bash
+npx doc-detective --input ./docs
+if [ $? -ne 0 ]; then
+  echo "Documentation tests failed!"
+  exit 1
+fi
+```
+
+## Environment variables
+
+Doc Detective recognizes the following environment variables:
+
+| Variable | Description |
+|----------|-------------|
+| `DOC_DETECTIVE_CONFIG` | Path to a configuration file. Equivalent to `--config`. |
+| `DOC_DETECTIVE_API` | API key for Doc Detective integrations. |
+| `DOC_DETECTIVE_META` | Metadata to include with test results. |
+
+## Configuration precedence
+
+When the same option is set in multiple places, Doc Detective applies settings in this order (highest priority first):
+
+1. **CLI arguments** — Flags passed directly on the command line.
+2. **Environment variables** — Values set in the shell environment.
+3. **Configuration file** — Values in `.doc-detective.json`, `.doc-detective.yaml`, or `.doc-detective.yml`.
+4. **Defaults** — Built-in default values.
+
+## Examples
+
+Run tests with default settings:
+
+```bash
+npx doc-detective
+```
+
+Specify a configuration file:
+
+```bash
+npx doc-detective --config .doc-detective.ci.json
+```
+
+Test multiple inputs:
+
+```bash
+npx doc-detective --input ./docs,./guides,./tutorials
+```
+
+Set log level to debug for troubleshooting:
+
+```bash
+npx doc-detective --logLevel debug
+```
+
+Allow unsafe operations like shell commands:
+
+```bash
+npx doc-detective --allow-unsafe --input ./tests
+```
+
+Output results to a specific directory:
+
+```bash
+npx doc-detective --output ./test-results
+```

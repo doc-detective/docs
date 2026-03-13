@@ -5,8 +5,8 @@ title: "loadVariables"
 ## Referenced In
 
 - [Markup definition](/reference/schemas/markup-definition)
-- [test](/reference/schemas/test)
 - [Resolved context](/reference/schemas/resolved-context)
+- [test](/reference/schemas/test)
 
 ## Fields
 
@@ -18,6 +18,6 @@ loadVariables | string | Required. Load environment variables from the specified
 
 ```json
 {
-  "loadVariables": "example"
+  "loadVariables": ".env"
 }
 ```

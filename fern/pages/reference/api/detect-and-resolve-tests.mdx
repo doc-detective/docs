@@ -1,0 +1,160 @@
+---
+title: detectAndResolveTests()
+description: Detects and resolves tests based on the provided configuration.
+---
+
+## Signature
+
+```javascript
+async detectAndResolveTests({ config }) → any
+```
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `{ config }` | any | Yes | |
+
+## Return value
+
+Returns `any`.
+
+{/* CUSTOM CONTENT START */}
+
+
+
+
+
+
+
+## Examples
+
+### Basic usage
+
+```javascript
+import { detectAndResolveTests } from "doc-detective";
+
+const config = {
+  input: "./docs",
+};
+
+const resolvedTests = await detectAndResolveTests({ config });
+if (resolvedTests) {
+  console.log(`Found ${resolvedTests.specs.length} specs`);
+}
+```
+
+### Pass to runTests
+
+The most common use case: detect and resolve tests once, then pass them to `runTests()`:
+
+```javascript
+import { detectAndResolveTests, runTests } from "doc-detective";
+
+const config = {
+  input: "./docs",
+  output: "./test-results",
+};
+
+const resolvedTests = await detectAndResolveTests({ config });
+if (resolvedTests) {
+  const results = await runTests(config, { resolvedTests });
+  console.log(results.summary);
+}
+```
+
+### Inspect before running
+
+```javascript
+import { detectAndResolveTests, runTests } from "doc-detective";
+
+const config = {
+  input: "./docs",
+};
+
+const resolvedTests = await detectAndResolveTests({ config });
+if (resolvedTests) {
+  // Inspect the resolved tests
+  for (const spec of resolvedTests.specs) {
+    console.log(`Spec: ${spec.description || spec.file}`);
+    for (const test of spec.tests) {
+      console.log(`  Test: ${test.description}`);
+      console.log(`  Contexts: ${test.contexts.length}`);
+    }
+  }
+
+  // Then run
+  const results = await runTests(config, { resolvedTests });
+}
+```
+
+### Context resolution
+
+```javascript
+import { detectAndResolveTests } from "doc-detective";
+
+const config = {
+  input: "./docs",
+  runOn: [
+    {
+      platforms: ["linux"],
+      browsers: { name: "chrome", headless: true },
+    },
+  ],
+};
+
+const resolvedTests = await detectAndResolveTests({ config });
+```
+
+### CI/CD integration
+
+```javascript
+import { detectAndResolveTests, runTests } from "doc-detective";
+
+const config = {
+  input: "./docs",
+  output: "./test-results",
+  logLevel: "error",
+  runOn: [
+    {
+      platforms: ["linux"],
+      browsers: { name: "chrome", headless: true },
+    },
+  ],
+};
+
+const resolvedTests = await detectAndResolveTests({ config });
+if (!resolvedTests) {
+  console.log("No tests found.");
+  process.exit(0);
+}
+
+const results = await runTests(config, { resolvedTests });
+if (results.summary.tests.fail > 0) {
+  process.exit(1);
+}
+```
+
+## When to use
+
+Use `detectAndResolveTests()` when you want to:
+
+- **Prepare once, run many**: Detect and resolve tests once, then pass the resolved tests to `runTests()` multiple times (for example, with different configurations).
+- **Inspect test structure**: Examine which tests and contexts were detected before running.
+- **Validate tests**: Check that your test files are properly structured without executing them.
+- **Cache resolved tests**: Store the resolved tests for later execution.
+
+If you don't need to inspect or reuse the resolved tests, you can call `runTests()` directly, which handles detection and resolution internally.
+
+## Notes
+
+- Internally calls `detectTests()` followed by `resolveTests()`.
+- Returns `null` (instead of throwing) if no tests are found, so always check the return value.
+- Context resolution is environment-dependent. Results differ based on the current platform and available browsers.
+
+
+
+
+
+
+{/* CUSTOM CONTENT END */}

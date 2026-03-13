@@ -22,6 +22,7 @@ markup | array of object([Markup definition](/reference/schemas/markup-definitio
 {
   "name": "example",
   "extends": "markdown",
+  "extensions": "example",
   "inlineStatements": {},
   "markup": []
 }

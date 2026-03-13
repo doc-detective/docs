@@ -12,8 +12,13 @@ title: "Click element (detailed)"
 Field | Type | Description | Default
 :-- | :-- | :-- | :--
 button | string | Optional. Kind of click to perform.<br/><br/>Accepted values: `left`, `right`, `middle` | 
-elementText | string | Optional. Display text of the element to click. If combined with `selector`, the element must match both the text and the selector. | 
-selector | string | Optional. Selector of the element to click. If combined with `elementText`, the element must match both the text and the selector. | 
+elementText | string | Optional. Display text of the element to click. If combined with other element finding fields, the element must match all specified criteria. | 
+selector | string | Optional. Selector of the element to click. If combined with other element finding fields, the element must match all specified criteria. | 
+elementId | string | Optional. ID attribute of the element to click. Supports exact match or regex pattern using /pattern/ syntax. | 
+elementTestId | string | Optional. data-testid attribute of the element to click. Supports exact match or regex pattern using /pattern/ syntax. | 
+elementClass | one of:<br/>- string<br/>- array of string | Optional. Class or array of classes that the element must have. Each class supports exact match or regex pattern using /pattern/ syntax. Element must have all specified classes. | 
+elementAttribute | object | Optional. Object of attribute key-value pairs that the element must have. Values can be strings (supporting /pattern/ regex), numbers, or booleans. Boolean true matches attribute presence, false matches absence. | 
+elementAria | string | Optional. Computed accessible name of the element per ARIA specification. Supports exact match or regex pattern using /pattern/ syntax. | 
 
 ## Examples
 
@@ -21,6 +26,11 @@ selector | string | Optional. Selector of the element to click. If combined with
 {
   "button": "left",
   "elementText": "example",
-  "selector": "example"
+  "selector": "example",
+  "elementId": "example",
+  "elementTestId": "example",
+  "elementClass": "example",
+  "elementAttribute": {},
+  "elementAria": "example"
 }
 ```

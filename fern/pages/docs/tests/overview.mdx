@@ -5,7 +5,7 @@ description: Tests tell Doc Detective what actions to perform, how, and where.
 
 Tests tell Doc Detective what actions to perform, how, and where. Tests are made of three sets of components:
 
-- **Test specification**: The highest-level component, test specifications (or specs) are collection of tests that should run together. [Contexts](/docs/configuration/contexts) defined in the spec are shared by all tests in the spec. Test specifications are equivalent to test suites in other testing frameworks.
+- **Test specification**: The highest-level component, test specifications (or specs) are collection of tests that should run together. [Contexts](/docs/configuration#contexts) defined in the spec are shared by all tests in the spec. Test specifications are equivalent to test suites in other testing frameworks.
 - **Test**: A test to run within a spec. Each test has a name, and a set of steps to perform. Tests are equivalent to test cases in other testing frameworks.
 - **Steps**: A step is a single action to perform within a test. Each individual step acts as an assertion that the step completes as expected. Steps are roughly equivalent to assertions in other testing frameworks.
 
@@ -38,7 +38,7 @@ When Doc Detective runs a test, the result is one of four statuses:
 
 ### Skipped tests
 
-When Doc Detective runs tests, it checks if each [context](/docs/configuration/contexts) matches your current environment. If a context specifies a platform or browser that doesn't match the system running the test, Doc Detective skips that context and its associated test.
+When Doc Detective runs tests, it checks if each [context](/docs/configuration#contexts) matches your current environment. If a context specifies a platform or browser that doesn't match the system running the test, Doc Detective skips that context and its associated test.
 
 Doc Detective skips tests when:
 
@@ -248,6 +248,144 @@ docker run -v .:/app docdetective/docdetective --input /app/inline-tests.md,http
 
   </Tab>
 </Tabs>
+
+## Common test patterns
+
+Here are some patterns you can use as starting points for common testing scenarios.
+
+### Login flow
+
+```json
+{
+  "tests": [
+    {
+      "description": "Test login flow",
+      "steps": [
+        { "goTo": "https://app.example.com/login" },
+        { "find": "input[name='email']" },
+        { "type": ["user@example.com"] },
+        { "find": "input[name='password']" },
+        { "type": ["password123"] },
+        { "click": "button[type='submit']" },
+        { "find": ".dashboard" }
+      ]
+    }
+  ]
+}
+```
+
+### Form submission
+
+```json
+{
+  "tests": [
+    {
+      "description": "Test contact form",
+      "steps": [
+        { "goTo": "https://example.com/contact" },
+        { "find": "input[name='name']" },
+        { "type": ["Jane Doe"] },
+        { "find": "input[name='email']" },
+        { "type": ["jane@example.com"] },
+        { "find": "textarea[name='message']" },
+        { "type": ["Hello, this is a test message."] },
+        { "click": "button[type='submit']" },
+        { "find": ".success-message" }
+      ]
+    }
+  ]
+}
+```
+
+### API CRUD operations
+
+```json
+{
+  "tests": [
+    {
+      "description": "Test API endpoints",
+      "steps": [
+        {
+          "httpRequest": {
+            "url": "https://api.example.com/items",
+            "method": "POST",
+            "request": {
+              "headers": { "Content-Type": "application/json" },
+              "body": { "name": "Test item" }
+            },
+            "statusCodes": [201]
+          }
+        },
+        {
+          "httpRequest": {
+            "url": "https://api.example.com/items",
+            "method": "GET",
+            "statusCodes": [200]
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+### Working with variables
+
+Load environment variables and use them across steps:
+
+```json
+{
+  "tests": [
+    {
+      "description": "Test with variables",
+      "steps": [
+        { "loadVariables": ".env" },
+        { "goTo": "$SITE_URL" },
+        {
+          "httpRequest": {
+            "url": "$API_URL/status",
+            "method": "GET",
+            "request": {
+              "headers": {
+                "Authorization": "Bearer $API_TOKEN"
+              }
+            },
+            "statusCodes": [200]
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+### Setup and cleanup
+
+Use `before` and `after` properties to run steps before and after a test. Each property accepts a path to a test specification file whose first test's steps run in the current browser context:
+
+```json
+{
+  "tests": [
+    {
+      "description": "Test with setup and cleanup",
+      "before": "./setup.spec.json",
+      "steps": [
+        { "find": "h1" },
+        { "screenshot": "homepage.png" }
+      ],
+      "after": "./cleanup.spec.json"
+    }
+  ]
+}
+```
+
+## Best practices
+
+- **Use descriptive IDs**: Give tests and steps meaningful identifiers so failures are easy to diagnose.
+- **Add descriptions**: Include a `description` for each test explaining what it validates.
+- **Use specific selectors**: Prefer unique CSS selectors or IDs over generic ones to avoid fragile tests.
+- **Add wait steps**: Insert `wait` steps after actions that trigger page loads or animations to avoid timing issues.
+- **Keep tests focused**: Each test should validate one specific workflow or feature.
 
 ## Read the results
 

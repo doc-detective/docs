@@ -79,3 +79,61 @@ You should see output in the terminal indicating the progress and results of the
 ## Next steps
 
 Next up, take a look at some of the [concepts](/docs/get-started/concepts) native to Doc Detective, check out some of the guided [tutorials](/tutorials), or explore how to write [tests](/docs/tests) and [actions](/docs/actions) to automate your documentation testing.
+
+## Typical project structure
+
+A common project layout when using Doc Detective:
+
+```
+my-docs-project/
+├── .doc-detective.json    # Configuration file
+├── docs/
+│   ├── getting-started.md
+│   ├── getting-started.spec.json
+│   ├── api-reference.md
+│   └── api-reference.spec.json
+├── test-results/          # Generated test results
+└── screenshots/           # Generated screenshots
+```
+
+## Troubleshooting
+
+### Command not found
+
+If you get a "command not found" error after installing, make sure your npm global `bin` directory is in your system's `PATH`:
+
+```bash
+npm config get prefix
+```
+
+Add the displayed path's `bin` subdirectory to your `PATH`.
+
+### Permission errors
+
+On macOS and Linux, if you get permission errors during installation, avoid using `sudo`. Instead, configure npm to use a different directory:
+
+```bash
+mkdir ~/.npm-global
+npm config set prefix '~/.npm-global'
+```
+
+Then add `~/.npm-global/bin` to your `PATH`.
+
+Alternatively, use [nvm](https://github.com/nvm-sh/nvm) to manage Node.js installations without requiring elevated permissions.
+
+### Browser launch issues
+
+If Doc Detective can't launch a browser:
+
+- Make sure Chrome or Firefox is installed on your system.
+- On Linux, install required dependencies: `sudo apt-get install -y libgbm-dev libasound2`.
+- In CI environments, use headless mode in your [configuration](/docs/configuration).
+
+### Module not found
+
+If you see "module not found" errors, try reinstalling:
+
+```bash
+npm uninstall -g doc-detective
+npm i -g doc-detective
+```

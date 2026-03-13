@@ -8,9 +8,9 @@ OpenAPI description and configuration.
 
 - [HTTP request (detailed)](/reference/schemas/http-request-detailed)
 - [Integrations options](/reference/schemas/integrations-options)
+- [Resolved context](/reference/schemas/resolved-context)
 - [specification](/reference/schemas/specification)
 - [test](/reference/schemas/test)
-- [Resolved context](/reference/schemas/resolved-context)
 
 ## Fields
 

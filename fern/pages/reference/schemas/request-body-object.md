@@ -14,3 +14,7 @@ Field | Type | Description | Default
 :-- | :-- | :-- | :--
 
 ## Examples
+
+```json
+{}
+```

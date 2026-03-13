@@ -5,8 +5,8 @@ title: "stopRecord"
 ## Referenced In
 
 - [Markup definition](/reference/schemas/markup-definition)
-- [test](/reference/schemas/test)
 - [Resolved context](/reference/schemas/resolved-context)
+- [test](/reference/schemas/test)
 
 ## Fields
 

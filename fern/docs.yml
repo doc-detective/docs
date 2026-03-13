@@ -114,6 +114,8 @@ navigation:
         contents:
           - page: Installation
             path: pages/docs/get-started/installation.mdx
+          - page: CLI reference
+            path: pages/docs/get-started/cli-reference.mdx
           - page: Concepts
             path: pages/docs/get-started/concepts.md
           - page: Create your first test
@@ -129,8 +131,8 @@ navigation:
 
       - section: Configuration
         contents:
-          - page: Contexts
-            path: pages/docs/config/contexts.md
+          - page: Configuration
+            path: pages/docs/config/configuration.mdx
 
       - section: Tests
         contents:
@@ -228,6 +230,24 @@ navigation:
     layout:
       - page: Glossary
         path: pages/reference/glossary.mdx
+      - section: Programmatic API
+        contents:
+          - page: Overview
+            path: pages/reference/api/overview.mdx
+          - page: runTests()
+            path: pages/reference/api/run-tests.mdx
+          - page: detectTests()
+            path: pages/reference/api/detect-tests.mdx
+          - page: detectAndResolveTests()
+            path: pages/reference/api/detect-and-resolve-tests.mdx
+          - page: resolveTests()
+            path: pages/reference/api/resolve-tests.mdx
+          - page: getRunner()
+            path: pages/reference/api/get-runner.mdx
+          - page: readFile()
+            path: pages/reference/api/read-file.mdx
+          - page: resolvePaths()
+            path: pages/reference/api/resolve-paths.mdx
       - folder: pages/reference/schemas
         title: Schemas
 

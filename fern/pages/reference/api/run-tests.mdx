@@ -1,0 +1,171 @@
+---
+title: runTests()
+description: Runs detected documentation tests and returns aggregated results.
+---
+
+## Signature
+
+```javascript
+async runTests(config, options?) → any
+```
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `config` | any | Yes | |
+| `options` | any | No | |
+
+## Return value
+
+Returns `any`.
+
+{/* CUSTOM CONTENT START */}
+
+
+
+
+
+
+
+## Examples
+
+### Basic usage
+
+```javascript
+import { runTests } from "doc-detective";
+
+const config = {
+  input: "./docs",
+  output: "./test-results",
+};
+
+const results = await runTests(config);
+if (results) {
+  console.log("Tests completed:", results.summary);
+} else {
+  console.log("No tests found.");
+}
+```
+
+### With pre-resolved tests
+
+Use pre-resolved tests to separate the detection/resolution phase from execution. This is useful when you want to inspect or filter tests before running them.
+
+```javascript
+import { detectAndResolveTests, runTests } from "doc-detective";
+
+const config = {
+  input: "./docs",
+};
+
+const resolvedTests = await detectAndResolveTests({ config });
+
+if (resolvedTests) {
+  const results = await runTests(config, { resolvedTests });
+  console.log(results.summary);
+}
+```
+
+### Handle results
+
+```javascript
+import { runTests } from "doc-detective";
+
+const config = {
+  input: "./docs",
+};
+
+const results = await runTests(config);
+if (results) {
+  const { pass, fail, warning, skipped } = results.summary.tests;
+  console.log(`Pass: ${pass}, Fail: ${fail}, Warning: ${warning}, Skipped: ${skipped}`);
+
+  if (fail > 0) {
+    process.exit(1);
+  }
+}
+```
+
+### Multiple inputs
+
+```javascript
+import { runTests } from "doc-detective";
+
+const config = {
+  input: ["./docs", "./guides", "./tutorials"],
+  output: "./test-results",
+};
+
+const results = await runTests(config);
+```
+
+### Specific contexts
+
+```javascript
+import { runTests } from "doc-detective";
+
+const config = {
+  input: "./docs",
+  runOn: [
+    {
+      platforms: ["linux"],
+      browsers: {
+        name: "chrome",
+        headless: true,
+      },
+    },
+  ],
+};
+
+const results = await runTests(config);
+```
+
+### CI/CD integration
+
+```javascript
+import { runTests } from "doc-detective";
+
+const config = {
+  input: "./docs",
+  output: "./test-results",
+  logLevel: "error",
+  runOn: [
+    {
+      platforms: ["linux"],
+      browsers: { name: "chrome", headless: true },
+    },
+  ],
+};
+
+const results = await runTests(config);
+if (!results || results.summary.tests.fail > 0) {
+  process.exit(1);
+}
+```
+
+## Behavior
+
+When called, `runTests()` performs the following steps:
+
+1. Validates and applies the configuration.
+2. Detects test specifications from input files (unless `resolvedTests` is provided).
+3. Resolves tests against available contexts.
+4. Launches browser runners for each context.
+5. Executes test steps in sequence within each test.
+6. Collects results for each step, test, and context.
+7. Cleans up browser sessions.
+8. Returns the aggregated results.
+
+## Notes
+
+- If `resolvedTests` is provided, steps 2 and 3 are skipped, which can improve performance when running the same tests multiple times.
+- Set `concurrentRunners` in the configuration to run tests in parallel across contexts.
+- The function returns `null` rather than throwing errors, so always check the return value.
+
+
+
+
+
+
+{/* CUSTOM CONTENT END */}

@@ -5,8 +5,8 @@ title: "saveCookie"
 ## Referenced In
 
 - [Markup definition](/reference/schemas/markup-definition)
-- [test](/reference/schemas/test)
 - [Resolved context](/reference/schemas/resolved-context)
+- [test](/reference/schemas/test)
 
 ## Fields
 
@@ -18,6 +18,61 @@ saveCookie | one of:<br/>- string<br/>- object([Save cookie (detailed)](/referen
 
 ```json
 {
-  "saveCookie": "example"
+  "saveCookie": "session_token"
+}
+```
+
+```json
+{
+  "saveCookie": "test_env_cookie"
+}
+```
+
+```json
+{
+  "saveCookie": {
+    "name": "auth_cookie",
+    "path": "auth-cookie.txt"
+  }
+}
+```
+
+```json
+{
+  "saveCookie": {
+    "name": "session_token",
+    "variable": "SESSION_TOKEN"
+  }
+}
+```
+
+```json
+{
+  "saveCookie": {
+    "name": "test_cookie",
+    "path": "test-cookie.txt",
+    "overwrite": true
+  }
+}
+```
+
+```json
+{
+  "saveCookie": {
+    "name": "user_session",
+    "path": "user-session.txt",
+    "directory": "./test-data",
+    "overwrite": true
+  }
+}
+```
+
+```json
+{
+  "saveCookie": {
+    "name": "login_token",
+    "path": "login-token.txt",
+    "domain": "app.example.com"
+  }
 }
 ```

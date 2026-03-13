@@ -5,8 +5,8 @@ title: "wait"
 ## Referenced In
 
 - [Markup definition](/reference/schemas/markup-definition)
-- [test](/reference/schemas/test)
 - [Resolved context](/reference/schemas/resolved-context)
+- [test](/reference/schemas/test)
 
 ## Fields
 
@@ -19,5 +19,17 @@ wait | one of:<br/>- number<br/>- string<br/>- boolean | Required. Pause (in mil
 ```json
 {
   "wait": 5000
+}
+```
+
+```json
+{
+  "wait": "$WAIT_DURATION"
+}
+```
+
+```json
+{
+  "wait": true
 }
 ```

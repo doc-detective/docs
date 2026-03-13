@@ -1,0 +1,105 @@
+---
+title: Programmatic API overview
+sidebar-title: Overview
+description: Use Doc Detective's Node.js API to run tests, detect test specs, and manage test execution programmatically.
+---
+
+Doc Detective provides a Node.js API that you can use to integrate documentation testing into your own tools, scripts, and workflows.
+
+## Installation
+
+Install Doc Detective as a dependency in your project:
+
+```bash
+npm install doc-detective
+```
+
+## Functions
+
+The API provides the following functions, grouped by category:
+
+### Test execution
+
+- [`runTests()`](/reference/api/run-tests): Run documentation tests and return results.
+- [`getRunner()`](/reference/api/get-runner): Create a browser runner for executing individual test steps.
+
+### Test discovery and resolution
+
+- [`detectTests()`](/reference/api/detect-tests): Scan input files and detect test specifications.
+- [`resolveTests()`](/reference/api/resolve-tests): Resolve detected tests against available contexts (platforms and browsers).
+- [`detectAndResolveTests()`](/reference/api/detect-and-resolve-tests): Convenience function that combines `detectTests()` and `resolveTests()`.
+
+### File and path utilities
+
+- [`readFile()`](/reference/api/read-file): Read and parse local or remote files.
+- [`resolvePaths()`](/reference/api/resolve-paths): Resolve relative paths in configuration and spec objects to absolute paths.
+
+## Basic usage
+
+### Run tests
+
+```javascript
+import { runTests } from "doc-detective";
+
+const config = {
+  input: "./docs",
+  output: "./test-results",
+};
+
+const results = await runTests(config);
+console.log(results.summary);
+```
+
+### Detect and resolve tests
+
+```javascript
+import { detectTests, resolveTests } from "doc-detective";
+
+const config = {
+  input: "./docs",
+};
+
+// Detect test specs from input files
+const detectedTests = await detectTests({ config });
+
+// Resolve tests against available contexts
+const resolvedTests = await resolveTests({ config, detectedTests });
+
+// Inspect resolved tests before running
+console.log(`Found ${resolvedTests.specs.length} specs`);
+```
+
+### Convenience workflow
+
+```javascript
+import { detectAndResolveTests, runTests } from "doc-detective";
+
+const config = {
+  input: "./docs",
+};
+
+// Detect and resolve in one step
+const resolvedTests = await detectAndResolveTests({ config });
+
+if (resolvedTests) {
+  // Run with pre-resolved tests
+  const results = await runTests(config, { resolvedTests });
+  console.log(results.summary);
+}
+```
+
+## Configuration
+
+All API functions accept a configuration object with the same options available in the [configuration file](/docs/configuration). See the [`config`](/reference/schemas/config) schema for all available options.
+
+## Error handling
+
+API functions handle errors gracefully:
+
+- `runTests()` returns `null` if no tests are found or an error occurs.
+- `detectTests()` returns an empty array if no tests are detected.
+- `resolveTests()` returns a `ResolvedTests` object with empty arrays if resolution finds no matches.
+- `detectAndResolveTests()` returns `null` if no tests are found.
+- `readFile()` returns `null` if the file can't be read or parsed.
+
+For detailed error information, set `logLevel` to `"debug"` in your configuration.

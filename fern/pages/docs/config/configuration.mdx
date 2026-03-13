@@ -1,0 +1,596 @@
+---
+title: Configuration
+description: Configure Doc Detective's behavior, including input/output, contexts, file types, integrations, and more.
+---
+
+Doc Detective uses a configuration file to control its behavior. You can set options for test input and output, execution contexts, file type handling, integrations, and more.
+
+## Config file basics
+
+Doc Detective looks for a configuration file in the current directory in the following order:
+
+1. `.doc-detective.json`
+2. `.doc-detective.yaml`
+3. `.doc-detective.yml`
+
+You can also specify a configuration file with the `--config` CLI flag or the `DOC_DETECTIVE_CONFIG` environment variable.
+
+The configuration file can be JSON or YAML. A JSON Schema is available at [the `config` schema](/reference/schemas/config) for validation and autocompletion in your editor.
+
+Here's a minimal configuration file:
+
+```json
+{
+  "input": ".",
+  "output": "output"
+}
+```
+
+## Core options
+
+These options control the basic input and output behavior:
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `input` | string or array | `"."` | Files, directories, or URLs to test. |
+| `output` | string | `"."` | Directory for test results. |
+| `recursive` | boolean | `true` | Whether to search directories recursively for test files. |
+| `relativePathBase` | string | `"file"` | Base for resolving relative paths: `"file"` (relative to the config file) or `"cwd"` (relative to the current working directory). |
+
+```json
+{
+  "input": ["./docs", "./guides"],
+  "output": "./test-results",
+  "recursive": true,
+  "relativePathBase": "file"
+}
+```
+
+## Test execution
+
+These options control how Doc Detective runs tests:
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `detectSteps` | boolean | `true` | Whether to auto-detect test steps from documentation content. |
+| `allowUnsafeSteps` | boolean | `false` | Whether to allow `runShell` and `runCode` actions. |
+| `concurrentRunners` | number | `1` | Number of browsers to run concurrently for parallel testing. |
+
+```json
+{
+  "input": ".",
+  "detectSteps": true,
+  "allowUnsafeSteps": false,
+  "concurrentRunners": 2
+}
+```
+
+## Contexts
+
+Contexts define *where* tests run. A context specifies a combination of a target platform (operating system) and, optionally, a target browser with specific configurations.
+
+By default, if contexts are needed but not specified, Doc Detective attempts to find a supported browser (like Chrome or Firefox) on the current platform (Windows, macOS, or Linux) and run tests there.
+
+For comprehensive options, see the [`context` schema](/reference/schemas/context).
+
+### Defining contexts
+
+You define contexts using a `runOn` array of context objects. Each context object specifies target `platforms` (as a string or array) and target `browsers` (as a string, array, or object).
+
+```json
+{
+  "runOn": [
+    {
+      "platforms": ["windows", "mac", "linux"],
+      "browsers": "chrome"
+    },
+    {
+      "platforms": ["windows", "mac", "linux"],
+      "browsers": "firefox"
+    },
+    {
+      "platforms": "mac",
+      "browsers": "webkit"
+    }
+  ]
+}
+```
+
+### Context precedence
+
+You can specify contexts at three levels, in order of precedence:
+
+1. **Test**: Contexts defined within a specific [`test`](/reference/schemas/test) override all other contexts and apply only to that test.
+2. **Spec**: Contexts defined in a [`specification`](/reference/schemas/specification) override config-level contexts and apply to all tests within that spec unless overridden.
+3. **Config**: Contexts defined in the main [`config`](/reference/schemas/config) apply to all tests unless overridden.
+
+### Browsers
+
+Doc Detective can perform browser-based tests on the following engines:
+
+- **Chrome** (`chrome`): Uses Chromium. Available on Windows, macOS, and Linux. The only browser that currently supports video recording via the [`record`](/docs/actions/record) action.
+- **Firefox** (`firefox`): Uses Firefox. Available on Windows, macOS, and Linux.
+- **WebKit** (`webkit` or `safari`): Uses WebKit. Primarily associated with Safari on macOS.
+
+#### Chrome
+
+Here's a basic Chrome context:
+
+```json
+{
+  "platforms": ["windows", "mac", "linux"],
+  "browsers": "chrome"
+}
+```
+
+With dimensions and visibility:
+
+```json
+{
+  "platforms": ["windows", "mac", "linux"],
+  "browsers": {
+    "name": "chrome",
+    "headless": false,
+    "window": {
+      "width": 1280,
+      "height": 800
+    },
+    "viewport": {
+      "width": 1200,
+      "height": 720
+    }
+  }
+}
+```
+
+<Note>
+Set `headless` to `false` (headed mode) to use the `record` action for video capture.
+</Note>
+
+#### Firefox
+
+Here's a basic Firefox context:
+
+```json
+{
+  "platforms": ["windows", "mac", "linux"],
+  "browsers": "firefox"
+}
+```
+
+With dimensions and visibility:
+
+```json
+{
+  "platforms": ["windows", "mac", "linux"],
+  "browsers": {
+    "name": "firefox",
+    "headless": true,
+    "window": {
+      "width": 1024,
+      "height": 768
+    }
+  }
+}
+```
+
+#### WebKit / Safari
+
+You can use either `webkit` or `safari` as the browser name.
+
+Before running tests with WebKit/Safari on macOS, you might need to enable the driver:
+
+1. Run `safaridriver --enable` in your terminal.
+2. Ensure **Develop > Allow Remote Automation** is checked in Safari's menu bar (you might need to enable the Develop menu first in Safari's Advanced preferences).
+
+<Note>
+This setup is often handled automatically in CI environments like GitHub Actions.
+</Note>
+
+```json
+{
+  "platforms": "mac",
+  "browsers": "webkit"
+}
+```
+
+WebKit/Safari does **not** support headless mode:
+
+```json
+{
+  "platforms": "mac",
+  "browsers": {
+    "name": "webkit",
+    "headless": false,
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    }
+  }
+}
+```
+
+### Platforms
+
+Doc Detective supports the following platforms:
+
+- **Windows** (`windows`)
+- **macOS** (`mac`)
+- **Linux** (`linux`) — tested primarily on Ubuntu
+
+When you specify a platform in a context, Doc Detective runs the associated tests only on a matching operating system. If `platforms` is omitted, it defaults to the current platform.
+
+### Responsive design testing
+
+You can create contexts with different viewport sizes to test responsive layouts:
+
+```json
+{
+  "runOn": [
+    {
+      "platforms": ["windows", "mac", "linux"],
+      "browsers": {
+        "name": "chrome",
+        "viewport": { "width": 1920, "height": 1080 }
+      }
+    },
+    {
+      "platforms": ["windows", "mac", "linux"],
+      "browsers": {
+        "name": "chrome",
+        "viewport": { "width": 768, "height": 1024 }
+      }
+    },
+    {
+      "platforms": ["windows", "mac", "linux"],
+      "browsers": {
+        "name": "chrome",
+        "viewport": { "width": 375, "height": 812 }
+      }
+    }
+  ]
+}
+```
+
+### Contexts in a config
+
+Contexts defined at the config level apply to all tests unless overridden by spec- or test-level contexts.
+
+```json
+{
+  "input": ".",
+  "output": "output",
+  "runOn": [
+    {
+      "platforms": ["windows", "mac", "linux"],
+      "browsers": "chrome"
+    },
+    {
+      "platforms": ["windows", "mac", "linux"],
+      "browsers": "firefox"
+    },
+    {
+      "platforms": "mac",
+      "browsers": {
+        "name": "webkit",
+        "window": { "width": 1280, "height": 800 }
+      }
+    }
+  ]
+}
+```
+
+### Contexts in a specification
+
+Contexts in a spec override config-level contexts for all tests in that spec.
+
+```json
+{
+  "description": "Login tests",
+  "runOn": [
+    {
+      "platforms": ["windows", "mac"],
+      "browsers": "chrome"
+    }
+  ],
+  "tests": []
+}
+```
+
+### Contexts in a test
+
+Contexts in a test override both config- and spec-level contexts for that specific test.
+
+```json
+{
+  "description": "Main application specification",
+  "tests": [
+    {
+      "description": "Test login form on Windows/Chrome only",
+      "runOn": [
+        {
+          "platforms": "windows",
+          "browsers": "chrome"
+        }
+      ],
+      "steps": []
+    },
+    {
+      "description": "Test dashboard on all default contexts",
+      "steps": []
+    }
+  ]
+}
+```
+
+### CI/CD matrix testing
+
+Use contexts with CI/CD matrix strategies to test across multiple platforms and browsers:
+
+```yaml
+# GitHub Actions matrix example
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: doc-detective/github-action@v1
+```
+
+## Setup and cleanup
+
+Use these options to run actions before and after your test suite:
+
+| Option | Type | Description |
+|--------|------|-------------|
+| `beforeAny` | string or array of string | Test specification file(s) to run before any tests start. |
+| `afterAll` | string or array of string | Test specification file(s) to run after all tests complete. |
+
+```json
+{
+  "input": ".",
+  "beforeAny": ["./setup.spec.json"],
+  "afterAll": ["./cleanup.spec.json"]
+}
+```
+
+## Logging and debugging
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `logLevel` | string | `"info"` | Log verbosity: `silent`, `error`, `warning`, `info`, or `debug`. |
+
+```json
+{
+  "input": ".",
+  "logLevel": "debug"
+}
+```
+
+## Advanced options
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `origin` | string | `""` | Default protocol and domain prepended to relative paths in `goTo` actions. |
+| `crawl` | boolean | `false` | Whether to automatically crawl links in the input files. |
+
+```json
+{
+  "input": ".",
+  "origin": "https://docs.example.com",
+  "crawl": false
+}
+```
+
+## File type configuration
+
+Doc Detective determines how to parse input files based on file type definitions. You can customize file type handling to support additional file extensions or inline test patterns.
+
+Each file type definition includes:
+
+| Property | Description |
+|----------|-------------|
+| `extensions` | File extensions associated with this type (such as `.md`, `.mdx`). |
+| `testStartStatementOpen` | Opening pattern for inline test declarations. |
+| `testStartStatementClose` | Closing pattern for inline test declarations. |
+| `testEndStatement` | Pattern for test end declarations. |
+| `stepStatementOpen` | Opening pattern for inline step declarations. |
+| `stepStatementClose` | Closing pattern for inline step declarations. |
+| `testIgnoreStatement` | Pattern for test ignore blocks. |
+| `markupStatement` | Patterns for detecting markup elements (links, images, code blocks). |
+
+```json
+{
+  "fileTypes": [
+    {
+      "extensions": [".rst"],
+      "testStartStatementOpen": ".. test:: ",
+      "testStartStatementClose": "",
+      "testEndStatement": ".. test-end::",
+      "stepStatementOpen": ".. step:: ",
+      "stepStatementClose": ""
+    }
+  ]
+}
+```
+
+For more details, see [Custom input formats](/docs/input-formats/custom).
+
+## Integration configuration
+
+Doc Detective supports integrations with external tools and services:
+
+### OpenAPI
+
+Automatically resolve relative URLs in `httpRequest` actions using OpenAPI definitions:
+
+```json
+{
+  "integrations": {
+    "openApi": [
+      {
+        "descriptionPath": "./openapi.yaml",
+        "server": "https://api.example.com"
+      }
+    ]
+  }
+}
+```
+
+## Telemetry
+
+Doc Detective collects anonymous usage telemetry to improve the product. You can configure telemetry behavior:
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `telemetry.send` | boolean | `true` | Whether to send anonymous telemetry data. |
+| `telemetry.userId` | string | Auto-generated | An anonymous user identifier for telemetry. |
+
+```json
+{
+  "telemetry": {
+    "send": false
+  }
+}
+```
+
+## Environment variables in config
+
+You can reference environment variables in your configuration file using the `$VARIABLE_NAME` syntax:
+
+```json
+{
+  "input": ".",
+  "origin": "$SITE_URL",
+  "integrations": {
+    "openApi": [
+      {
+        "server": "$API_SERVER"
+      }
+    ]
+  }
+}
+```
+
+Doc Detective resolves environment variables at runtime, so you can keep sensitive values out of your configuration file.
+
+## Environment-specific configs
+
+Create separate configuration files for different environments. For example, a CI-specific config with headless browsers:
+
+`.doc-detective.ci.json`:
+
+```json
+{
+  "input": ".",
+  "output": "./test-results",
+  "logLevel": "error",
+  "runOn": [
+    {
+      "platforms": ["linux"],
+      "browsers": {
+        "name": "chrome",
+        "headless": true
+      }
+    }
+  ]
+}
+```
+
+Then use it in your CI pipeline:
+
+```bash
+npx doc-detective --config .doc-detective.ci.json
+```
+
+## Real-world examples
+
+### Simple site testing
+
+```json
+{
+  "input": "./docs",
+  "output": "./test-results",
+  "origin": "https://docs.example.com"
+}
+```
+
+### Multi-browser testing
+
+```json
+{
+  "input": ".",
+  "output": "./test-results",
+  "runOn": [
+    {
+      "platforms": ["windows", "mac", "linux"],
+      "browsers": {
+        "name": "chrome",
+        "headless": true,
+        "viewport": { "width": 1280, "height": 720 }
+      }
+    },
+    {
+      "platforms": ["windows", "mac", "linux"],
+      "browsers": {
+        "name": "firefox",
+        "headless": true
+      }
+    },
+    {
+      "platforms": "mac",
+      "browsers": "webkit"
+    }
+  ]
+}
+```
+
+### CI/CD configuration
+
+```json
+{
+  "input": ".",
+  "output": "./test-results",
+  "logLevel": "error",
+  "concurrentRunners": 2,
+  "runOn": [
+    {
+      "platforms": ["linux"],
+      "browsers": {
+        "name": "chrome",
+        "headless": true
+      }
+    },
+    {
+      "platforms": ["linux"],
+      "browsers": {
+        "name": "firefox",
+        "headless": true
+      }
+    }
+  ]
+}
+```
+
+### Development configuration
+
+```json
+{
+  "input": ".",
+  "output": "./test-results",
+  "logLevel": "debug",
+  "runOn": [
+    {
+      "platforms": ["windows", "mac", "linux"],
+      "browsers": {
+        "name": "chrome",
+        "headless": false,
+        "viewport": { "width": 1280, "height": 720 }
+      }
+    }
+  ]
+}
+```

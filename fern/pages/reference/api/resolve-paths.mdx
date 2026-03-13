@@ -1,0 +1,149 @@
+---
+title: resolvePaths()
+description: Convert recognized relative path properties in a config or spec object to absolute paths.
+---
+
+## Signature
+
+```javascript
+async resolvePaths({ config, object, filePath, nested?, objectType? }) → any
+```
+
+## Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `config` | any | Yes | |
+| `object` | any | Yes | |
+| `filePath` | string | Yes | |
+| `nested` | boolean | No | |
+| `objectType` | string | No | |
+
+## Return value
+
+Returns `any`.
+
+{/* CUSTOM CONTENT START */}
+
+
+
+
+
+
+
+## Examples
+
+### Resolve config paths
+
+```javascript
+import { resolvePaths } from "doc-detective";
+
+const config = {
+  input: "./docs",
+  output: "./test-results",
+  relativePathBase: "file",
+};
+
+const resolved = await resolvePaths({
+  config,
+  object: config,
+  filePath: "/home/user/project/.doc-detective.json",
+  objectType: "config",
+});
+
+// resolved.input is now "/home/user/project/docs"
+// resolved.output is now "/home/user/project/test-results"
+```
+
+### Resolve spec paths
+
+```javascript
+import { resolvePaths } from "doc-detective";
+
+const config = {
+  relativePathBase: "file",
+};
+
+const spec = {
+  tests: [
+    {
+      steps: [
+        { screenshot: "./screenshots/home.png" },
+      ],
+    },
+  ],
+};
+
+const resolved = await resolvePaths({
+  config,
+  object: spec,
+  filePath: "/home/user/project/tests/login.spec.json",
+  objectType: "spec",
+});
+```
+
+### File-based vs. CWD-based resolution
+
+When `relativePathBase` is `"file"`, paths resolve relative to the file containing them. When set to `"cwd"`, paths resolve relative to the current working directory.
+
+```javascript
+import { resolvePaths } from "doc-detective";
+
+// File-based resolution
+const fileBasedConfig = {
+  input: "./docs",
+  relativePathBase: "file",
+};
+
+await resolvePaths({
+  config: fileBasedConfig,
+  object: fileBasedConfig,
+  filePath: "/home/user/project/.doc-detective.json",
+});
+// input → "/home/user/project/docs"
+
+// CWD-based resolution
+const cwdBasedConfig = {
+  input: "./docs",
+  relativePathBase: "cwd",
+};
+
+await resolvePaths({
+  config: cwdBasedConfig,
+  object: cwdBasedConfig,
+  filePath: "/home/user/project/.doc-detective.json",
+});
+// input → "{cwd}/docs" (relative to current working directory)
+```
+
+## Behavior
+
+When called, `resolvePaths()`:
+
+1. Reads the `relativePathBase` setting from the config (`"file"` or `"cwd"`).
+2. Determines the base directory from the `filePath` parameter.
+3. Identifies path properties in the object based on the object type.
+4. For each relative path, resolves it to an absolute path using the appropriate base.
+5. Preserves absolute paths and URLs (doesn't modify them).
+6. Processes nested objects if `nested` is `true`.
+7. Returns the modified object.
+
+### Recognized path properties
+
+For **config** objects: `input`, `output`, and paths within `fileTypes`, `beforeAny`, and `afterAll`.
+
+For **spec** objects: paths within test steps, such as screenshot paths, file paths in `loadVariables`, `runShell`, `runCode`, and other actions.
+
+## Notes
+
+- Absolute paths and URLs are preserved without modification.
+- The function modifies the object in place and returns it.
+- If `objectType` is not specified, the function auto-detects whether the object is a config or spec based on its properties.
+- Set `nested` to `false` to only resolve top-level paths in the object.
+
+
+
+
+
+
+{/* CUSTOM CONTENT END */}
